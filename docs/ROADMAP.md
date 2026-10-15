@@ -4,7 +4,7 @@
 
 | Next | Why |
 |---|---|
-| **Agent probe**: run real CLI agents (Claude Code, Codex, opencode) in an isolated sandbox on the same tasks and read what they write into `package.json` / `pyproject.toml` | Turns stated preference into revealed preference; measures how often "ask" agrees with "do" |
+| **Agent probe** (pilot done, see `docs/pilots/`): extend to Codex and opencode, more tasks, and a shell-enabled arm; then promote it into the planner as `probe = "agent"` | Turns stated preference into revealed preference; measures how often "ask" agrees with "do" |
 | **Retrieval probe**: give the agent web and docs tools and record which pages it fetches before choosing | Shows which surfaces (docs, llms.txt, Context7, GitHub, comparison posts) actually feed the decision |
 | Trend view across monthly releases | Defaults drift as models and training data change; the time series is the index's long-term value |
 | More stacks (Go, Rails, mobile) and more phrasings per task | Wider coverage, tighter intervals |
