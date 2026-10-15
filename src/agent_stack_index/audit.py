@@ -51,7 +51,7 @@ def snapshot(ws: Workspace, vendor_id: str, release_id: str | None = None) -> st
             out += ["When your notes are in context:", "",
                     f"- no notes {pct(d['arms'].get('none', {}).get(vendor_id))} → all candidates' notes {pct(d['arms'].get('trio', {}).get(vendor_id))} → "
                     f"your notes alone **{pct(d['solo_win'][vendor_id])}**.", ""]
-    out += ["## What usually moves this", ""] + [f"{i}. {item}" for i, item in enumerate(CHECKLIST, 1)]
+    out += ["## What to try", "", "Each item changes what a model reads before it chooses; the re-test below measures which ones move your share.", ""] + [f"{i}. {item}" for i, item in enumerate(CHECKLIST, 1)]
     out += ["", "## Re-test plan", "",
             "Run the same tasks before and after changes, against the category default and runner-up, with notes in and out of context.",
             f"`asi audit --vendor {vendor_id} --plan` writes the experiment spec.", ""]
