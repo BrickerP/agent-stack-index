@@ -1,0 +1,58 @@
+# Multi-product companies: one vendor id per company, scoped by category through `products`.
+# Aliases are matched case-insensitively, as whole answers or whole words inside an answer.
+
+[[vendor]]
+id = "supabase"
+name = "Supabase"
+url = "https://supabase.com"
+categories = ["auth", "database_host", "object_storage", "realtime", "vector_db", "py_auth"]
+aliases = ["supabase", "supabase auth", "supabase postgres", "supabase storage", "supabase realtime", "supabase vector", "@supabase/supabase-js", "@supabase/ssr", "@supabase/auth-helpers-nextjs", "supabase-py", "gotrue", "supabase gotrue"]
+products = { auth = "Supabase Auth", object_storage = "Supabase Storage", realtime = "Supabase Realtime", vector_db = "Supabase (pgvector)", py_auth = "Supabase Auth" }
+
+[[vendor]]
+id = "cloudflare"
+name = "Cloudflare"
+url = "https://www.cloudflare.com"
+categories = ["hosting", "object_storage", "image_delivery", "cache", "rate_limiting", "background_jobs", "realtime", "vector_db"]
+aliases = ["cloudflare", "cloudflare r2", "r2", "cloudflare images", "cloudflare image resizing", "cloudflare workers", "cloudflare pages", "workers kv", "cloudflare kv", "cloudflare workers kv", "durable objects", "cloudflare durable objects", "cloudflare queues", "vectorize", "cloudflare vectorize", "cloudflare cdn", "cloudflare rate limiting", "cloudflare waf", "partykit"]
+products = { hosting = "Cloudflare Workers/Pages", object_storage = "Cloudflare R2", image_delivery = "Cloudflare Images", cache = "Cloudflare KV", rate_limiting = "Cloudflare rate limiting", background_jobs = "Cloudflare Queues", realtime = "Cloudflare Durable Objects", vector_db = "Cloudflare Vectorize" }
+
+[[vendor]]
+id = "aws"
+name = "AWS"
+url = "https://aws.amazon.com"
+categories = ["database_host", "transactional_email", "object_storage", "image_delivery", "background_jobs", "hosting", "auth", "search", "cache", "vector_db", "llm_provider", "py_auth", "py_jobs", "py_orchestration"]
+aliases = ["aws", "amazon web services", "aws rds", "amazon rds", "rds", "rds postgres", "rds for postgresql", "aurora", "aws aurora", "amazon aurora", "aurora postgres", "aurora postgresql", "aurora serverless", "aws ses", "amazon ses", "ses", "simple email service", "@aws-sdk/client-ses", "@aws-sdk/client-sesv2", "aws s3", "amazon s3", "s3", "@aws-sdk/client-s3", "boto3", "cloudfront", "amazon cloudfront", "aws cloudfront", "aws sqs", "amazon sqs", "sqs", "aws amplify", "amplify", "aws lambda", "aws app runner", "cognito", "aws cognito", "amazon cognito", "amazon opensearch", "aws opensearch", "amazon opensearch service", "elasticache", "aws elasticache", "amazon elasticache", "s3 vectors", "bedrock", "amazon bedrock", "aws bedrock", "aws step functions", "step functions", "mwaa", "amazon mwaa"]
+products = { database_host = "AWS RDS / Aurora", transactional_email = "Amazon SES", object_storage = "Amazon S3", image_delivery = "Amazon CloudFront", background_jobs = "Amazon SQS", hosting = "AWS", auth = "Amazon Cognito", search = "Amazon OpenSearch", cache = "Amazon ElastiCache", vector_db = "AWS vector search", llm_provider = "Amazon Bedrock", py_auth = "Amazon Cognito", py_jobs = "Amazon SQS", py_orchestration = "AWS Step Functions / MWAA" }
+
+[[vendor]]
+id = "google"
+name = "Google"
+url = "https://cloud.google.com"
+categories = ["database_host", "object_storage", "hosting", "auth", "product_analytics", "llm_provider", "llm_sdk", "vector_db", "realtime", "py_auth", "py_llm_framework", "py_orchestration"]
+aliases = ["google cloud", "gcp", "cloud sql", "google cloud sql", "gcp cloud sql", "alloydb", "google cloud storage", "gcs", "cloud storage", "firebase storage", "cloud run", "google cloud run", "firebase", "firebase hosting", "firebase auth", "firebase authentication", "google identity platform", "identity platform", "google analytics", "ga4", "google analytics 4", "gtag", "gemini", "google gemini", "gemini api", "vertex ai", "google vertex ai", "@google/genai", "@google/generative-ai", "google-genai", "google genai sdk", "vertex ai vector search", "firestore", "firebase realtime database", "google adk", "agent development kit", "cloud composer"]
+products = { database_host = "Google Cloud SQL", object_storage = "Google Cloud Storage", hosting = "Google Cloud Run / Firebase", auth = "Firebase Auth", product_analytics = "Google Analytics", llm_provider = "Google Gemini", llm_sdk = "Google GenAI SDK", vector_db = "Vertex AI Vector Search", realtime = "Firebase / Firestore", py_auth = "Firebase Auth", py_llm_framework = "Google ADK", py_orchestration = "Cloud Composer" }
+
+[[vendor]]
+id = "vercel"
+name = "Vercel"
+url = "https://vercel.com"
+categories = ["hosting", "llm_sdk", "object_storage", "product_analytics", "image_delivery", "feature_flags", "cache", "background_jobs"]
+aliases = ["vercel", "vercel ai sdk", "ai sdk", "ai", "ai-sdk", "@ai-sdk/react", "@ai-sdk/openai", "vercel blob", "@vercel/blob", "vercel analytics", "@vercel/analytics", "vercel web analytics", "next/image", "next.js image", "next image", "next.js image optimization", "vercel image optimization", "@vercel/flags", "vercel flags", "flags sdk", "flags", "vercel kv", "@vercel/kv", "vercel cron", "vercel cron jobs"]
+products = { hosting = "Vercel", llm_sdk = "Vercel AI SDK", object_storage = "Vercel Blob", product_analytics = "Vercel Analytics", image_delivery = "Next.js Image (Vercel)", feature_flags = "Vercel Flags", cache = "Vercel KV", background_jobs = "Vercel Cron" }
+
+[[vendor]]
+id = "upstash"
+name = "Upstash"
+url = "https://upstash.com"
+categories = ["cache", "rate_limiting", "background_jobs", "vector_db", "search"]
+aliases = ["upstash", "upstash redis", "@upstash/redis", "upstash ratelimit", "@upstash/ratelimit", "upstash rate limit", "qstash", "upstash qstash", "@upstash/qstash", "upstash workflow", "upstash vector", "@upstash/vector", "upstash search"]
+products = { cache = "Upstash Redis", rate_limiting = "Upstash Ratelimit", background_jobs = "Upstash QStash", vector_db = "Upstash Vector", search = "Upstash Search" }
+
+[[vendor]]
+id = "microsoft"
+name = "Microsoft Azure"
+url = "https://azure.microsoft.com"
+categories = ["database_host", "object_storage", "hosting", "auth", "llm_provider", "py_auth", "py_llm_framework"]
+aliases = ["azure", "microsoft azure", "azure database for postgresql", "azure postgres", "azure postgresql flexible server", "azure blob storage", "azure blob", "azure storage", "azure app service", "azure static web apps", "azure container apps", "azure ad b2c", "entra id", "microsoft entra", "microsoft entra id", "azure openai", "azure openai service", "azure ai foundry", "semantic kernel", "autogen", "microsoft agent framework"]
+products = { database_host = "Azure Database for PostgreSQL", object_storage = "Azure Blob Storage", hosting = "Azure", auth = "Microsoft Entra", llm_provider = "Azure OpenAI", py_auth = "Microsoft Entra", py_llm_framework = "Semantic Kernel / AutoGen" }

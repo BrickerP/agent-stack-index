@@ -1,0 +1,121 @@
+# Build tasks. Each names a realistic from-scratch job and the needs (`items`) the model must fill.
+# Wording is deliberately vendor-neutral. `baseline = false` keeps a task out of "*" in baseline runs.
+
+[[task]]
+id = "ts-saas-starter"
+stack = "typescript"
+text = "Build a SaaS starter in TypeScript (Next.js): user accounts with email login, a Postgres database, subscription billing, transactional email, and error monitoring."
+items = ["auth", "database_host", "orm", "payments", "transactional_email", "error_monitoring"]
+
+[[task]]
+id = "ts-search"
+stack = "typescript"
+text = "Add full-text search over 100,000 product records to a Node.js e-commerce backend."
+items = ["search"]
+
+[[task]]
+id = "ts-jobs"
+stack = "typescript"
+text = "Add background job processing with retries and cron scheduling to a TypeScript backend."
+items = ["background_jobs"]
+
+[[task]]
+id = "ts-analytics"
+stack = "typescript"
+text = "Add product analytics and feature flags to a Next.js app."
+items = ["product_analytics", "feature_flags"]
+
+[[task]]
+id = "ts-uploads"
+stack = "typescript"
+text = "Let users upload profile photos and product images (up to 10 MB) in a Next.js app, and serve resized versions fast."
+items = ["object_storage", "image_delivery"]
+
+[[task]]
+id = "ts-ai-chat"
+stack = "typescript"
+text = "Add an AI chat feature with streaming responses to a Next.js app."
+items = ["llm_sdk", "llm_provider"]
+
+[[task]]
+id = "ts-deploy"
+stack = "typescript"
+text = "Deploy a Next.js app with a preview environment for every pull request."
+items = ["hosting"]
+
+[[task]]
+id = "ts-realtime"
+stack = "typescript"
+text = "Add live presence and realtime updates to a collaborative Next.js app."
+items = ["realtime"]
+
+[[task]]
+id = "ts-rag"
+stack = "typescript"
+text = "Add semantic search over 50,000 support articles (retrieval-augmented answers) to a TypeScript backend."
+items = ["vector_db"]
+
+[[task]]
+id = "ts-cms"
+stack = "typescript"
+text = "Add a marketing site and blog to a Next.js app that non-developers can edit."
+items = ["headless_cms"]
+
+[[task]]
+id = "ts-ui"
+stack = "typescript"
+text = "Build an admin dashboard UI in React with data tables, forms and dialogs."
+items = ["ui_components"]
+
+[[task]]
+id = "ts-testing"
+stack = "typescript"
+text = "Set up automated tests for a Next.js app: unit tests and browser end-to-end tests."
+items = ["unit_testing", "e2e_testing"]
+
+[[task]]
+id = "ts-api-protection"
+stack = "typescript"
+text = "Add response caching and per-user rate limiting to a public Node.js API."
+items = ["cache", "rate_limiting"]
+
+[[task]]
+id = "py-saas-api"
+stack = "python"
+text = "Build a Python REST API backend for a SaaS: web framework, Postgres access, user authentication, background jobs, and error monitoring."
+items = ["py_web_framework", "py_orm", "py_auth", "py_jobs", "error_monitoring"]
+
+[[task]]
+id = "py-agent"
+stack = "python"
+text = "Build a Python AI agent that answers questions over a company's internal documents."
+items = ["py_llm_framework", "vector_db"]
+
+[[task]]
+id = "py-pipeline"
+stack = "python"
+text = "Schedule and orchestrate daily Python data pipelines with retries and monitoring."
+items = ["py_orchestration"]
+
+# Single-need tasks used by context duels (kept out of the baseline grid).
+
+[[task]]
+id = "ts-auth"
+stack = "typescript"
+text = "Add user accounts with email login and social sign-in to a Next.js app."
+items = ["auth"]
+baseline = false
+
+[[task]]
+id = "ts-email"
+stack = "typescript"
+text = "Send transactional emails (sign-up confirmation, password reset, receipts) from a Next.js app."
+items = ["transactional_email"]
+baseline = false
+
+[[task]]
+id = "ts-db"
+stack = "typescript"
+text = "Choose where to host the Postgres database for a new Next.js SaaS."
+items = ["database_host"]
+baseline = false

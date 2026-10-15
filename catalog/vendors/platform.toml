@@ -1,0 +1,234 @@
+# Platform: monitoring, jobs, storage, images, hosting, cache, rate limits, realtime, CMS.
+
+[[vendor]]
+id = "sentry"
+name = "Sentry"
+url = "https://sentry.io"
+categories = ["error_monitoring"]
+aliases = ["sentry", "sentry.io", "@sentry/nextjs", "@sentry/node", "@sentry/react", "sentry-sdk", "sentry sdk", "sentry-sdk[fastapi]", "sentry python sdk"]
+
+[[vendor]]
+id = "datadog"
+name = "Datadog"
+categories = ["error_monitoring"]
+aliases = ["datadog", "datadog apm", "dd-trace", "ddtrace", "datadog rum"]
+
+[[vendor]]
+id = "monitoring-other"
+name = "Other monitoring"
+categories = ["error_monitoring"]
+aliases = ["new relic", "newrelic", "bugsnag", "rollbar", "honeybadger", "better stack", "betterstack", "axiom", "grafana", "grafana cloud", "logrocket", "appsignal", "glitchtip", "raygun", "dynatrace", "signoz", "opentelemetry", "otel"]
+
+[[vendor]]
+id = "bullmq"
+name = "BullMQ"
+url = "https://bullmq.io"
+categories = ["background_jobs"]
+aliases = ["bullmq", "bull", "bull mq", "bull queue", "bullmq + redis"]
+
+[[vendor]]
+id = "inngest"
+name = "Inngest"
+url = "https://www.inngest.com"
+categories = ["background_jobs", "py_jobs"]
+aliases = ["inngest"]
+
+[[vendor]]
+id = "trigger-dev"
+name = "Trigger.dev"
+url = "https://trigger.dev"
+categories = ["background_jobs"]
+aliases = ["trigger.dev", "triggerdev", "trigger dev", "@trigger.dev/sdk"]
+
+[[vendor]]
+id = "temporal"
+name = "Temporal"
+url = "https://temporal.io"
+categories = ["background_jobs", "py_jobs", "py_orchestration"]
+aliases = ["temporal", "temporal.io", "temporalio", "@temporalio/client", "@temporalio/worker", "temporal cloud"]
+
+[[vendor]]
+id = "postgres-queues"
+name = "Postgres-backed queues"
+categories = ["background_jobs"]
+aliases = ["pg-boss", "pgboss", "graphile worker", "graphile-worker"]
+
+[[vendor]]
+id = "hatchet"
+name = "Hatchet"
+categories = ["background_jobs", "py_jobs"]
+aliases = ["hatchet", "hatchet.run"]
+
+[[vendor]]
+id = "jobs-other"
+name = "Other job runners"
+categories = ["background_jobs"]
+aliases = ["agenda", "agenda.js", "quirrel", "bee-queue", "node-cron", "restate", "defer"]
+
+[[vendor]]
+id = "uploadthing"
+name = "UploadThing"
+categories = ["object_storage"]
+aliases = ["uploadthing", "upload thing", "@uploadthing/react"]
+
+[[vendor]]
+id = "storage-other"
+name = "Other object storage"
+categories = ["object_storage"]
+aliases = ["backblaze", "backblaze b2", "b2", "wasabi", "minio", "tigris", "filestack"]
+
+[[vendor]]
+id = "cloudinary"
+name = "Cloudinary"
+url = "https://cloudinary.com"
+categories = ["image_delivery", "object_storage"]
+aliases = ["cloudinary", "next-cloudinary"]
+
+[[vendor]]
+id = "imgix"
+name = "imgix"
+categories = ["image_delivery"]
+aliases = ["imgix"]
+
+[[vendor]]
+id = "image-cdn-other"
+name = "Other image CDNs"
+categories = ["image_delivery", "object_storage"]
+aliases = ["imagekit", "imagekit.io", "uploadcare", "bunny", "bunny.net", "bunny cdn", "bunny optimizer", "fastly image optimizer", "thumbor"]
+
+[[vendor]]
+id = "sharp"
+name = "sharp (self-processing)"
+categories = ["image_delivery"]
+aliases = ["sharp", "sharp.js"]
+
+[[vendor]]
+id = "netlify"
+name = "Netlify"
+categories = ["hosting"]
+aliases = ["netlify"]
+
+[[vendor]]
+id = "hosting-other"
+name = "Other hosting"
+categories = ["hosting"]
+aliases = ["coolify", "sst", "sst.dev", "hetzner", "kamal"]
+
+[[vendor]]
+id = "self-managed"
+name = "Self-managed servers"
+generic = true
+categories = ["hosting"]
+aliases = ["docker", "kubernetes", "vps", "self-hosted", "own server"]
+
+[[vendor]]
+id = "redis"
+name = "Redis"
+categories = ["cache", "rate_limiting"]
+aliases = ["redis", "ioredis", "node-redis", "redis cloud", "redis stack", "redis enterprise"]
+products = { rate_limiting = "Redis (custom limiter)" }
+
+[[vendor]]
+id = "cache-other"
+name = "Other caches"
+categories = ["cache"]
+aliases = ["valkey", "memcached", "dragonfly", "dragonflydb", "momento", "keyv"]
+
+[[vendor]]
+id = "in-memory-cache"
+name = "In-process cache"
+categories = ["cache"]
+aliases = ["lru-cache", "node-cache", "in-memory", "in-memory cache", "map"]
+
+[[vendor]]
+id = "express-rate-limit"
+name = "express-rate-limit"
+categories = ["rate_limiting"]
+aliases = ["express-rate-limit", "express rate limit"]
+
+[[vendor]]
+id = "rate-limiter-flexible"
+name = "rate-limiter-flexible"
+categories = ["rate_limiting"]
+aliases = ["rate-limiter-flexible", "rate-limit-flexible"]
+
+[[vendor]]
+id = "arcjet"
+name = "Arcjet"
+categories = ["rate_limiting"]
+aliases = ["arcjet", "@arcjet/next"]
+
+[[vendor]]
+id = "unkey"
+name = "Unkey"
+categories = ["rate_limiting"]
+aliases = ["unkey", "@unkey/ratelimit"]
+
+[[vendor]]
+id = "liveblocks"
+name = "Liveblocks"
+url = "https://liveblocks.io"
+categories = ["realtime"]
+aliases = ["liveblocks", "@liveblocks/react", "@liveblocks/client"]
+
+[[vendor]]
+id = "pusher"
+name = "Pusher"
+categories = ["realtime"]
+aliases = ["pusher", "pusher channels", "pusher-js", "soketi"]
+
+[[vendor]]
+id = "ably"
+name = "Ably"
+categories = ["realtime"]
+aliases = ["ably", "ably realtime"]
+
+[[vendor]]
+id = "socket-io"
+name = "Socket.IO"
+categories = ["realtime"]
+aliases = ["socket.io", "socketio", "socket io"]
+
+[[vendor]]
+id = "raw-websockets"
+name = "Raw WebSockets / SSE"
+categories = ["realtime"]
+aliases = ["ws", "websockets", "websocket", "native websockets", "server-sent events", "sse"]
+
+[[vendor]]
+id = "realtime-other"
+name = "Other realtime"
+categories = ["realtime"]
+aliases = ["convex", "pubnub", "electric", "electricsql", "yjs", "y-websocket", "hocuspocus", "y-sweet", "instantdb", "jazz"]
+
+[[vendor]]
+id = "sanity"
+name = "Sanity"
+url = "https://www.sanity.io"
+categories = ["headless_cms"]
+aliases = ["sanity", "sanity.io", "sanity cms", "next-sanity"]
+
+[[vendor]]
+id = "payload"
+name = "Payload"
+url = "https://payloadcms.com"
+categories = ["headless_cms"]
+aliases = ["payload", "payload cms", "payloadcms"]
+
+[[vendor]]
+id = "contentful"
+name = "Contentful"
+categories = ["headless_cms"]
+aliases = ["contentful"]
+
+[[vendor]]
+id = "strapi"
+name = "Strapi"
+categories = ["headless_cms"]
+aliases = ["strapi"]
+
+[[vendor]]
+id = "cms-other"
+name = "Other CMS"
+categories = ["headless_cms"]
+aliases = ["storyblok", "hygraph", "directus", "keystatic", "tinacms", "tina", "prismic", "builder.io", "ghost", "decap cms", "wordpress", "datocms", "contentlayer", "mdx", "velite"]

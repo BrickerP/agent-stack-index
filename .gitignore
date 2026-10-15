@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+_site/
+.env
+.env.*
+!.env.example
+# Client work never lives in this public repository.
+clients/
+audits/private/

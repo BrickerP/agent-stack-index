@@ -1,0 +1,4663 @@
+{
+ "manifest": {
+  "release": "2026-10",
+  "title": "Agent Stack Index — October 2026",
+  "harness": "0.1.0",
+  "catalog_sha": "92e09c2e11c5",
+  "data_window": [
+   "2026-10-15",
+   "2026-10-15"
+  ],
+  "experiments": {
+   "baseline": {
+    "id": "2026-10-baseline",
+    "title": "Baseline: what each model picks with no vendor context",
+    "planned": 1920,
+    "observed": 1920,
+    "coverage": 1.0
+   },
+   "duel": {
+    "id": "2026-10-duel",
+    "title": "Context duels: does a vendor's documentation in context change the pick?",
+    "planned": 750,
+    "observed": 750,
+    "coverage": 1.0
+   }
+  },
+  "answers": 2670,
+  "models": {
+   "claude-opus-5-5": {
+    "label": "Claude Opus 5.5",
+    "lab": "Anthropic",
+    "route": "Opus 5.5",
+    "reported": [
+     "claude-opus-5-5"
+    ],
+    "answers": 267,
+    "notes": "Gateway route adds its own system prompt (~6.6k input tokens on an empty request)."
+   },
+   "claude-sonnet-5-5": {
+    "label": "Claude Sonnet 5.5",
+    "lab": "Anthropic",
+    "route": "Claude Sonnet 5.5",
+    "reported": [
+     "claude-sonnet-5.5"
+    ],
+    "answers": 267,
+    "notes": "Gateway route adds its own system prompt (~6.6k input tokens on an empty request)."
+   },
+   "deepseek-v4-pro": {
+    "label": "DeepSeek V4 Pro",
+    "lab": "DeepSeek",
+    "route": "DeepSeek-V4-Pro",
+    "reported": [
+     "deepseek-v4-pro-202606"
+    ],
+    "answers": 267,
+    "notes": ""
+   },
+   "gemini-3-8-flash": {
+    "label": "Gemini 3.8 Flash",
+    "lab": "Google",
+    "route": "Gemini 3.8 Flash",
+    "reported": [
+     "gemini-3.8-flash"
+    ],
+    "answers": 267,
+    "notes": ""
+   },
+   "glm-5-3": {
+    "label": "GLM-5.3",
+    "lab": "Zhipu",
+    "route": "GLM-5.3",
+    "reported": [
+     "glm-5.3"
+    ],
+    "answers": 267,
+    "notes": ""
+   },
+   "gpt-6-1-sol": {
+    "label": "GPT-6.1 Sol",
+    "lab": "OpenAI",
+    "route": "gpt-6.1-sol",
+    "reported": [
+     "gpt-6.1-sol"
+    ],
+    "answers": 267,
+    "notes": ""
+   },
+   "gpt-6-astra": {
+    "label": "GPT-6 Astra",
+    "lab": "OpenAI",
+    "route": "gpt-6-astra",
+    "reported": [
+     "gpt-6-astra"
+    ],
+    "answers": 267,
+    "notes": ""
+   },
+   "grok-4-7": {
+    "label": "Grok 4.7",
+    "lab": "xAI",
+    "route": "Grok-4.7",
+    "reported": [
+     "grok-4.7-build"
+    ],
+    "answers": 267,
+    "notes": ""
+   },
+   "kimi-k2-7-code": {
+    "label": "Kimi K2.7 Code",
+    "lab": "Moonshot",
+    "route": "Kimi-K2.7-Code",
+    "reported": [
+     "kimi-k2.7-code"
+    ],
+    "answers": 267,
+    "notes": ""
+   },
+   "minimax-m3": {
+    "label": "MiniMax M3",
+    "lab": "MiniMax",
+    "route": "MiniMax-M3",
+    "reported": [
+     "MiniMax-M3"
+    ],
+    "answers": 267,
+    "notes": ""
+   }
+  },
+  "unmatched_rate": 0.0,
+  "unmatched_top": []
+ },
+ "baseline": {
+  "auth": {
+   "label": "Authentication",
+   "group": "app",
+   "tasks": [
+    "ts-saas-starter"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "better-auth": 12
+     },
+     "top": "better-auth",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "better-auth": 10,
+      "authjs": 2
+     },
+     "top": "better-auth",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "authjs": 10,
+      "better-auth": 2
+     },
+     "top": "authjs",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "clerk": 8,
+      "authjs": 4
+     },
+     "top": "clerk",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "authjs": 10,
+      "better-auth": 2
+     },
+     "top": "authjs",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "clerk": 6,
+      "authjs": 5,
+      "better-auth": 1
+     },
+     "top": "clerk",
+     "top_share": 0.5,
+     "top_ci": [
+      0.2538,
+      0.7462
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "authjs": 8,
+      "clerk": 3,
+      "better-auth": 1
+     },
+     "top": "authjs",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "authjs": 8,
+      "clerk": 3,
+      "better-auth": 1
+     },
+     "top": "authjs",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "authjs": 10,
+      "clerk": 2
+     },
+     "top": "authjs",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "clerk": 7,
+      "authjs": 5
+     },
+     "top": "clerk",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    }
+   },
+   "pooled": {
+    "authjs": 0.5167,
+    "better-auth": 0.2417,
+    "clerk": 0.2417
+   },
+   "top": "authjs",
+   "top_share": 0.5167,
+   "models_agree": 5,
+   "models_total": 10,
+   "variant_consistent": 4,
+   "hhi": 0.3838
+  },
+  "database_host": {
+   "label": "Postgres hosting",
+   "group": "data",
+   "tasks": [
+    "ts-saas-starter"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "neon": 12
+     },
+     "top": "neon",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "neon": 12
+     },
+     "top": "neon",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "neon": 12
+     },
+     "top": "neon",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "neon": 12
+     },
+     "top": "neon",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "neon": 12
+     },
+     "top": "neon",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "neon": 12
+     },
+     "top": "neon",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "neon": 12
+     },
+     "top": "neon",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "neon": 12
+     },
+     "top": "neon",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "neon": 12
+     },
+     "top": "neon",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "neon": 12
+     },
+     "top": "neon",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "neon": 1.0
+   },
+   "top": "neon",
+   "top_share": 1.0,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 1.0
+  },
+  "orm": {
+   "label": "ORM / query builder",
+   "group": "data",
+   "tasks": [
+    "ts-saas-starter"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "drizzle": 12
+     },
+     "top": "drizzle",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "drizzle": 12
+     },
+     "top": "drizzle",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "prisma": 10,
+      "drizzle": 2
+     },
+     "top": "prisma",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "drizzle": 12
+     },
+     "top": "drizzle",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "drizzle": 8,
+      "prisma": 4
+     },
+     "top": "drizzle",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "drizzle": 12
+     },
+     "top": "drizzle",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "drizzle": 11,
+      "prisma": 1
+     },
+     "top": "drizzle",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "prisma": 7,
+      "drizzle": 5
+     },
+     "top": "prisma",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "prisma": 10,
+      "drizzle": 2
+     },
+     "top": "prisma",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "drizzle": 10,
+      "prisma": 2
+     },
+     "top": "drizzle",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    }
+   },
+   "pooled": {
+    "drizzle": 0.7167,
+    "prisma": 0.2833
+   },
+   "top": "drizzle",
+   "top_share": 0.7167,
+   "models_agree": 7,
+   "models_total": 10,
+   "variant_consistent": 7,
+   "hhi": 0.5939
+  },
+  "payments": {
+   "label": "Subscription billing",
+   "group": "app",
+   "tasks": [
+    "ts-saas-starter"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "stripe": 12
+     },
+     "top": "stripe",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "stripe": 12
+     },
+     "top": "stripe",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "stripe": 12
+     },
+     "top": "stripe",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "stripe": 12
+     },
+     "top": "stripe",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "stripe": 12
+     },
+     "top": "stripe",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "stripe": 12
+     },
+     "top": "stripe",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "stripe": 12
+     },
+     "top": "stripe",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "stripe": 12
+     },
+     "top": "stripe",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "stripe": 12
+     },
+     "top": "stripe",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "stripe": 12
+     },
+     "top": "stripe",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "stripe": 1.0
+   },
+   "top": "stripe",
+   "top_share": 1.0,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 1.0
+  },
+  "transactional_email": {
+   "label": "Transactional email",
+   "group": "app",
+   "tasks": [
+    "ts-saas-starter"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "resend": 12
+     },
+     "top": "resend",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "resend": 12
+     },
+     "top": "resend",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "resend": 11,
+      "postmark": 1
+     },
+     "top": "resend",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "resend": 12
+     },
+     "top": "resend",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "resend": 12
+     },
+     "top": "resend",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "resend": 12
+     },
+     "top": "resend",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "resend": 12
+     },
+     "top": "resend",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "resend": 12
+     },
+     "top": "resend",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "resend": 12
+     },
+     "top": "resend",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "resend": 12
+     },
+     "top": "resend",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "resend": 0.9917,
+    "postmark": 0.0083
+   },
+   "top": "resend",
+   "top_share": 0.9917,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 0.9835
+  },
+  "error_monitoring": {
+   "label": "Error monitoring",
+   "group": "platform",
+   "tasks": [
+    "py-saas-api",
+    "ts-saas-starter"
+   ],
+   "n": 240,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 24,
+     "counts": {
+      "sentry": 24
+     },
+     "top": "sentry",
+     "top_share": 1.0,
+     "top_ci": [
+      0.862,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 24,
+     "counts": {
+      "sentry": 24
+     },
+     "top": "sentry",
+     "top_share": 1.0,
+     "top_ci": [
+      0.862,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 24,
+     "counts": {
+      "sentry": 24
+     },
+     "top": "sentry",
+     "top_share": 1.0,
+     "top_ci": [
+      0.862,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 24,
+     "counts": {
+      "sentry": 24
+     },
+     "top": "sentry",
+     "top_share": 1.0,
+     "top_ci": [
+      0.862,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 24,
+     "counts": {
+      "sentry": 24
+     },
+     "top": "sentry",
+     "top_share": 1.0,
+     "top_ci": [
+      0.862,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 24,
+     "counts": {
+      "sentry": 24
+     },
+     "top": "sentry",
+     "top_share": 1.0,
+     "top_ci": [
+      0.862,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 24,
+     "counts": {
+      "sentry": 24
+     },
+     "top": "sentry",
+     "top_share": 1.0,
+     "top_ci": [
+      0.862,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 24,
+     "counts": {
+      "sentry": 24
+     },
+     "top": "sentry",
+     "top_share": 1.0,
+     "top_ci": [
+      0.862,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 24,
+     "counts": {
+      "sentry": 24
+     },
+     "top": "sentry",
+     "top_share": 1.0,
+     "top_ci": [
+      0.862,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 24,
+     "counts": {
+      "sentry": 24
+     },
+     "top": "sentry",
+     "top_share": 1.0,
+     "top_ci": [
+      0.862,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "sentry": 1.0
+   },
+   "top": "sentry",
+   "top_share": 1.0,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 1.0
+  },
+  "search": {
+   "label": "Search",
+   "group": "data",
+   "tasks": [
+    "ts-search"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "meilisearch": 12
+     },
+     "top": "meilisearch",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "meilisearch": 12
+     },
+     "top": "meilisearch",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "algolia": 4,
+      "elastic": 4,
+      "meilisearch": 4
+     },
+     "top": "algolia",
+     "top_share": 0.3333,
+     "top_ci": [
+      0.1381,
+      0.6094
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "meilisearch": 12
+     },
+     "top": "meilisearch",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "meilisearch": 10,
+      "elastic": 2
+     },
+     "top": "meilisearch",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "meilisearch": 9,
+      "algolia": 2,
+      "elastic": 1
+     },
+     "top": "meilisearch",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "elastic": 6,
+      "meilisearch": 4,
+      "algolia": 2
+     },
+     "top": "elastic",
+     "top_share": 0.5,
+     "top_ci": [
+      0.2538,
+      0.7462
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "meilisearch": 9,
+      "elastic": 2,
+      "algolia": 1
+     },
+     "top": "meilisearch",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "meilisearch": 11,
+      "elastic": 1
+     },
+     "top": "meilisearch",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "meilisearch": 9,
+      "algolia": 3
+     },
+     "top": "meilisearch",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    }
+   },
+   "pooled": {
+    "meilisearch": 0.7667,
+    "elastic": 0.1333,
+    "algolia": 0.1
+   },
+   "top": "meilisearch",
+   "top_share": 0.7667,
+   "models_agree": 8,
+   "models_total": 10,
+   "variant_consistent": 5,
+   "hhi": 0.6156
+  },
+  "background_jobs": {
+   "label": "Background jobs",
+   "group": "platform",
+   "tasks": [
+    "ts-jobs"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "bullmq": 12
+     },
+     "top": "bullmq",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "bullmq": 12
+     },
+     "top": "bullmq",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "bullmq": 12
+     },
+     "top": "bullmq",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "bullmq": 12
+     },
+     "top": "bullmq",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "bullmq": 12
+     },
+     "top": "bullmq",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "bullmq": 12
+     },
+     "top": "bullmq",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "bullmq": 12
+     },
+     "top": "bullmq",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "bullmq": 12
+     },
+     "top": "bullmq",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "bullmq": 12
+     },
+     "top": "bullmq",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "bullmq": 12
+     },
+     "top": "bullmq",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "bullmq": 1.0
+   },
+   "top": "bullmq",
+   "top_share": 1.0,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 1.0
+  },
+  "product_analytics": {
+   "label": "Product analytics",
+   "group": "app",
+   "tasks": [
+    "ts-analytics"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "posthog": 1.0
+   },
+   "top": "posthog",
+   "top_share": 1.0,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 1.0
+  },
+  "feature_flags": {
+   "label": "Feature flags",
+   "group": "app",
+   "tasks": [
+    "ts-analytics"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "launchdarkly": 12
+     },
+     "top": "launchdarkly",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "launchdarkly": 12
+     },
+     "top": "launchdarkly",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "launchdarkly": 9,
+      "posthog": 3
+     },
+     "top": "launchdarkly",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "launchdarkly": 12
+     },
+     "top": "launchdarkly",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "launchdarkly": 10,
+      "posthog": 2
+     },
+     "top": "launchdarkly",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "launchdarkly": 10,
+      "posthog": 1,
+      "vercel": 1
+     },
+     "top": "launchdarkly",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "posthog": 12
+     },
+     "top": "posthog",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "launchdarkly": 6,
+      "posthog": 3,
+      "growthbook": 2,
+      "vercel": 1
+     },
+     "top": "launchdarkly",
+     "top_share": 0.5,
+     "top_ci": [
+      0.2538,
+      0.7462
+     ]
+    }
+   },
+   "pooled": {
+    "launchdarkly": 0.5917,
+    "posthog": 0.375,
+    "growthbook": 0.0167,
+    "vercel": 0.0167
+   },
+   "top": "launchdarkly",
+   "top_share": 0.5917,
+   "models_agree": 7,
+   "models_total": 10,
+   "variant_consistent": 9,
+   "hhi": 0.4913
+  },
+  "object_storage": {
+   "label": "File storage",
+   "group": "platform",
+   "tasks": [
+    "ts-uploads"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "aws": 12
+     },
+     "top": "aws",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "aws": 12
+     },
+     "top": "aws",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "aws": 9,
+      "vercel": 3
+     },
+     "top": "aws",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "aws": 10,
+      "cloudflare": 2
+     },
+     "top": "aws",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "aws": 11,
+      "vercel": 1
+     },
+     "top": "aws",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "aws": 12
+     },
+     "top": "aws",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "aws": 12
+     },
+     "top": "aws",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "aws": 10,
+      "vercel": 2
+     },
+     "top": "aws",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "aws": 12
+     },
+     "top": "aws",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "cloudflare": 12
+     },
+     "top": "cloudflare",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "aws": 0.8333,
+    "cloudflare": 0.1167,
+    "vercel": 0.05
+   },
+   "top": "aws",
+   "top_share": 0.8333,
+   "models_agree": 9,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 0.7105
+  },
+  "image_delivery": {
+   "label": "Image delivery",
+   "group": "platform",
+   "tasks": [
+    "ts-uploads"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "imgix": 5,
+      "aws": 4,
+      "vercel": 2,
+      "cloudinary": 1
+     },
+     "top": "imgix",
+     "top_share": 0.4167,
+     "top_ci": [
+      0.1933,
+      0.6805
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "cloudinary": 4,
+      "vercel": 4,
+      "cloudflare": 2,
+      "aws": 1,
+      "sharp": 1
+     },
+     "top": "cloudinary",
+     "top_share": 0.3333,
+     "top_ci": [
+      0.1381,
+      0.6094
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "cloudinary": 11,
+      "vercel": 1
+     },
+     "top": "cloudinary",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "cloudinary": 9,
+      "cloudflare": 2,
+      "imgix": 1
+     },
+     "top": "cloudinary",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "cloudinary": 10,
+      "imgix": 1,
+      "vercel": 1
+     },
+     "top": "cloudinary",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "cloudinary": 10,
+      "imgix": 2
+     },
+     "top": "cloudinary",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "cloudinary": 12
+     },
+     "top": "cloudinary",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "cloudinary": 10,
+      "imgix": 1,
+      "vercel": 1
+     },
+     "top": "cloudinary",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "cloudinary": 10,
+      "aws": 2
+     },
+     "top": "cloudinary",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "cloudflare": 12
+     },
+     "top": "cloudflare",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "cloudinary": 0.6417,
+    "cloudflare": 0.1333,
+    "imgix": 0.0833,
+    "vercel": 0.075,
+    "aws": 0.0583,
+    "sharp": 0.0083
+   },
+   "top": "cloudinary",
+   "top_share": 0.6417,
+   "models_agree": 8,
+   "models_total": 10,
+   "variant_consistent": 6,
+   "hhi": 0.4456
+  },
+  "llm_sdk": {
+   "label": "LLM SDK",
+   "group": "ai",
+   "tasks": [
+    "ts-ai-chat"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "vercel": 11,
+      "openai": 1
+     },
+     "top": "vercel",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "vercel": 10,
+      "openai": 2
+     },
+     "top": "vercel",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "openai": 10,
+      "vercel": 2
+     },
+     "top": "openai",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "vercel": 0.8917,
+    "openai": 0.1083
+   },
+   "top": "vercel",
+   "top_share": 0.8917,
+   "models_agree": 9,
+   "models_total": 10,
+   "variant_consistent": 9,
+   "hhi": 0.8069
+  },
+  "llm_provider": {
+   "label": "LLM provider",
+   "group": "ai",
+   "tasks": [
+    "ts-ai-chat"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "anthropic": 12
+     },
+     "top": "anthropic",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "anthropic": 6,
+      "openai": 6
+     },
+     "top": "anthropic",
+     "top_share": 0.5,
+     "top_ci": [
+      0.2538,
+      0.7462
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "openai": 12
+     },
+     "top": "openai",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "openai": 11,
+      "google": 1
+     },
+     "top": "openai",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "openai": 11,
+      "anthropic": 1
+     },
+     "top": "openai",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "openai": 12
+     },
+     "top": "openai",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "openai": 12
+     },
+     "top": "openai",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "openai": 12
+     },
+     "top": "openai",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "openai": 12
+     },
+     "top": "openai",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "openai": 12
+     },
+     "top": "openai",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "openai": 0.8333,
+    "anthropic": 0.1583,
+    "google": 0.0083
+   },
+   "top": "openai",
+   "top_share": 0.8333,
+   "models_agree": 8,
+   "models_total": 10,
+   "variant_consistent": 9,
+   "hhi": 0.7195
+  },
+  "hosting": {
+   "label": "App hosting",
+   "group": "platform",
+   "tasks": [
+    "ts-deploy"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "vercel": 12
+     },
+     "top": "vercel",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "vercel": 1.0
+   },
+   "top": "vercel",
+   "top_share": 1.0,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 1.0
+  },
+  "realtime": {
+   "label": "Realtime",
+   "group": "app",
+   "tasks": [
+    "ts-realtime"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "liveblocks": 12
+     },
+     "top": "liveblocks",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "liveblocks": 12
+     },
+     "top": "liveblocks",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "liveblocks": 12
+     },
+     "top": "liveblocks",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "liveblocks": 12
+     },
+     "top": "liveblocks",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "pusher": 11,
+      "liveblocks": 1
+     },
+     "top": "pusher",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "liveblocks": 12
+     },
+     "top": "liveblocks",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "liveblocks": 11,
+      "ably": 1
+     },
+     "top": "liveblocks",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "liveblocks": 12
+     },
+     "top": "liveblocks",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "liveblocks": 8,
+      "ably": 4
+     },
+     "top": "liveblocks",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "liveblocks": 12
+     },
+     "top": "liveblocks",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "liveblocks": 0.8667,
+    "pusher": 0.0917,
+    "ably": 0.0417
+   },
+   "top": "liveblocks",
+   "top_share": 0.8667,
+   "models_agree": 9,
+   "models_total": 10,
+   "variant_consistent": 9,
+   "hhi": 0.7613
+  },
+  "vector_db": {
+   "label": "Vector database",
+   "group": "ai",
+   "tasks": [
+    "py-agent",
+    "ts-rag"
+   ],
+   "n": 240,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 24,
+     "counts": {
+      "qdrant": 12,
+      "pgvector": 11,
+      "pinecone": 1
+     },
+     "top": "qdrant",
+     "top_share": 0.5,
+     "top_ci": [
+      0.3143,
+      0.6857
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 24,
+     "counts": {
+      "pgvector": 11,
+      "qdrant": 10,
+      "chroma": 3
+     },
+     "top": "pgvector",
+     "top_share": 0.4583,
+     "top_ci": [
+      0.2789,
+      0.6493
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 24,
+     "counts": {
+      "pinecone": 19,
+      "chroma": 5
+     },
+     "top": "pinecone",
+     "top_share": 0.7917,
+     "top_ci": [
+      0.5953,
+      0.9076
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 24,
+     "counts": {
+      "pinecone": 12,
+      "chroma": 8,
+      "qdrant": 4
+     },
+     "top": "pinecone",
+     "top_share": 0.5,
+     "top_ci": [
+      0.3143,
+      0.6857
+     ]
+    },
+    "glm-5-3": {
+     "n": 24,
+     "counts": {
+      "pinecone": 18,
+      "chroma": 3,
+      "qdrant": 3
+     },
+     "top": "pinecone",
+     "top_share": 0.75,
+     "top_ci": [
+      0.551,
+      0.88
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 24,
+     "counts": {
+      "pinecone": 15,
+      "qdrant": 9
+     },
+     "top": "pinecone",
+     "top_share": 0.625,
+     "top_ci": [
+      0.4271,
+      0.7884
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 24,
+     "counts": {
+      "pinecone": 13,
+      "qdrant": 9,
+      "chroma": 1,
+      "pgvector": 1
+     },
+     "top": "pinecone",
+     "top_share": 0.5417,
+     "top_ci": [
+      0.3507,
+      0.7211
+     ]
+    },
+    "grok-4-7": {
+     "n": 24,
+     "counts": {
+      "chroma": 8,
+      "pinecone": 8,
+      "qdrant": 6,
+      "pgvector": 2
+     },
+     "top": "chroma",
+     "top_share": 0.3333,
+     "top_ci": [
+      0.1797,
+      0.5329
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 24,
+     "counts": {
+      "pinecone": 11,
+      "chroma": 6,
+      "pgvector": 4,
+      "weaviate": 3
+     },
+     "top": "pinecone",
+     "top_share": 0.4583,
+     "top_ci": [
+      0.2789,
+      0.6493
+     ]
+    },
+    "minimax-m3": {
+     "n": 24,
+     "counts": {
+      "pinecone": 13,
+      "qdrant": 6,
+      "chroma": 5
+     },
+     "top": "pinecone",
+     "top_share": 0.5417,
+     "top_ci": [
+      0.3507,
+      0.7211
+     ]
+    }
+   },
+   "pooled": {
+    "pinecone": 0.4583,
+    "qdrant": 0.2458,
+    "chroma": 0.1625,
+    "pgvector": 0.1208,
+    "weaviate": 0.0125
+   },
+   "top": "pinecone",
+   "top_share": 0.4583,
+   "models_agree": 7,
+   "models_total": 10,
+   "variant_consistent": 3,
+   "hhi": 0.3116
+  },
+  "headless_cms": {
+   "label": "Headless CMS",
+   "group": "app",
+   "tasks": [
+    "ts-cms"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "sanity": 12
+     },
+     "top": "sanity",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "sanity": 12
+     },
+     "top": "sanity",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "sanity": 11,
+      "contentful": 1
+     },
+     "top": "sanity",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "sanity": 12
+     },
+     "top": "sanity",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "sanity": 7,
+      "contentful": 5
+     },
+     "top": "sanity",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "sanity": 12
+     },
+     "top": "sanity",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "sanity": 12
+     },
+     "top": "sanity",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "sanity": 12
+     },
+     "top": "sanity",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "sanity": 8,
+      "contentful": 3,
+      "payload": 1
+     },
+     "top": "sanity",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "sanity": 10,
+      "cms-other": 2
+     },
+     "top": "sanity",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    }
+   },
+   "pooled": {
+    "sanity": 0.9,
+    "contentful": 0.075,
+    "cms-other": 0.0167,
+    "payload": 0.0083
+   },
+   "top": "sanity",
+   "top_share": 0.9,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 8,
+   "hhi": 0.816
+  },
+  "ui_components": {
+   "label": "UI components",
+   "group": "frontend",
+   "tasks": [
+    "ts-ui"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "mui": 5,
+      "shadcn": 4,
+      "ant-design": 3
+     },
+     "top": "mui",
+     "top_share": 0.4167,
+     "top_ci": [
+      0.1933,
+      0.6805
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "mui": 12
+     },
+     "top": "mui",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "ant-design": 8,
+      "mui": 2,
+      "shadcn": 2
+     },
+     "top": "ant-design",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "shadcn": 6,
+      "mui": 5,
+      "ant-design": 1
+     },
+     "top": "shadcn",
+     "top_share": 0.5,
+     "top_ci": [
+      0.2538,
+      0.7462
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "ant-design": 12
+     },
+     "top": "ant-design",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "mui": 12
+     },
+     "top": "mui",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "mui": 12
+     },
+     "top": "mui",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "ant-design": 12
+     },
+     "top": "ant-design",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "mui": 12
+     },
+     "top": "mui",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "ant-design": 9,
+      "mui": 2,
+      "shadcn": 1
+     },
+     "top": "ant-design",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    }
+   },
+   "pooled": {
+    "mui": 0.5167,
+    "ant-design": 0.375,
+    "shadcn": 0.1083
+   },
+   "top": "mui",
+   "top_share": 0.5167,
+   "models_agree": 5,
+   "models_total": 10,
+   "variant_consistent": 7,
+   "hhi": 0.4193
+  },
+  "unit_testing": {
+   "label": "Unit testing",
+   "group": "testing",
+   "tasks": [
+    "ts-testing"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "vitest": 12
+     },
+     "top": "vitest",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "vitest": 10,
+      "jest": 2
+     },
+     "top": "vitest",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "jest": 7,
+      "vitest": 5
+     },
+     "top": "jest",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "vitest": 9,
+      "jest": 3
+     },
+     "top": "vitest",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "vitest": 8,
+      "jest": 4
+     },
+     "top": "vitest",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "vitest": 8,
+      "jest": 4
+     },
+     "top": "vitest",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "vitest": 8,
+      "jest": 4
+     },
+     "top": "vitest",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "jest": 10,
+      "vitest": 2
+     },
+     "top": "jest",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "jest": 9,
+      "vitest": 3
+     },
+     "top": "jest",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "jest": 8,
+      "vitest": 4
+     },
+     "top": "jest",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    }
+   },
+   "pooled": {
+    "vitest": 0.575,
+    "jest": 0.425
+   },
+   "top": "vitest",
+   "top_share": 0.575,
+   "models_agree": 6,
+   "models_total": 10,
+   "variant_consistent": 3,
+   "hhi": 0.5112
+  },
+  "e2e_testing": {
+   "label": "End-to-end testing",
+   "group": "testing",
+   "tasks": [
+    "ts-testing"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "playwright": 12
+     },
+     "top": "playwright",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "playwright": 12
+     },
+     "top": "playwright",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "playwright": 12
+     },
+     "top": "playwright",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "playwright": 12
+     },
+     "top": "playwright",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "playwright": 12
+     },
+     "top": "playwright",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "playwright": 12
+     },
+     "top": "playwright",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "playwright": 12
+     },
+     "top": "playwright",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "playwright": 12
+     },
+     "top": "playwright",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "playwright": 12
+     },
+     "top": "playwright",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "playwright": 12
+     },
+     "top": "playwright",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "playwright": 1.0
+   },
+   "top": "playwright",
+   "top_share": 1.0,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 1.0
+  },
+  "cache": {
+   "label": "Cache",
+   "group": "platform",
+   "tasks": [
+    "ts-api-protection"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "redis": 12
+     },
+     "top": "redis",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "redis": 12
+     },
+     "top": "redis",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "redis": 12
+     },
+     "top": "redis",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "redis": 12
+     },
+     "top": "redis",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "redis": 12
+     },
+     "top": "redis",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "redis": 10,
+      "upstash": 2
+     },
+     "top": "redis",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "redis": 12
+     },
+     "top": "redis",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "redis": 12
+     },
+     "top": "redis",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "redis": 10,
+      "in-memory-cache": 2
+     },
+     "top": "redis",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "redis": 11,
+      "upstash": 1
+     },
+     "top": "redis",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    }
+   },
+   "pooled": {
+    "redis": 0.9583,
+    "upstash": 0.025,
+    "in-memory-cache": 0.0167
+   },
+   "top": "redis",
+   "top_share": 0.9583,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 9,
+   "hhi": 0.9192
+  },
+  "rate_limiting": {
+   "label": "Rate limiting",
+   "group": "platform",
+   "tasks": [
+    "ts-api-protection"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "rate-limiter-flexible": 12
+     },
+     "top": "rate-limiter-flexible",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "rate-limiter-flexible": 12
+     },
+     "top": "rate-limiter-flexible",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "rate-limiter-flexible": 10,
+      "express-rate-limit": 2
+     },
+     "top": "rate-limiter-flexible",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "rate-limiter-flexible": 11,
+      "express-rate-limit": 1
+     },
+     "top": "rate-limiter-flexible",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "rate-limiter-flexible": 9,
+      "express-rate-limit": 3
+     },
+     "top": "rate-limiter-flexible",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "rate-limiter-flexible": 8,
+      "express-rate-limit": 2,
+      "upstash": 2
+     },
+     "top": "rate-limiter-flexible",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "rate-limiter-flexible": 10,
+      "express-rate-limit": 2
+     },
+     "top": "rate-limiter-flexible",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "express-rate-limit": 11,
+      "rate-limiter-flexible": 1
+     },
+     "top": "express-rate-limit",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "express-rate-limit": 9,
+      "rate-limiter-flexible": 3
+     },
+     "top": "express-rate-limit",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "express-rate-limit": 7,
+      "rate-limiter-flexible": 4,
+      "upstash": 1
+     },
+     "top": "express-rate-limit",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    }
+   },
+   "pooled": {
+    "rate-limiter-flexible": 0.6667,
+    "express-rate-limit": 0.3083,
+    "upstash": 0.025
+   },
+   "top": "rate-limiter-flexible",
+   "top_share": 0.6667,
+   "models_agree": 7,
+   "models_total": 10,
+   "variant_consistent": 7,
+   "hhi": 0.5402
+  },
+  "py_web_framework": {
+   "label": "Python web framework",
+   "group": "python",
+   "tasks": [
+    "py-saas-api"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "fastapi": 12
+     },
+     "top": "fastapi",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "fastapi": 12
+     },
+     "top": "fastapi",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "fastapi": 12
+     },
+     "top": "fastapi",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "fastapi": 12
+     },
+     "top": "fastapi",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "fastapi": 12
+     },
+     "top": "fastapi",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "fastapi": 12
+     },
+     "top": "fastapi",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "fastapi": 12
+     },
+     "top": "fastapi",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "fastapi": 12
+     },
+     "top": "fastapi",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "fastapi": 12
+     },
+     "top": "fastapi",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "fastapi": 12
+     },
+     "top": "fastapi",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "fastapi": 1.0
+   },
+   "top": "fastapi",
+   "top_share": 1.0,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 1.0
+  },
+  "py_orm": {
+   "label": "Python database layer",
+   "group": "python",
+   "tasks": [
+    "py-saas-api"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "sqlalchemy": 12
+     },
+     "top": "sqlalchemy",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "sqlalchemy": 12
+     },
+     "top": "sqlalchemy",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "sqlalchemy": 12
+     },
+     "top": "sqlalchemy",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "sqlalchemy": 12
+     },
+     "top": "sqlalchemy",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "sqlalchemy": 12
+     },
+     "top": "sqlalchemy",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "sqlalchemy": 12
+     },
+     "top": "sqlalchemy",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "sqlalchemy": 12
+     },
+     "top": "sqlalchemy",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "sqlalchemy": 12
+     },
+     "top": "sqlalchemy",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "sqlalchemy": 12
+     },
+     "top": "sqlalchemy",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "sqlalchemy": 12
+     },
+     "top": "sqlalchemy",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "sqlalchemy": 1.0
+   },
+   "top": "sqlalchemy",
+   "top_share": 1.0,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 1.0
+  },
+  "py_auth": {
+   "label": "Python authentication",
+   "group": "python",
+   "tasks": [
+    "py-saas-api"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "fastapi-users": 12
+     },
+     "top": "fastapi-users",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "authlib": 10,
+      "auth0": 1,
+      "fastapi-users": 1
+     },
+     "top": "authlib",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "auth0": 9,
+      "authlib": 2,
+      "diy-auth": 1
+     },
+     "top": "auth0",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "diy-auth": 9,
+      "fastapi-users": 3
+     },
+     "top": "diy-auth",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "auth0": 8,
+      "fastapi-users": 4
+     },
+     "top": "auth0",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "auth0": 7,
+      "authlib": 3,
+      "fastapi-users": 2
+     },
+     "top": "auth0",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "auth0": 9,
+      "authlib": 1,
+      "diy-auth": 1,
+      "fastapi-users": 1
+     },
+     "top": "auth0",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "authlib": 10,
+      "auth0": 2
+     },
+     "top": "authlib",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "auth0": 6,
+      "authlib": 6
+     },
+     "top": "auth0",
+     "top_share": 0.5,
+     "top_ci": [
+      0.2538,
+      0.7462
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "auth0": 9,
+      "fastapi-users": 2,
+      "diy-auth": 1
+     },
+     "top": "auth0",
+     "top_share": 0.75,
+     "top_ci": [
+      0.4677,
+      0.9111
+     ]
+    }
+   },
+   "pooled": {
+    "auth0": 0.425,
+    "authlib": 0.2667,
+    "fastapi-users": 0.2083,
+    "diy-auth": 0.1
+   },
+   "top": "auth0",
+   "top_share": 0.425,
+   "models_agree": 6,
+   "models_total": 10,
+   "variant_consistent": 6,
+   "hhi": 0.3051
+  },
+  "py_jobs": {
+   "label": "Python background jobs",
+   "group": "python",
+   "tasks": [
+    "py-saas-api"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "celery": 12
+     },
+     "top": "celery",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "celery": 12
+     },
+     "top": "celery",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "celery": 12
+     },
+     "top": "celery",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "celery": 12
+     },
+     "top": "celery",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "celery": 12
+     },
+     "top": "celery",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "celery": 12
+     },
+     "top": "celery",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "celery": 12
+     },
+     "top": "celery",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "celery": 12
+     },
+     "top": "celery",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "celery": 12
+     },
+     "top": "celery",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "celery": 12
+     },
+     "top": "celery",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    }
+   },
+   "pooled": {
+    "celery": 1.0
+   },
+   "top": "celery",
+   "top_share": 1.0,
+   "models_agree": 10,
+   "models_total": 10,
+   "variant_consistent": 10,
+   "hhi": 1.0
+  },
+  "py_llm_framework": {
+   "label": "Python agent framework",
+   "group": "python",
+   "tasks": [
+    "py-agent"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "llamaindex": 12
+     },
+     "top": "llamaindex",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "llamaindex": 12
+     },
+     "top": "llamaindex",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "langchain": 12
+     },
+     "top": "langchain",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "llamaindex": 7,
+      "langchain": 5
+     },
+     "top": "llamaindex",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "langchain": 7,
+      "llamaindex": 5
+     },
+     "top": "langchain",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "llamaindex": 8,
+      "langchain": 4
+     },
+     "top": "llamaindex",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "langchain": 8,
+      "llamaindex": 4
+     },
+     "top": "langchain",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "langchain": 10,
+      "llamaindex": 2
+     },
+     "top": "langchain",
+     "top_share": 0.8333,
+     "top_ci": [
+      0.552,
+      0.953
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "langchain": 12
+     },
+     "top": "langchain",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "langchain": 11,
+      "llamaindex": 1
+     },
+     "top": "langchain",
+     "top_share": 0.9167,
+     "top_ci": [
+      0.6461,
+      0.9851
+     ]
+    }
+   },
+   "pooled": {
+    "langchain": 0.575,
+    "llamaindex": 0.425
+   },
+   "top": "langchain",
+   "top_share": 0.575,
+   "models_agree": 6,
+   "models_total": 10,
+   "variant_consistent": 7,
+   "hhi": 0.5112
+  },
+  "py_orchestration": {
+   "label": "Pipeline orchestration",
+   "group": "python",
+   "tasks": [
+    "py-pipeline"
+   ],
+   "n": 120,
+   "models": {
+    "claude-opus-5-5": {
+     "n": 12,
+     "counts": {
+      "prefect": 8,
+      "airflow": 2,
+      "dagster": 2
+     },
+     "top": "prefect",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "claude-sonnet-5-5": {
+     "n": 12,
+     "counts": {
+      "airflow": 6,
+      "prefect": 6
+     },
+     "top": "airflow",
+     "top_share": 0.5,
+     "top_ci": [
+      0.2538,
+      0.7462
+     ]
+    },
+    "deepseek-v4-pro": {
+     "n": 12,
+     "counts": {
+      "airflow": 7,
+      "prefect": 5
+     },
+     "top": "airflow",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    },
+    "gemini-3-8-flash": {
+     "n": 12,
+     "counts": {
+      "airflow": 8,
+      "prefect": 3,
+      "dagster": 1
+     },
+     "top": "airflow",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "glm-5-3": {
+     "n": 12,
+     "counts": {
+      "airflow": 7,
+      "prefect": 5
+     },
+     "top": "airflow",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    },
+    "gpt-6-1-sol": {
+     "n": 12,
+     "counts": {
+      "prefect": 7,
+      "airflow": 5
+     },
+     "top": "prefect",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    },
+    "gpt-6-astra": {
+     "n": 12,
+     "counts": {
+      "prefect": 7,
+      "airflow": 5
+     },
+     "top": "prefect",
+     "top_share": 0.5833,
+     "top_ci": [
+      0.3195,
+      0.8067
+     ]
+    },
+    "grok-4-7": {
+     "n": 12,
+     "counts": {
+      "airflow": 12
+     },
+     "top": "airflow",
+     "top_share": 1.0,
+     "top_ci": [
+      0.7575,
+      1.0
+     ]
+    },
+    "kimi-k2-7-code": {
+     "n": 12,
+     "counts": {
+      "prefect": 6,
+      "airflow": 5,
+      "dagster": 1
+     },
+     "top": "prefect",
+     "top_share": 0.5,
+     "top_ci": [
+      0.2538,
+      0.7462
+     ]
+    },
+    "minimax-m3": {
+     "n": 12,
+     "counts": {
+      "airflow": 8,
+      "prefect": 4
+     },
+     "top": "airflow",
+     "top_share": 0.6667,
+     "top_ci": [
+      0.3906,
+      0.8619
+     ]
+    }
+   },
+   "pooled": {
+    "airflow": 0.5417,
+    "prefect": 0.425,
+    "dagster": 0.0333
+   },
+   "top": "airflow",
+   "top_share": 0.5417,
+   "models_agree": 6,
+   "models_total": 10,
+   "variant_consistent": 2,
+   "hhi": 0.4752
+  }
+ },
+ "duel": {
+  "background_jobs": {
+   "label": "Background jobs",
+   "task": "ts-jobs",
+   "vendors": [
+    "bullmq",
+    "inngest",
+    "trigger-dev"
+   ],
+   "arms": {
+    "none": {
+     "bullmq": 0.9667,
+     "inngest": 0.0333
+    },
+    "trio": {
+     "bullmq": 0.9167,
+     "inngest": 0.0667,
+     "trigger-dev": 0.0167
+    },
+    "solo:bullmq": {
+     "bullmq": 1.0
+    },
+    "solo:inngest": {
+     "inngest": 1.0
+    },
+    "solo:trigger-dev": {
+     "trigger-dev": 0.9,
+     "bullmq": 0.1
+    }
+   },
+   "n": {
+    "none": 30,
+    "trio": 60,
+    "solo:bullmq": 20,
+    "solo:inngest": 20,
+    "solo:trigger-dev": 20
+   },
+   "lift": {
+    "bullmq": -0.05,
+    "inngest": 0.0334,
+    "trigger-dev": 0.0167
+   },
+   "solo_win": {
+    "bullmq": 1.0,
+    "inngest": 1.0,
+    "trigger-dev": 0.9
+   },
+   "first_position_rate": 0.35,
+   "trio_top_by_model": {
+    "claude-opus-5-5": "bullmq",
+    "claude-sonnet-5-5": "bullmq",
+    "deepseek-v4-pro": "bullmq",
+    "gemini-3-8-flash": "bullmq",
+    "glm-5-3": "bullmq",
+    "gpt-6-1-sol": "bullmq",
+    "gpt-6-astra": "bullmq",
+    "grok-4-7": "bullmq",
+    "kimi-k2-7-code": "bullmq",
+    "minimax-m3": "inngest"
+   }
+  },
+  "search": {
+   "label": "Search",
+   "task": "ts-search",
+   "vendors": [
+    "typesense",
+    "meilisearch",
+    "algolia"
+   ],
+   "arms": {
+    "none": {
+     "meilisearch": 0.6667,
+     "algolia": 0.1667,
+     "elastic": 0.1333,
+     "typesense": 0.0333
+    },
+    "trio": {
+     "meilisearch": 0.5833,
+     "algolia": 0.2333,
+     "typesense": 0.1833
+    },
+    "solo:typesense": {
+     "typesense": 1.0
+    },
+    "solo:meilisearch": {
+     "meilisearch": 1.0
+    },
+    "solo:algolia": {
+     "algolia": 1.0
+    }
+   },
+   "n": {
+    "none": 30,
+    "trio": 60,
+    "solo:typesense": 20,
+    "solo:meilisearch": 20,
+    "solo:algolia": 20
+   },
+   "lift": {
+    "typesense": 0.15,
+    "meilisearch": -0.0834,
+    "algolia": 0.0666
+   },
+   "solo_win": {
+    "typesense": 1.0,
+    "meilisearch": 1.0,
+    "algolia": 1.0
+   },
+   "first_position_rate": 0.5833,
+   "trio_top_by_model": {
+    "claude-opus-5-5": "meilisearch",
+    "claude-sonnet-5-5": "meilisearch",
+    "deepseek-v4-pro": "algolia",
+    "gemini-3-8-flash": "meilisearch",
+    "glm-5-3": "meilisearch",
+    "gpt-6-1-sol": "algolia",
+    "gpt-6-astra": "typesense",
+    "grok-4-7": "meilisearch",
+    "kimi-k2-7-code": "meilisearch",
+    "minimax-m3": "algolia"
+   }
+  },
+  "auth": {
+   "label": "Authentication",
+   "task": "ts-auth",
+   "vendors": [
+    "better-auth",
+    "clerk",
+    "authjs"
+   ],
+   "arms": {
+    "none": {
+     "authjs": 0.6667,
+     "better-auth": 0.1667,
+     "clerk": 0.1667
+    },
+    "trio": {
+     "better-auth": 0.5167,
+     "authjs": 0.2666,
+     "clerk": 0.2167
+    },
+    "solo:better-auth": {
+     "better-auth": 1.0
+    },
+    "solo:clerk": {
+     "clerk": 1.0
+    },
+    "solo:authjs": {
+     "authjs": 1.0
+    }
+   },
+   "n": {
+    "none": 30,
+    "trio": 60,
+    "solo:better-auth": 20,
+    "solo:clerk": 20,
+    "solo:authjs": 20
+   },
+   "lift": {
+    "better-auth": 0.35,
+    "clerk": 0.05,
+    "authjs": -0.4001
+   },
+   "solo_win": {
+    "better-auth": 1.0,
+    "clerk": 1.0,
+    "authjs": 1.0
+   },
+   "first_position_rate": 0.5167,
+   "trio_top_by_model": {
+    "claude-opus-5-5": "better-auth",
+    "claude-sonnet-5-5": "better-auth",
+    "deepseek-v4-pro": "clerk",
+    "gemini-3-8-flash": "clerk",
+    "glm-5-3": "better-auth",
+    "gpt-6-1-sol": "clerk",
+    "gpt-6-astra": "clerk",
+    "grok-4-7": "better-auth",
+    "kimi-k2-7-code": "better-auth",
+    "minimax-m3": "authjs"
+   }
+  },
+  "transactional_email": {
+   "label": "Transactional email",
+   "task": "ts-email",
+   "vendors": [
+    "resend",
+    "postmark",
+    "sendgrid"
+   ],
+   "arms": {
+    "none": {
+     "resend": 1.0
+    },
+    "trio": {
+     "resend": 0.95,
+     "postmark": 0.05
+    },
+    "solo:resend": {
+     "resend": 1.0
+    },
+    "solo:postmark": {
+     "postmark": 1.0
+    },
+    "solo:sendgrid": {
+     "sendgrid": 0.9,
+     "resend": 0.1
+    }
+   },
+   "n": {
+    "none": 30,
+    "trio": 60,
+    "solo:resend": 20,
+    "solo:postmark": 20,
+    "solo:sendgrid": 20
+   },
+   "lift": {
+    "resend": -0.05,
+    "postmark": 0.05,
+    "sendgrid": 0.0
+   },
+   "solo_win": {
+    "resend": 1.0,
+    "postmark": 1.0,
+    "sendgrid": 0.9
+   },
+   "first_position_rate": 0.3833,
+   "trio_top_by_model": {
+    "claude-opus-5-5": "resend",
+    "claude-sonnet-5-5": "resend",
+    "deepseek-v4-pro": "resend",
+    "gemini-3-8-flash": "resend",
+    "glm-5-3": "resend",
+    "gpt-6-1-sol": "resend",
+    "gpt-6-astra": "resend",
+    "grok-4-7": "resend",
+    "kimi-k2-7-code": "resend",
+    "minimax-m3": "resend"
+   }
+  },
+  "database_host": {
+   "label": "Postgres hosting",
+   "task": "ts-db",
+   "vendors": [
+    "neon",
+    "supabase",
+    "planetscale"
+   ],
+   "arms": {
+    "none": {
+     "neon": 1.0
+    },
+    "trio": {
+     "neon": 0.9167,
+     "supabase": 0.0833
+    },
+    "solo:neon": {
+     "neon": 1.0
+    },
+    "solo:supabase": {
+     "supabase": 1.0
+    },
+    "solo:planetscale": {
+     "planetscale": 0.85,
+     "neon": 0.15
+    }
+   },
+   "n": {
+    "none": 30,
+    "trio": 60,
+    "solo:neon": 20,
+    "solo:supabase": 20,
+    "solo:planetscale": 20
+   },
+   "lift": {
+    "neon": -0.0833,
+    "supabase": 0.0833,
+    "planetscale": 0.0
+   },
+   "solo_win": {
+    "neon": 1.0,
+    "supabase": 1.0,
+    "planetscale": 0.85
+   },
+   "first_position_rate": 0.3333,
+   "trio_top_by_model": {
+    "claude-opus-5-5": "neon",
+    "claude-sonnet-5-5": "neon",
+    "deepseek-v4-pro": "neon",
+    "gemini-3-8-flash": "supabase",
+    "glm-5-3": "neon",
+    "gpt-6-1-sol": "neon",
+    "gpt-6-astra": "neon",
+    "grok-4-7": "neon",
+    "kimi-k2-7-code": "neon",
+    "minimax-m3": "neon"
+   }
+  }
+ }
+}

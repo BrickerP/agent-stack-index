@@ -1,0 +1,36 @@
+# Prompt templates. Placeholders: {task}, {items}, {contexts}. Editing a template creates new trials.
+
+[ask.pick]
+template = """
+You are a coding agent starting a brand-new project from scratch.
+Task: {task}
+For each item below, choose the single best specific library, SDK or hosted service you would actually use.
+{items}
+Answer with ONLY one JSON object that maps each item key to the exact package or service name. No explanations.
+"""
+
+[ask.user]
+template = """
+I'm starting a new project. {task}
+Which specific tool would you use for each of these? Pick exactly one per item.
+{items}
+Reply with only a JSON object mapping each item key to your pick (a package or service name).
+"""
+
+[ask.install]
+template = """
+Plan the dependencies for this new project before writing any code: {task}
+For each item, name the one package (npm or PyPI) or hosted service you would install or sign up for.
+{items}
+Output only a JSON object: item key -> package or service name.
+"""
+
+[duel.notes]
+template = """
+You are a coding agent starting a brand-new project from scratch.
+Task: {task}
+{contexts}
+Choose the single best specific library, SDK or hosted service for each item.
+{items}
+Answer with ONLY one JSON object that maps each item key to the exact package or service name. No explanations.
+"""

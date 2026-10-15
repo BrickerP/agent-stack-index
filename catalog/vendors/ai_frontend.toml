@@ -1,0 +1,135 @@
+# AI SDKs and providers, UI libraries, test frameworks.
+
+[[vendor]]
+id = "openai"
+name = "OpenAI"
+url = "https://openai.com"
+categories = ["llm_provider", "llm_sdk", "py_llm_framework"]
+aliases = ["openai", "openai api", "gpt", "chatgpt api", "openai sdk", "openai node sdk", "openai-node", "openai python sdk", "openai agents sdk", "openai-agents", "@openai/agents", "openai responses api", "openai assistants api"]
+products = { llm_sdk = "OpenAI SDK", py_llm_framework = "OpenAI SDK / Agents SDK" }
+
+[[vendor]]
+id = "anthropic"
+name = "Anthropic"
+url = "https://www.anthropic.com"
+categories = ["llm_provider", "llm_sdk", "py_llm_framework"]
+aliases = ["anthropic", "anthropic api", "claude", "claude api", "claude sonnet", "claude opus", "claude haiku", "@anthropic-ai/sdk", "anthropic sdk", "anthropic python sdk", "claude agent sdk", "claude-agent-sdk", "@anthropic-ai/claude-agent-sdk"]
+products = { llm_sdk = "Anthropic SDK", py_llm_framework = "Anthropic SDK / Claude Agent SDK" }
+
+[[vendor]]
+id = "langchain"
+name = "LangChain"
+url = "https://www.langchain.com"
+categories = ["llm_sdk", "py_llm_framework"]
+aliases = ["langchain", "langchain.js", "langchainjs", "@langchain/core", "@langchain/openai", "langgraph", "langgraph.js", "@langchain/langgraph", "langchain-core", "langchain-openai", "langgraph python"]
+products = { py_llm_framework = "LangChain / LangGraph" }
+
+[[vendor]]
+id = "llamaindex"
+name = "LlamaIndex"
+categories = ["llm_sdk", "py_llm_framework"]
+aliases = ["llamaindex", "llama-index", "llama index", "llamaindex.ts"]
+
+[[vendor]]
+id = "mastra"
+name = "Mastra"
+categories = ["llm_sdk"]
+aliases = ["mastra", "@mastra/core"]
+
+[[vendor]]
+id = "llm-sdk-other"
+name = "Other AI SDKs"
+categories = ["llm_sdk"]
+aliases = ["tanstack ai", "@tanstack/ai", "copilotkit", "assistant-ui", "@assistant-ui/react", "openrouter sdk"]
+
+[[vendor]]
+id = "openrouter"
+name = "OpenRouter"
+categories = ["llm_provider"]
+aliases = ["openrouter"]
+
+[[vendor]]
+id = "llm-provider-other"
+name = "Other model providers"
+categories = ["llm_provider"]
+aliases = ["groq", "mistral", "mistral ai", "together", "together ai", "fireworks", "fireworks ai", "deepseek", "xai", "grok", "cohere", "ollama", "perplexity"]
+
+[[vendor]]
+id = "shadcn"
+name = "shadcn/ui"
+url = "https://ui.shadcn.com"
+categories = ["ui_components"]
+aliases = ["shadcn/ui", "shadcn", "shadcn ui", "shadcn-ui"]
+
+[[vendor]]
+id = "mui"
+name = "MUI"
+categories = ["ui_components"]
+aliases = ["mui", "material ui", "material-ui", "@mui/material", "mui x", "@mui/x-data-grid"]
+
+[[vendor]]
+id = "mantine"
+name = "Mantine"
+categories = ["ui_components"]
+aliases = ["mantine", "@mantine/core"]
+
+[[vendor]]
+id = "chakra"
+name = "Chakra UI"
+categories = ["ui_components"]
+aliases = ["chakra", "chakra ui", "chakra-ui", "@chakra-ui/react"]
+
+[[vendor]]
+id = "ant-design"
+name = "Ant Design"
+categories = ["ui_components"]
+aliases = ["ant design", "antd", "ant-design"]
+
+[[vendor]]
+id = "radix"
+name = "Radix UI"
+categories = ["ui_components"]
+aliases = ["radix", "radix ui", "radix-ui", "@radix-ui/themes", "radix primitives"]
+
+[[vendor]]
+id = "ui-other"
+name = "Other component libraries"
+categories = ["ui_components"]
+aliases = ["heroui", "nextui", "headless ui", "@headlessui/react", "react aria", "react-aria-components", "daisyui", "primereact", "flowbite", "tremor", "park ui", "base ui", "@base-ui-components/react"]
+
+[[vendor]]
+id = "vitest"
+name = "Vitest"
+categories = ["unit_testing"]
+aliases = ["vitest"]
+
+[[vendor]]
+id = "jest"
+name = "Jest"
+categories = ["unit_testing"]
+aliases = ["jest", "ts-jest"]
+
+[[vendor]]
+id = "unit-other"
+name = "Other unit test runners"
+categories = ["unit_testing"]
+aliases = ["node:test", "node test runner", "mocha", "ava", "bun test", "pytest"]
+
+[[vendor]]
+id = "playwright"
+name = "Playwright"
+url = "https://playwright.dev"
+categories = ["e2e_testing"]
+aliases = ["playwright", "@playwright/test", "playwright test"]
+
+[[vendor]]
+id = "cypress"
+name = "Cypress"
+categories = ["e2e_testing"]
+aliases = ["cypress", "cypress.io"]
+
+[[vendor]]
+id = "e2e-other"
+name = "Other E2E frameworks"
+categories = ["e2e_testing"]
+aliases = ["puppeteer", "selenium", "webdriverio", "wdio", "testcafe", "nightwatch"]

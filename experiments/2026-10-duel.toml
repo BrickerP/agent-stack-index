@@ -1,0 +1,37 @@
+id = "2026-10-duel"
+probe = "duel"
+title = "Context duels: does a vendor's documentation in context change the pick?"
+models = ["*"]
+variants = ["notes"]
+
+# Arms per duel and model: a no-notes control, all candidates' notes in rotated order,
+# and each candidate's notes alone. Notes are neutral summaries of equal length and shape.
+[arms]
+none = 3
+trio = 6
+solo = 2
+
+[[duel]]
+task = "ts-jobs"
+category = "background_jobs"
+vendors = ["bullmq", "inngest", "trigger-dev"]
+
+[[duel]]
+task = "ts-search"
+category = "search"
+vendors = ["typesense", "meilisearch", "algolia"]
+
+[[duel]]
+task = "ts-auth"
+category = "auth"
+vendors = ["better-auth", "clerk", "authjs"]
+
+[[duel]]
+task = "ts-email"
+category = "transactional_email"
+vendors = ["resend", "postmark", "sendgrid"]
+
+[[duel]]
+task = "ts-db"
+category = "database_host"
+vendors = ["neon", "supabase", "planetscale"]

@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Tests, inputs and release drift
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONPATH: src
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Unit and pipeline tests (fake model, no network)
+        run: python -m unittest discover -s tests -v
+      - name: Inputs are consistent (models, catalog, tasks, prompts, experiments)
+        run: python -m agent_stack_index validate
+      - name: Every release is reproducible from raw data and the current catalog
+        run: |
+          for spec in releases/*/release.toml; do
+            python -m agent_stack_index release "$(basename "$(dirname "$spec")")" --check
+          done
+      - name: Site builds
+        run: python -m agent_stack_index site --out _site

@@ -1,0 +1,92 @@
+# Model registry. To add a model: add a [models.<id>] table and run the experiments again; only the
+# new trials execute. To retire one: set enabled = false (its history stays in data/ and releases).
+# Base URLs and keys come from the environment variables named under [providers]; never put them here.
+
+[providers.gateway]
+kind = "openai_chat"            # openai_chat | openai_responses | anthropic_messages
+base_url_env = "ASI_GATEWAY_BASE_URL"
+api_key_env = "ASI_GATEWAY_API_KEY"
+max_concurrency = 64
+timeout_s = 300
+
+[models.claude-opus-5-5]
+provider = "gateway"
+route = "Opus 5.5"
+lab = "Anthropic"
+label = "Claude Opus 5.5"
+max_concurrency = 6
+params = { max_tokens = 8000 }
+notes = "Gateway route adds its own system prompt (~6.6k input tokens on an empty request)."
+
+[models.claude-sonnet-5-5]
+provider = "gateway"
+route = "Claude Sonnet 5.5"
+lab = "Anthropic"
+label = "Claude Sonnet 5.5"
+max_concurrency = 6
+params = { max_tokens = 8000 }
+notes = "Gateway route adds its own system prompt (~6.6k input tokens on an empty request)."
+
+[models.gpt-6-1-sol]
+provider = "gateway"
+route = "gpt-6.1-sol"
+lab = "OpenAI"
+label = "GPT-6.1 Sol"
+max_concurrency = 8
+params = { max_tokens = 8000 }
+
+[models.gpt-6-astra]
+provider = "gateway"
+route = "gpt-6-astra"
+lab = "OpenAI"
+label = "GPT-6 Astra"
+max_concurrency = 8
+params = { max_tokens = 8000 }
+
+[models.gemini-3-8-flash]
+provider = "gateway"
+route = "Gemini 3.8 Flash"
+lab = "Google"
+label = "Gemini 3.8 Flash"
+max_concurrency = 6
+params = { max_tokens = 8000 }
+
+[models.grok-4-7]
+provider = "gateway"
+route = "Grok-4.7"
+lab = "xAI"
+label = "Grok 4.7"
+max_concurrency = 8
+params = { max_tokens = 8000 }
+
+[models.deepseek-v4-pro]
+provider = "gateway"
+route = "DeepSeek-V4-Pro"
+lab = "DeepSeek"
+label = "DeepSeek V4 Pro"
+max_concurrency = 10
+params = { max_tokens = 8000 }
+
+[models.kimi-k2-7-code]
+provider = "gateway"
+route = "Kimi-K2.7-Code"
+lab = "Moonshot"
+label = "Kimi K2.7 Code"
+max_concurrency = 6
+params = { max_tokens = 8000 }
+
+[models.glm-5-3]
+provider = "gateway"
+route = "GLM-5.3"
+lab = "Zhipu"
+label = "GLM-5.3"
+max_concurrency = 8
+params = { max_tokens = 8000 }
+
+[models.minimax-m3]
+provider = "gateway"
+route = "MiniMax-M3"
+lab = "MiniMax"
+label = "MiniMax M3"
+max_concurrency = 6
+params = { max_tokens = 8000 }

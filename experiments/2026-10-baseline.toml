@@ -1,0 +1,7 @@
+id = "2026-10-baseline"
+probe = "ask"
+title = "Baseline: what each model picks with no vendor context"
+models = ["*"]
+tasks = ["*"]
+variants = ["pick", "user", "install"]
+repeats = 4

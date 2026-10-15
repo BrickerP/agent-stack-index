@@ -1,0 +1,26 @@
+:root{--paper:#f6f0e3;--card:#fffdf7;--ink:#1f3a5f;--graphite:#3b4250;--soft:#6c7380;--rule:#d9d0bd;--red:#c2412d;--serif:Georgia,"Iowan Old Style","Palatino Linotype",serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--graphite);font:17px/1.55 var(--serif)}
+main{max-width:1080px;margin:0 auto;padding:56px 24px 80px}
+a{color:var(--ink)}a:hover{color:var(--red)}
+h1{font-size:clamp(30px,4.4vw,48px);line-height:1.1;color:var(--ink);margin:10px 0 14px}
+h2{font-size:26px;color:var(--ink);margin:56px 0 6px;border-top:1px solid var(--rule);padding-top:22px}
+h3{font-size:17px;color:var(--ink);margin:0 0 8px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h3 span,.eyebrow,.note,.legend,small,th,code{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--soft);font-weight:400}
+.eyebrow{text-transform:uppercase;letter-spacing:.08em}
+.lede{font-size:20px;color:var(--ink);max-width:46em}
+.headline{padding-left:20px;max-width:52em}.headline li{margin:6px 0}.headline b{color:var(--red);font-weight:600}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:16px}
+.cat{background:var(--card);border:1px solid var(--rule);padding:14px 16px}
+.bar{display:flex;height:16px;background:#ebe4d3;overflow:hidden}
+.seg{display:block;height:100%}.seg.rest{background:#d8d0bf}
+.legend{margin:8px 0 0;line-height:1.7}.legend i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:0}
+.scroll{overflow-x:auto;margin-top:14px}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:13.5px}
+th,td{border:1px solid var(--rule);padding:5px 7px;text-align:left;vertical-align:top}
+td small{display:block}
+td.agree{color:var(--ink)}td.differ{color:var(--red);background:#fbefe9}
+table.duel td{font-family:var(--mono);font-size:13px}table.duel b{color:var(--red)}
+.models{padding-left:20px}
+footer{margin-top:64px;border-top:1px solid var(--rule);padding-top:18px;font-size:15px}
+@media (max-width:600px){main{padding:36px 16px 64px}body{font-size:16px}}

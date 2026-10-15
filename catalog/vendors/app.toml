@@ -1,0 +1,230 @@
+# App-level services: auth, billing, email, analytics, flags, realtime, CMS.
+
+[[vendor]]
+id = "better-auth"
+name = "Better Auth"
+url = "https://www.better-auth.com"
+categories = ["auth"]
+aliases = ["better-auth", "better auth", "betterauth"]
+
+[[vendor]]
+id = "clerk"
+name = "Clerk"
+url = "https://clerk.com"
+categories = ["auth", "py_auth"]
+aliases = ["clerk", "clerk.com", "@clerk/nextjs", "@clerk/clerk-react", "@clerk/express", "clerk auth", "clerk-backend-api"]
+
+[[vendor]]
+id = "authjs"
+name = "Auth.js (NextAuth)"
+url = "https://authjs.dev"
+categories = ["auth"]
+aliases = ["auth.js", "authjs", "next-auth", "nextauth", "nextauth.js", "next-auth.js", "next auth", "@auth/core", "@auth/nextjs"]
+
+[[vendor]]
+id = "auth0"
+name = "Auth0"
+url = "https://auth0.com"
+categories = ["auth", "py_auth"]
+aliases = ["auth0", "@auth0/nextjs-auth0", "auth0 by okta", "okta", "okta auth0", "okta customer identity"]
+
+[[vendor]]
+id = "workos"
+name = "WorkOS"
+url = "https://workos.com"
+categories = ["auth", "py_auth"]
+aliases = ["workos", "workos authkit", "authkit", "@workos-inc/authkit-nextjs"]
+
+[[vendor]]
+id = "stack-auth"
+name = "Stack Auth"
+url = "https://stack-auth.com"
+categories = ["auth"]
+aliases = ["stack auth", "stack-auth", "@stackframe/stack", "neon auth"]
+
+[[vendor]]
+id = "lucia"
+name = "Lucia"
+categories = ["auth"]
+aliases = ["lucia", "lucia-auth", "lucia auth"]
+
+[[vendor]]
+id = "kinde"
+name = "Kinde"
+categories = ["auth", "py_auth"]
+aliases = ["kinde", "@kinde-oss/kinde-auth-nextjs"]
+
+[[vendor]]
+id = "stytch"
+name = "Stytch"
+categories = ["auth", "py_auth"]
+aliases = ["stytch"]
+
+[[vendor]]
+id = "supertokens"
+name = "SuperTokens"
+categories = ["auth", "py_auth"]
+aliases = ["supertokens", "super tokens"]
+
+[[vendor]]
+id = "keycloak"
+name = "Keycloak"
+categories = ["auth", "py_auth"]
+aliases = ["keycloak"]
+
+[[vendor]]
+id = "ory"
+name = "Ory"
+categories = ["auth", "py_auth"]
+aliases = ["ory", "ory kratos", "kratos", "ory network"]
+
+[[vendor]]
+id = "auth-other"
+name = "Other identity platforms"
+categories = ["auth", "py_auth"]
+aliases = ["descope", "propelauth", "frontegg", "logto", "zitadel", "fusionauth", "passage"]
+
+[[vendor]]
+id = "diy-auth"
+name = "Roll-your-own (JWT / sessions)"
+categories = ["auth", "py_auth"]
+aliases = ["jwt", "jsonwebtoken", "jose", "iron-session", "passport", "passport.js", "passportjs", "pyjwt", "python-jose", "passlib", "oauth2passwordbearer", "fastapi security", "fastapi.security", "custom jwt", "jwt auth"]
+
+[[vendor]]
+id = "fastapi-users"
+name = "FastAPI Users"
+categories = ["py_auth"]
+aliases = ["fastapi-users", "fastapi users"]
+
+[[vendor]]
+id = "authlib"
+name = "Authlib"
+categories = ["py_auth"]
+aliases = ["authlib"]
+
+[[vendor]]
+id = "django-auth"
+name = "Django auth / allauth"
+categories = ["py_auth"]
+aliases = ["django-allauth", "django allauth", "django auth", "django.contrib.auth", "djangorestframework-simplejwt", "simplejwt"]
+
+[[vendor]]
+id = "stripe"
+name = "Stripe"
+url = "https://stripe.com"
+categories = ["payments"]
+aliases = ["stripe", "stripe billing", "stripe checkout", "stripe subscriptions", "stripe api", "@stripe/stripe-js", "stripe-node", "stripe.js"]
+
+[[vendor]]
+id = "lemon-squeezy"
+name = "Lemon Squeezy"
+categories = ["payments"]
+aliases = ["lemon squeezy", "lemonsqueezy", "@lemonsqueezy/lemonsqueezy.js"]
+
+[[vendor]]
+id = "paddle"
+name = "Paddle"
+categories = ["payments"]
+aliases = ["paddle", "paddle billing", "@paddle/paddle-js"]
+
+[[vendor]]
+id = "polar"
+name = "Polar"
+categories = ["payments"]
+aliases = ["polar", "polar.sh", "@polar-sh/sdk"]
+
+[[vendor]]
+id = "payments-other"
+name = "Other billing platforms"
+categories = ["payments"]
+aliases = ["chargebee", "recurly", "orb", "lago", "autumn", "creem", "dodo payments", "revenuecat", "paypal", "braintree"]
+
+[[vendor]]
+id = "resend"
+name = "Resend"
+url = "https://resend.com"
+categories = ["transactional_email"]
+aliases = ["resend", "resend.com"]
+
+[[vendor]]
+id = "postmark"
+name = "Postmark"
+url = "https://postmarkapp.com"
+categories = ["transactional_email"]
+aliases = ["postmark", "postmarkapp"]
+
+[[vendor]]
+id = "sendgrid"
+name = "SendGrid"
+url = "https://sendgrid.com"
+categories = ["transactional_email"]
+aliases = ["sendgrid", "twilio sendgrid", "@sendgrid/mail"]
+
+[[vendor]]
+id = "mailgun"
+name = "Mailgun"
+categories = ["transactional_email"]
+aliases = ["mailgun", "mailgun.js"]
+
+[[vendor]]
+id = "email-other"
+name = "Other email APIs"
+categories = ["transactional_email"]
+aliases = ["loops", "loops.so", "plunk", "brevo", "sendinblue", "mailersend", "sparkpost", "mandrill", "mailchimp transactional", "mailtrap", "zeptomail"]
+
+[[vendor]]
+id = "nodemailer"
+name = "Nodemailer (SMTP)"
+categories = ["transactional_email"]
+aliases = ["nodemailer", "smtp"]
+
+[[vendor]]
+id = "posthog"
+name = "PostHog"
+url = "https://posthog.com"
+categories = ["product_analytics", "feature_flags", "error_monitoring"]
+aliases = ["posthog", "posthog-js", "posthog-node", "posthog cloud", "posthog analytics", "posthog feature flags", "posthog error tracking"]
+
+[[vendor]]
+id = "mixpanel"
+name = "Mixpanel"
+categories = ["product_analytics"]
+aliases = ["mixpanel", "mixpanel-browser"]
+
+[[vendor]]
+id = "amplitude"
+name = "Amplitude"
+categories = ["product_analytics", "feature_flags"]
+aliases = ["amplitude", "@amplitude/analytics-browser", "amplitude experiment"]
+
+[[vendor]]
+id = "analytics-other"
+name = "Other analytics"
+categories = ["product_analytics"]
+aliases = ["plausible", "umami", "fathom", "matomo", "segment", "twilio segment", "@segment/analytics-next", "heap", "june", "pendo", "rudderstack", "openpanel", "simple analytics"]
+
+[[vendor]]
+id = "statsig"
+name = "Statsig"
+categories = ["product_analytics", "feature_flags"]
+aliases = ["statsig", "@statsig/js-client", "statsig feature gates"]
+
+[[vendor]]
+id = "launchdarkly"
+name = "LaunchDarkly"
+url = "https://launchdarkly.com"
+categories = ["feature_flags", "error_monitoring"]
+aliases = ["launchdarkly", "launch darkly", "@launchdarkly/node-server-sdk", "launchdarkly-react-client-sdk", "highlight", "highlight.io"]
+products = { error_monitoring = "Highlight (LaunchDarkly)" }
+
+[[vendor]]
+id = "growthbook"
+name = "GrowthBook"
+categories = ["feature_flags"]
+aliases = ["growthbook", "@growthbook/growthbook-react"]
+
+[[vendor]]
+id = "flags-other"
+name = "Other flag services"
+categories = ["feature_flags"]
+aliases = ["flagsmith", "unleash", "configcat", "split", "split.io", "openfeature", "flipt", "devcycle", "hypertune", "optimizely"]

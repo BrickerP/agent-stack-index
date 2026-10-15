@@ -1,0 +1,176 @@
+# Categories are the needs a task asks about. `hint` is shown to the model next to the item key.
+# Changing a hint changes the rendered prompt, which creates new trials (old answers stay valid for their prompt).
+
+[[category]]
+id = "auth"
+label = "Authentication"
+hint = "user authentication library or service"
+group = "app"
+
+[[category]]
+id = "database_host"
+label = "Postgres hosting"
+hint = "where the Postgres database is hosted"
+group = "data"
+
+[[category]]
+id = "orm"
+label = "ORM / query builder"
+hint = "TypeScript ORM or query builder"
+group = "data"
+
+[[category]]
+id = "payments"
+label = "Subscription billing"
+hint = "payments and subscription billing provider"
+group = "app"
+
+[[category]]
+id = "transactional_email"
+label = "Transactional email"
+hint = "service that sends transactional email"
+group = "app"
+
+[[category]]
+id = "error_monitoring"
+label = "Error monitoring"
+hint = "error and performance monitoring service"
+group = "platform"
+
+[[category]]
+id = "search"
+label = "Search"
+hint = "full-text search engine or service"
+group = "data"
+
+[[category]]
+id = "background_jobs"
+label = "Background jobs"
+hint = "background job / queue system with retries and cron scheduling"
+group = "platform"
+
+[[category]]
+id = "product_analytics"
+label = "Product analytics"
+hint = "product analytics tool"
+group = "app"
+
+[[category]]
+id = "feature_flags"
+label = "Feature flags"
+hint = "feature flag service or library"
+group = "app"
+
+[[category]]
+id = "object_storage"
+label = "File storage"
+hint = "where uploaded files are stored"
+group = "platform"
+
+[[category]]
+id = "image_delivery"
+label = "Image delivery"
+hint = "image resizing, optimization and delivery"
+group = "platform"
+
+[[category]]
+id = "llm_sdk"
+label = "LLM SDK"
+hint = "SDK used to call the model and stream responses"
+group = "ai"
+
+[[category]]
+id = "llm_provider"
+label = "LLM provider"
+hint = "model provider / API"
+group = "ai"
+
+[[category]]
+id = "hosting"
+label = "App hosting"
+hint = "where the web app is deployed"
+group = "platform"
+
+[[category]]
+id = "realtime"
+label = "Realtime"
+hint = "realtime presence and messaging service or library"
+group = "app"
+
+[[category]]
+id = "vector_db"
+label = "Vector database"
+hint = "vector store for embeddings"
+group = "ai"
+
+[[category]]
+id = "headless_cms"
+label = "Headless CMS"
+hint = "content management system"
+group = "app"
+
+[[category]]
+id = "ui_components"
+label = "UI components"
+hint = "React component library"
+group = "frontend"
+
+[[category]]
+id = "unit_testing"
+label = "Unit testing"
+hint = "unit test framework"
+group = "testing"
+
+[[category]]
+id = "e2e_testing"
+label = "End-to-end testing"
+hint = "browser end-to-end test framework"
+group = "testing"
+
+[[category]]
+id = "cache"
+label = "Cache"
+hint = "cache / key-value store"
+group = "platform"
+
+[[category]]
+id = "rate_limiting"
+label = "Rate limiting"
+hint = "rate limiting library or service"
+group = "platform"
+
+[[category]]
+id = "py_web_framework"
+label = "Python web framework"
+hint = "Python web framework"
+group = "python"
+
+[[category]]
+id = "py_orm"
+label = "Python database layer"
+hint = "Python ORM or database toolkit for Postgres"
+group = "python"
+
+[[category]]
+id = "py_auth"
+label = "Python authentication"
+hint = "authentication library or service for the Python API"
+group = "python"
+
+[[category]]
+id = "py_jobs"
+label = "Python background jobs"
+hint = "Python background job / task queue"
+group = "python"
+
+[[category]]
+id = "py_llm_framework"
+label = "Python agent framework"
+hint = "Python framework or SDK for building the agent"
+group = "python"
+
+[[category]]
+id = "py_orchestration"
+label = "Pipeline orchestration"
+hint = "workflow orchestrator for scheduled data pipelines"
+group = "python"

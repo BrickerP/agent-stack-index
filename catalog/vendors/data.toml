@@ -1,0 +1,188 @@
+# Data layer: Postgres hosting, ORMs, search engines, vector stores.
+
+[[vendor]]
+id = "neon"
+name = "Neon"
+url = "https://neon.com"
+categories = ["database_host"]
+aliases = ["neon", "neon postgres", "neon.tech", "neon serverless postgres", "neon serverless", "neon db", "neondb", "@neondatabase/serverless", "vercel postgres", "@vercel/postgres"]
+
+[[vendor]]
+id = "planetscale"
+name = "PlanetScale"
+url = "https://planetscale.com"
+categories = ["database_host"]
+aliases = ["planetscale", "planetscale postgres", "planetscale for postgres"]
+
+[[vendor]]
+id = "railway"
+name = "Railway"
+categories = ["database_host", "hosting"]
+aliases = ["railway", "railway.app", "railway postgres"]
+
+[[vendor]]
+id = "render"
+name = "Render"
+categories = ["database_host", "hosting"]
+aliases = ["render", "render.com", "render postgres"]
+
+[[vendor]]
+id = "fly"
+name = "Fly.io"
+categories = ["database_host", "hosting"]
+aliases = ["fly.io", "flyio", "fly postgres", "fly.io postgres", "fly managed postgres"]
+
+[[vendor]]
+id = "digitalocean"
+name = "DigitalOcean"
+categories = ["database_host", "hosting", "object_storage"]
+aliases = ["digitalocean", "digital ocean", "digitalocean app platform", "digitalocean managed databases", "digitalocean managed postgres", "digitalocean spaces", "do spaces"]
+products = { object_storage = "DigitalOcean Spaces" }
+
+[[vendor]]
+id = "heroku"
+name = "Heroku"
+categories = ["database_host", "hosting"]
+aliases = ["heroku", "heroku postgres"]
+
+[[vendor]]
+id = "postgres-host-other"
+name = "Other Postgres hosts"
+categories = ["database_host"]
+aliases = ["crunchy bridge", "crunchy data", "xata", "timescale", "timescale cloud", "tiger data", "aiven", "nile", "cockroachdb", "cockroach labs", "tembo", "prisma postgres"]
+
+[[vendor]]
+id = "postgres-unspecified"
+name = "Postgres (no host named)"
+generic = true
+categories = ["database_host"]
+aliases = ["postgres", "postgresql", "self-hosted postgres", "docker postgres", "local postgres", "managed postgres", "managed postgresql", "postgres on a vps"]
+
+[[vendor]]
+id = "drizzle"
+name = "Drizzle ORM"
+url = "https://orm.drizzle.team"
+categories = ["orm"]
+aliases = ["drizzle", "drizzle-orm", "drizzle orm", "drizzle-kit"]
+
+[[vendor]]
+id = "prisma"
+name = "Prisma"
+url = "https://www.prisma.io"
+categories = ["orm"]
+aliases = ["prisma", "@prisma/client", "prisma orm", "prisma client"]
+
+[[vendor]]
+id = "kysely"
+name = "Kysely"
+categories = ["orm"]
+aliases = ["kysely"]
+
+[[vendor]]
+id = "typeorm"
+name = "TypeORM"
+categories = ["orm"]
+aliases = ["typeorm"]
+
+[[vendor]]
+id = "orm-other"
+name = "Other ORMs"
+categories = ["orm"]
+aliases = ["sequelize", "mikro-orm", "mikroorm", "@mikro-orm/core", "knex", "knex.js", "objection", "objection.js", "zenstack"]
+
+[[vendor]]
+id = "raw-sql"
+name = "Raw SQL driver"
+categories = ["orm"]
+aliases = ["pg", "node-postgres", "postgres.js", "postgres", "slonik", "raw sql"]
+
+[[vendor]]
+id = "typesense"
+name = "Typesense"
+url = "https://typesense.org"
+categories = ["search"]
+aliases = ["typesense", "typesense cloud"]
+
+[[vendor]]
+id = "meilisearch"
+name = "Meilisearch"
+url = "https://www.meilisearch.com"
+categories = ["search"]
+aliases = ["meilisearch", "meilisearch cloud", "meili"]
+
+[[vendor]]
+id = "algolia"
+name = "Algolia"
+url = "https://www.algolia.com"
+categories = ["search"]
+aliases = ["algolia", "algoliasearch", "algolia search"]
+
+[[vendor]]
+id = "elastic"
+name = "Elastic"
+url = "https://www.elastic.co"
+categories = ["search", "error_monitoring", "vector_db"]
+aliases = ["elasticsearch", "elastic", "elastic cloud", "@elastic/elasticsearch", "elastic search", "elastic apm"]
+products = { search = "Elasticsearch", error_monitoring = "Elastic APM", vector_db = "Elasticsearch" }
+
+[[vendor]]
+id = "opensearch"
+name = "OpenSearch"
+categories = ["search", "vector_db"]
+aliases = ["opensearch"]
+
+[[vendor]]
+id = "postgres-fts"
+name = "Postgres full-text search"
+categories = ["search"]
+aliases = ["postgres full-text search", "postgresql full-text search", "postgres full text search", "postgresql full text search", "postgres fts", "postgresql fts", "tsvector", "postgres tsvector", "pg_trgm"]
+
+[[vendor]]
+id = "paradedb"
+name = "ParadeDB"
+categories = ["search"]
+aliases = ["paradedb", "pg_search", "pg_bm25"]
+
+[[vendor]]
+id = "search-other"
+name = "Other search engines"
+categories = ["search"]
+aliases = ["orama", "@orama/orama", "minisearch", "flexsearch", "lunr", "fuse.js", "vespa", "manticore", "manticore search", "zincsearch", "sonic", "quickwit"]
+
+[[vendor]]
+id = "pgvector"
+name = "pgvector"
+categories = ["vector_db"]
+aliases = ["pgvector", "pg vector", "postgres + pgvector", "postgres pgvector", "postgresql pgvector"]
+
+[[vendor]]
+id = "pinecone"
+name = "Pinecone"
+url = "https://www.pinecone.io"
+categories = ["vector_db"]
+aliases = ["pinecone", "@pinecone-database/pinecone", "pinecone-client"]
+
+[[vendor]]
+id = "qdrant"
+name = "Qdrant"
+url = "https://qdrant.tech"
+categories = ["vector_db"]
+aliases = ["qdrant", "qdrant cloud", "@qdrant/js-client-rest", "qdrant-client"]
+
+[[vendor]]
+id = "weaviate"
+name = "Weaviate"
+categories = ["vector_db"]
+aliases = ["weaviate", "weaviate cloud", "weaviate-client"]
+
+[[vendor]]
+id = "chroma"
+name = "Chroma"
+categories = ["vector_db"]
+aliases = ["chroma", "chromadb", "chroma db"]
+
+[[vendor]]
+id = "vector-other"
+name = "Other vector stores"
+categories = ["vector_db"]
+aliases = ["milvus", "zilliz", "zilliz cloud", "lancedb", "turbopuffer", "mongodb atlas", "mongodb atlas vector search", "atlas vector search", "faiss", "redis vector", "redis vector search"]

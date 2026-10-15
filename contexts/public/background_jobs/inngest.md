@@ -1,0 +1,2 @@
+### Inngest
+Inngest is a managed platform for durable background functions. You write TypeScript functions triggered by events or cron schedules; the platform handles retries, step-level state, concurrency limits, throttling and scheduling, and calls your app over HTTP, so there is no queue infrastructure to run. Install with `npm i inngest`. Free tier with usage-based paid plans; self-hosting is available.

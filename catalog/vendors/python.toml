@@ -1,0 +1,135 @@
+# Python ecosystem: frameworks, data layer, job queues, agent frameworks, orchestrators.
+
+[[vendor]]
+id = "fastapi"
+name = "FastAPI"
+categories = ["py_web_framework"]
+aliases = ["fastapi"]
+
+[[vendor]]
+id = "django"
+name = "Django"
+categories = ["py_web_framework"]
+aliases = ["django", "django rest framework", "drf", "djangorestframework", "django ninja", "django-ninja"]
+
+[[vendor]]
+id = "flask"
+name = "Flask"
+categories = ["py_web_framework"]
+aliases = ["flask", "flask-restful"]
+
+[[vendor]]
+id = "litestar"
+name = "Litestar"
+categories = ["py_web_framework"]
+aliases = ["litestar"]
+
+[[vendor]]
+id = "py-web-other"
+name = "Other Python frameworks"
+categories = ["py_web_framework"]
+aliases = ["starlette", "sanic", "aiohttp", "quart", "falcon", "tornado", "robyn"]
+
+[[vendor]]
+id = "sqlalchemy"
+name = "SQLAlchemy"
+categories = ["py_orm"]
+aliases = ["sqlalchemy", "sqlalchemy 2.0", "sqlalchemy 2", "sqlalchemy (async)", "sqlalchemy + alembic", "alembic"]
+
+[[vendor]]
+id = "sqlmodel"
+name = "SQLModel"
+categories = ["py_orm"]
+aliases = ["sqlmodel"]
+
+[[vendor]]
+id = "django-orm"
+name = "Django ORM"
+categories = ["py_orm"]
+aliases = ["django orm"]
+
+[[vendor]]
+id = "py-orm-other"
+name = "Other Python data layers"
+categories = ["py_orm"]
+aliases = ["tortoise", "tortoise orm", "tortoise-orm", "peewee", "piccolo", "prisma client python", "pony orm"]
+
+[[vendor]]
+id = "py-raw-sql"
+name = "Raw driver (asyncpg / psycopg)"
+categories = ["py_orm"]
+aliases = ["asyncpg", "psycopg", "psycopg2", "psycopg3", "psycopg 3", "psycopg2-binary"]
+
+[[vendor]]
+id = "celery"
+name = "Celery"
+categories = ["py_jobs"]
+aliases = ["celery", "celery + redis", "celery beat", "celery with redis"]
+
+[[vendor]]
+id = "arq"
+name = "arq"
+categories = ["py_jobs"]
+aliases = ["arq"]
+
+[[vendor]]
+id = "dramatiq"
+name = "Dramatiq"
+categories = ["py_jobs"]
+aliases = ["dramatiq"]
+
+[[vendor]]
+id = "rq"
+name = "RQ"
+categories = ["py_jobs"]
+aliases = ["rq", "redis queue", "python-rq"]
+
+[[vendor]]
+id = "py-jobs-other"
+name = "Other Python queues"
+categories = ["py_jobs"]
+aliases = ["huey", "taskiq", "apscheduler", "procrastinate", "saq", "fastapi backgroundtasks", "backgroundtasks"]
+
+[[vendor]]
+id = "pydantic-ai"
+name = "Pydantic AI"
+categories = ["py_llm_framework"]
+aliases = ["pydantic ai", "pydantic-ai", "pydanticai"]
+
+[[vendor]]
+id = "crewai"
+name = "CrewAI"
+categories = ["py_llm_framework"]
+aliases = ["crewai", "crew ai"]
+
+[[vendor]]
+id = "py-agent-other"
+name = "Other agent frameworks"
+categories = ["py_llm_framework"]
+aliases = ["haystack", "dspy", "smolagents", "agno", "phidata", "instructor", "litellm", "dify", "letta"]
+
+[[vendor]]
+id = "dagster"
+name = "Dagster"
+url = "https://dagster.io"
+categories = ["py_orchestration"]
+aliases = ["dagster", "dagster+", "dagster cloud"]
+
+[[vendor]]
+id = "prefect"
+name = "Prefect"
+url = "https://www.prefect.io"
+categories = ["py_orchestration"]
+aliases = ["prefect", "prefect cloud"]
+
+[[vendor]]
+id = "airflow"
+name = "Apache Airflow"
+categories = ["py_orchestration"]
+aliases = ["airflow", "apache airflow", "astronomer", "astro"]
+
+[[vendor]]
+id = "orchestration-other"
+name = "Other orchestrators"
+categories = ["py_orchestration"]
+aliases = ["mage", "mage ai", "kestra", "luigi", "flyte", "argo workflows", "windmill", "hamilton", "cron", "crontab"]
