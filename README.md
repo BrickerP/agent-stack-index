@@ -14,7 +14,7 @@ Live report: **https://brickerp.github.io/agent-stack-index/** · Latest release
 - **Splits worth watching:** authentication (Auth.js 52%, Better Auth 24%, Clerk 24%), UI components (MUI, Ant Design, shadcn/ui), vector databases, Python auth, pipeline orchestration.
 - **Own-lab preference:** asked for an LLM provider, Claude Opus 5.5 names Anthropic every time; every other model's top pick is OpenAI, including Gemini (Google 8%).
 
-These are stated preferences from direct API questions. A first [ask-vs-do pilot](docs/pilots/2026-10-agent-probe.md) ran Claude Code on the SaaS-starter task five times: it agreed with the asked answers on ORM, billing, email and monitoring, but installed Auth.js where the same model, asked, named Better Auth, and left the database host unchosen. Read the [methodology and limitations](docs/METHODOLOGY.md) before quoting a number.
+These are stated preferences from direct API questions. A first [ask-vs-do pilot](docs/pilots/2026-10-agent-probe.md) ran Claude Code on the SaaS-starter task five times with file tools only: it wrote `next-auth` into `package.json` in all five runs where the same model, asked through a different harness, named Better Auth, and it left the database host unchosen. The pilot did not install dependencies or execute or test the generated app, and it does not establish why the harnesses differed or compare library quality. Read the [methodology and limitations](docs/METHODOLOGY.md) before quoting a number.
 
 ## How it works
 
