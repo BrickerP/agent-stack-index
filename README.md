@@ -8,9 +8,10 @@ Live report: **https://brickerp.github.io/agent-stack-index/** · Latest release
 
 10 models from 8 labs, 29 categories, 2,670 answers ([data](releases/2026-10/results.json)).
 
-- **19 of 29 categories have a default** that at least 80% of models share. In 12, every model picks the same tool: Neon (Postgres hosting), Stripe, Sentry, BullMQ, PostHog analytics, Vercel hosting, Playwright, FastAPI, SQLAlchemy, Celery, Resend, Redis.
-- **Whatever the model reads decides the pick.** With only one candidate's notes in context, models pick that candidate 85–100% of the time, including tools they never pick unprompted (Trigger.dev 0% → 90%, Postmark 0% → 100%, SendGrid 0% → 90%).
-- **Side-by-side notes mostly keep the default**, except authentication: Better Auth goes from 17% to 52% when Better Auth, Clerk and Auth.js notes are all in context.
+- **Most categories already have a default.** In 12 of 29, every model picks the same tool and it takes at least 95% of the answers: Neon (Postgres hosting), Stripe, Sentry, BullMQ, PostHog analytics, Vercel hosting, Playwright, FastAPI, SQLAlchemy, Celery, Resend, Redis. In 7 more, at least 8 of 10 models agree.
+- **Without a default, the pick moves with the model and the wording.** In the 10 contested categories, 31 of 100 model–category pairs change their top pick when the request is reworded; in the 12 settled categories, none do.
+- **What the model reads decides the pick, unless the default is strong.** With only one candidate's notes in context, models pick that candidate 85–100% of the time, including tools they never pick unprompted (Trigger.dev 0% → 90%, Postmark 0% → 100%, SendGrid 0% → 90%).
+- **Side by side, a strong default holds**: the no-notes favourite stayed on top in four of five duels, losing 5–9 points. Authentication, which has no default, flipped: Better Auth goes from 17% to 52% when Better Auth, Clerk and Auth.js notes are all in context.
 - **Splits worth watching:** authentication (Auth.js 52%, Better Auth 24%, Clerk 24%), UI components (MUI, Ant Design, shadcn/ui), vector databases, Python auth, pipeline orchestration.
 - **Own-lab preference:** asked for an LLM provider, Claude Opus 5.5 names Anthropic every time; every other model's top pick is OpenAI, including Gemini (Google 8%).
 
@@ -40,6 +41,7 @@ python -m agent_stack_index plan 2026-10-baseline    # what would run
 python -m agent_stack_index run 2026-10-baseline     # resumable; only missing trials execute
 python -m agent_stack_index release 2026-10          # regenerate results.json, picks.csv, REPORT.md
 python -m agent_stack_index site --out _site         # static report
+python -m agent_stack_index share                    # Open Graph card and thread images (needs Chrome; set CHROME to its path)
 python -m unittest discover -s tests                 # offline tests with a fake model
 ```
 
@@ -51,7 +53,7 @@ python -m unittest discover -s tests                 # offline tests with a fake
 | A vendor or alias | `catalog/vendors/*.toml` | `release <id>`; the diff shows every number that moved |
 | A task or phrasing | `tasks/tasks.toml`, `prompts/prompts.toml` | new trials appear in `plan` |
 | A duel | `experiments/*-duel.toml` + notes in `contexts/public/` | `run`, `release` |
-| A monthly release | `asi new-release 2026-11 --from 2026-10` | `run`, `release`, push |
+| A monthly release | `asi new-release 2026-11 --from 2026-10` | `run`, `release`, `share`, push |
 
 ## Repository layout
 
@@ -62,8 +64,8 @@ tasks/ prompts/           build tasks and prompt phrasings
 contexts/public/          neutral, equal-length vendor notes used in duels
 experiments/              declarative experiment specs
 data/observations/        raw answers, one JSONL file per experiment and model
-releases/<id>/            derived results.json, picks.csv, REPORT.md
-src/agent_stack_index/    the engine (plan, run, normalize, analyze, release, site, audit)
+releases/<id>/            derived results.json, picks.csv, REPORT.md, share/ (card images)
+src/agent_stack_index/    the engine (plan, run, normalize, analyze, story, release, site, share, audit)
 ```
 
 ## Independence

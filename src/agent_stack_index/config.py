@@ -38,6 +38,7 @@ class Model:
     max_concurrency: int = 4
     params: dict = field(default_factory=dict)
     notes: str = ""
+    injected_prompt: bool = False  # the route adds a system prompt we cannot see; flagged in reports
 
 
 @dataclass(frozen=True)

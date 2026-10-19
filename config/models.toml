@@ -17,6 +17,7 @@ label = "Claude Opus 5.5"
 max_concurrency = 6
 params = { max_tokens = 8000 }
 notes = "Gateway route adds its own system prompt (~6.6k input tokens on an empty request)."
+injected_prompt = true
 
 [models.claude-sonnet-5-5]
 provider = "gateway"
@@ -26,6 +27,7 @@ label = "Claude Sonnet 5.5"
 max_concurrency = 6
 params = { max_tokens = 8000 }
 notes = "Gateway route adds its own system prompt (~6.6k input tokens on an empty request)."
+injected_prompt = true
 
 [models.gpt-6-1-sol]
 provider = "gateway"

@@ -14,14 +14,24 @@
     "title": "Baseline: what each model picks with no vendor context",
     "planned": 1920,
     "observed": 1920,
-    "coverage": 1.0
+    "coverage": 1.0,
+    "variants": [
+     "pick",
+     "user",
+     "install"
+    ],
+    "repeats": 4
    },
    "duel": {
     "id": "2026-10-duel",
     "title": "Context duels: does a vendor's documentation in context change the pick?",
     "planned": 750,
     "observed": 750,
-    "coverage": 1.0
+    "coverage": 1.0,
+    "variants": [
+     "notes"
+    ],
+    "repeats": 1
    }
   },
   "answers": 2670,
@@ -34,7 +44,8 @@
      "claude-opus-5-5"
     ],
     "answers": 267,
-    "notes": "Gateway route adds its own system prompt (~6.6k input tokens on an empty request)."
+    "notes": "Gateway route adds its own system prompt (~6.6k input tokens on an empty request).",
+    "injected_prompt": true
    },
    "claude-sonnet-5-5": {
     "label": "Claude Sonnet 5.5",
@@ -44,7 +55,8 @@
      "claude-sonnet-5.5"
     ],
     "answers": 267,
-    "notes": "Gateway route adds its own system prompt (~6.6k input tokens on an empty request)."
+    "notes": "Gateway route adds its own system prompt (~6.6k input tokens on an empty request).",
+    "injected_prompt": true
    },
    "deepseek-v4-pro": {
     "label": "DeepSeek V4 Pro",
@@ -54,7 +66,8 @@
      "deepseek-v4-pro-202606"
     ],
     "answers": 267,
-    "notes": ""
+    "notes": "",
+    "injected_prompt": false
    },
    "gemini-3-8-flash": {
     "label": "Gemini 3.8 Flash",
@@ -64,7 +77,8 @@
      "gemini-3.8-flash"
     ],
     "answers": 267,
-    "notes": ""
+    "notes": "",
+    "injected_prompt": false
    },
    "glm-5-3": {
     "label": "GLM-5.3",
@@ -74,7 +88,8 @@
      "glm-5.3"
     ],
     "answers": 267,
-    "notes": ""
+    "notes": "",
+    "injected_prompt": false
    },
    "gpt-6-1-sol": {
     "label": "GPT-6.1 Sol",
@@ -84,7 +99,8 @@
      "gpt-6.1-sol"
     ],
     "answers": 267,
-    "notes": ""
+    "notes": "",
+    "injected_prompt": false
    },
    "gpt-6-astra": {
     "label": "GPT-6 Astra",
@@ -94,7 +110,8 @@
      "gpt-6-astra"
     ],
     "answers": 267,
-    "notes": ""
+    "notes": "",
+    "injected_prompt": false
    },
    "grok-4-7": {
     "label": "Grok 4.7",
@@ -104,7 +121,8 @@
      "grok-4.7-build"
     ],
     "answers": 267,
-    "notes": ""
+    "notes": "",
+    "injected_prompt": false
    },
    "kimi-k2-7-code": {
     "label": "Kimi K2.7 Code",
@@ -114,7 +132,8 @@
      "kimi-k2.7-code"
     ],
     "answers": 267,
-    "notes": ""
+    "notes": "",
+    "injected_prompt": false
    },
    "minimax-m3": {
     "label": "MiniMax M3",
@@ -124,7 +143,8 @@
      "MiniMax-M3"
     ],
     "answers": 267,
-    "notes": ""
+    "notes": "",
+    "injected_prompt": false
    }
   },
   "unmatched_rate": 0.0,
@@ -145,6 +165,9 @@
       "better-auth": 12
      },
      "top": "better-auth",
+     "tops": [
+      "better-auth"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -158,6 +181,9 @@
       "authjs": 2
      },
      "top": "better-auth",
+     "tops": [
+      "better-auth"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -171,6 +197,9 @@
       "better-auth": 2
      },
      "top": "authjs",
+     "tops": [
+      "authjs"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -184,6 +213,9 @@
       "authjs": 4
      },
      "top": "clerk",
+     "tops": [
+      "clerk"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -197,6 +229,9 @@
       "better-auth": 2
      },
      "top": "authjs",
+     "tops": [
+      "authjs"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -211,6 +246,9 @@
       "better-auth": 1
      },
      "top": "clerk",
+     "tops": [
+      "clerk"
+     ],
      "top_share": 0.5,
      "top_ci": [
       0.2538,
@@ -225,6 +263,9 @@
       "better-auth": 1
      },
      "top": "authjs",
+     "tops": [
+      "authjs"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -239,6 +280,9 @@
       "better-auth": 1
      },
      "top": "authjs",
+     "tops": [
+      "authjs"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -252,6 +296,9 @@
       "clerk": 2
      },
      "top": "authjs",
+     "tops": [
+      "authjs"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -265,6 +312,9 @@
       "authjs": 5
      },
      "top": "clerk",
+     "tops": [
+      "clerk"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -281,8 +331,9 @@
    "top_share": 0.5167,
    "models_agree": 5,
    "models_total": 10,
-   "variant_consistent": 4,
-   "hhi": 0.3838
+   "variant_consistent": 6,
+   "hhi": 0.3838,
+   "tier": "contested"
   },
   "database_host": {
    "label": "Postgres hosting",
@@ -298,6 +349,9 @@
       "neon": 12
      },
      "top": "neon",
+     "tops": [
+      "neon"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -310,6 +364,9 @@
       "neon": 12
      },
      "top": "neon",
+     "tops": [
+      "neon"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -322,6 +379,9 @@
       "neon": 12
      },
      "top": "neon",
+     "tops": [
+      "neon"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -334,6 +394,9 @@
       "neon": 12
      },
      "top": "neon",
+     "tops": [
+      "neon"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -346,6 +409,9 @@
       "neon": 12
      },
      "top": "neon",
+     "tops": [
+      "neon"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -358,6 +424,9 @@
       "neon": 12
      },
      "top": "neon",
+     "tops": [
+      "neon"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -370,6 +439,9 @@
       "neon": 12
      },
      "top": "neon",
+     "tops": [
+      "neon"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -382,6 +454,9 @@
       "neon": 12
      },
      "top": "neon",
+     "tops": [
+      "neon"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -394,6 +469,9 @@
       "neon": 12
      },
      "top": "neon",
+     "tops": [
+      "neon"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -406,6 +484,9 @@
       "neon": 12
      },
      "top": "neon",
+     "tops": [
+      "neon"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -421,7 +502,8 @@
    "models_agree": 10,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 1.0
+   "hhi": 1.0,
+   "tier": "default"
   },
   "orm": {
    "label": "ORM / query builder",
@@ -437,6 +519,9 @@
       "drizzle": 12
      },
      "top": "drizzle",
+     "tops": [
+      "drizzle"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -449,6 +534,9 @@
       "drizzle": 12
      },
      "top": "drizzle",
+     "tops": [
+      "drizzle"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -462,6 +550,9 @@
       "drizzle": 2
      },
      "top": "prisma",
+     "tops": [
+      "prisma"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -474,6 +565,9 @@
       "drizzle": 12
      },
      "top": "drizzle",
+     "tops": [
+      "drizzle"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -487,6 +581,9 @@
       "prisma": 4
      },
      "top": "drizzle",
+     "tops": [
+      "drizzle"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -499,6 +596,9 @@
       "drizzle": 12
      },
      "top": "drizzle",
+     "tops": [
+      "drizzle"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -512,6 +612,9 @@
       "prisma": 1
      },
      "top": "drizzle",
+     "tops": [
+      "drizzle"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -525,6 +628,9 @@
       "drizzle": 5
      },
      "top": "prisma",
+     "tops": [
+      "prisma"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -538,6 +644,9 @@
       "drizzle": 2
      },
      "top": "prisma",
+     "tops": [
+      "prisma"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -551,6 +660,9 @@
       "prisma": 2
      },
      "top": "drizzle",
+     "tops": [
+      "drizzle"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -566,8 +678,9 @@
    "top_share": 0.7167,
    "models_agree": 7,
    "models_total": 10,
-   "variant_consistent": 7,
-   "hhi": 0.5939
+   "variant_consistent": 8,
+   "hhi": 0.5939,
+   "tier": "contested"
   },
   "payments": {
    "label": "Subscription billing",
@@ -583,6 +696,9 @@
       "stripe": 12
      },
      "top": "stripe",
+     "tops": [
+      "stripe"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -595,6 +711,9 @@
       "stripe": 12
      },
      "top": "stripe",
+     "tops": [
+      "stripe"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -607,6 +726,9 @@
       "stripe": 12
      },
      "top": "stripe",
+     "tops": [
+      "stripe"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -619,6 +741,9 @@
       "stripe": 12
      },
      "top": "stripe",
+     "tops": [
+      "stripe"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -631,6 +756,9 @@
       "stripe": 12
      },
      "top": "stripe",
+     "tops": [
+      "stripe"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -643,6 +771,9 @@
       "stripe": 12
      },
      "top": "stripe",
+     "tops": [
+      "stripe"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -655,6 +786,9 @@
       "stripe": 12
      },
      "top": "stripe",
+     "tops": [
+      "stripe"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -667,6 +801,9 @@
       "stripe": 12
      },
      "top": "stripe",
+     "tops": [
+      "stripe"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -679,6 +816,9 @@
       "stripe": 12
      },
      "top": "stripe",
+     "tops": [
+      "stripe"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -691,6 +831,9 @@
       "stripe": 12
      },
      "top": "stripe",
+     "tops": [
+      "stripe"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -706,7 +849,8 @@
    "models_agree": 10,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 1.0
+   "hhi": 1.0,
+   "tier": "default"
   },
   "transactional_email": {
    "label": "Transactional email",
@@ -722,6 +866,9 @@
       "resend": 12
      },
      "top": "resend",
+     "tops": [
+      "resend"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -734,6 +881,9 @@
       "resend": 12
      },
      "top": "resend",
+     "tops": [
+      "resend"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -747,6 +897,9 @@
       "postmark": 1
      },
      "top": "resend",
+     "tops": [
+      "resend"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -759,6 +912,9 @@
       "resend": 12
      },
      "top": "resend",
+     "tops": [
+      "resend"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -771,6 +927,9 @@
       "resend": 12
      },
      "top": "resend",
+     "tops": [
+      "resend"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -783,6 +942,9 @@
       "resend": 12
      },
      "top": "resend",
+     "tops": [
+      "resend"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -795,6 +957,9 @@
       "resend": 12
      },
      "top": "resend",
+     "tops": [
+      "resend"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -807,6 +972,9 @@
       "resend": 12
      },
      "top": "resend",
+     "tops": [
+      "resend"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -819,6 +987,9 @@
       "resend": 12
      },
      "top": "resend",
+     "tops": [
+      "resend"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -831,6 +1002,9 @@
       "resend": 12
      },
      "top": "resend",
+     "tops": [
+      "resend"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -847,7 +1021,8 @@
    "models_agree": 10,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 0.9835
+   "hhi": 0.9835,
+   "tier": "default"
   },
   "error_monitoring": {
    "label": "Error monitoring",
@@ -864,6 +1039,9 @@
       "sentry": 24
      },
      "top": "sentry",
+     "tops": [
+      "sentry"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.862,
@@ -876,6 +1054,9 @@
       "sentry": 24
      },
      "top": "sentry",
+     "tops": [
+      "sentry"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.862,
@@ -888,6 +1069,9 @@
       "sentry": 24
      },
      "top": "sentry",
+     "tops": [
+      "sentry"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.862,
@@ -900,6 +1084,9 @@
       "sentry": 24
      },
      "top": "sentry",
+     "tops": [
+      "sentry"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.862,
@@ -912,6 +1099,9 @@
       "sentry": 24
      },
      "top": "sentry",
+     "tops": [
+      "sentry"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.862,
@@ -924,6 +1114,9 @@
       "sentry": 24
      },
      "top": "sentry",
+     "tops": [
+      "sentry"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.862,
@@ -936,6 +1129,9 @@
       "sentry": 24
      },
      "top": "sentry",
+     "tops": [
+      "sentry"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.862,
@@ -948,6 +1144,9 @@
       "sentry": 24
      },
      "top": "sentry",
+     "tops": [
+      "sentry"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.862,
@@ -960,6 +1159,9 @@
       "sentry": 24
      },
      "top": "sentry",
+     "tops": [
+      "sentry"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.862,
@@ -972,6 +1174,9 @@
       "sentry": 24
      },
      "top": "sentry",
+     "tops": [
+      "sentry"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.862,
@@ -987,7 +1192,8 @@
    "models_agree": 10,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 1.0
+   "hhi": 1.0,
+   "tier": "default"
   },
   "search": {
    "label": "Search",
@@ -1003,6 +1209,9 @@
       "meilisearch": 12
      },
      "top": "meilisearch",
+     "tops": [
+      "meilisearch"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1015,6 +1224,9 @@
       "meilisearch": 12
      },
      "top": "meilisearch",
+     "tops": [
+      "meilisearch"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1029,6 +1241,11 @@
       "meilisearch": 4
      },
      "top": "algolia",
+     "tops": [
+      "algolia",
+      "elastic",
+      "meilisearch"
+     ],
      "top_share": 0.3333,
      "top_ci": [
       0.1381,
@@ -1041,6 +1258,9 @@
       "meilisearch": 12
      },
      "top": "meilisearch",
+     "tops": [
+      "meilisearch"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1054,6 +1274,9 @@
       "elastic": 2
      },
      "top": "meilisearch",
+     "tops": [
+      "meilisearch"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -1068,6 +1291,9 @@
       "elastic": 1
      },
      "top": "meilisearch",
+     "tops": [
+      "meilisearch"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -1082,6 +1308,9 @@
       "algolia": 2
      },
      "top": "elastic",
+     "tops": [
+      "elastic"
+     ],
      "top_share": 0.5,
      "top_ci": [
       0.2538,
@@ -1096,6 +1325,9 @@
       "algolia": 1
      },
      "top": "meilisearch",
+     "tops": [
+      "meilisearch"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -1109,6 +1341,9 @@
       "elastic": 1
      },
      "top": "meilisearch",
+     "tops": [
+      "meilisearch"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -1122,6 +1357,9 @@
       "algolia": 3
      },
      "top": "meilisearch",
+     "tops": [
+      "meilisearch"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -1136,10 +1374,11 @@
    },
    "top": "meilisearch",
    "top_share": 0.7667,
-   "models_agree": 8,
+   "models_agree": 9,
    "models_total": 10,
-   "variant_consistent": 5,
-   "hhi": 0.6156
+   "variant_consistent": 7,
+   "hhi": 0.6156,
+   "tier": "leaning"
   },
   "background_jobs": {
    "label": "Background jobs",
@@ -1155,6 +1394,9 @@
       "bullmq": 12
      },
      "top": "bullmq",
+     "tops": [
+      "bullmq"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1167,6 +1409,9 @@
       "bullmq": 12
      },
      "top": "bullmq",
+     "tops": [
+      "bullmq"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1179,6 +1424,9 @@
       "bullmq": 12
      },
      "top": "bullmq",
+     "tops": [
+      "bullmq"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1191,6 +1439,9 @@
       "bullmq": 12
      },
      "top": "bullmq",
+     "tops": [
+      "bullmq"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1203,6 +1454,9 @@
       "bullmq": 12
      },
      "top": "bullmq",
+     "tops": [
+      "bullmq"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1215,6 +1469,9 @@
       "bullmq": 12
      },
      "top": "bullmq",
+     "tops": [
+      "bullmq"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1227,6 +1484,9 @@
       "bullmq": 12
      },
      "top": "bullmq",
+     "tops": [
+      "bullmq"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1239,6 +1499,9 @@
       "bullmq": 12
      },
      "top": "bullmq",
+     "tops": [
+      "bullmq"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1251,6 +1514,9 @@
       "bullmq": 12
      },
      "top": "bullmq",
+     "tops": [
+      "bullmq"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1263,6 +1529,9 @@
       "bullmq": 12
      },
      "top": "bullmq",
+     "tops": [
+      "bullmq"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1278,7 +1547,8 @@
    "models_agree": 10,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 1.0
+   "hhi": 1.0,
+   "tier": "default"
   },
   "product_analytics": {
    "label": "Product analytics",
@@ -1294,6 +1564,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1306,6 +1579,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1318,6 +1594,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1330,6 +1609,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1342,6 +1624,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1354,6 +1639,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1366,6 +1654,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1378,6 +1669,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1390,6 +1684,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1402,6 +1699,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1417,7 +1717,8 @@
    "models_agree": 10,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 1.0
+   "hhi": 1.0,
+   "tier": "default"
   },
   "feature_flags": {
    "label": "Feature flags",
@@ -1433,6 +1734,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1445,6 +1749,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1457,6 +1764,9 @@
       "launchdarkly": 12
      },
      "top": "launchdarkly",
+     "tops": [
+      "launchdarkly"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1469,6 +1779,9 @@
       "launchdarkly": 12
      },
      "top": "launchdarkly",
+     "tops": [
+      "launchdarkly"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1482,6 +1795,9 @@
       "posthog": 3
      },
      "top": "launchdarkly",
+     "tops": [
+      "launchdarkly"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -1494,6 +1810,9 @@
       "launchdarkly": 12
      },
      "top": "launchdarkly",
+     "tops": [
+      "launchdarkly"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1507,6 +1826,9 @@
       "posthog": 2
      },
      "top": "launchdarkly",
+     "tops": [
+      "launchdarkly"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -1521,6 +1843,9 @@
       "vercel": 1
      },
      "top": "launchdarkly",
+     "tops": [
+      "launchdarkly"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -1533,6 +1858,9 @@
       "posthog": 12
      },
      "top": "posthog",
+     "tops": [
+      "posthog"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1548,6 +1876,9 @@
       "vercel": 1
      },
      "top": "launchdarkly",
+     "tops": [
+      "launchdarkly"
+     ],
      "top_share": 0.5,
      "top_ci": [
       0.2538,
@@ -1566,7 +1897,8 @@
    "models_agree": 7,
    "models_total": 10,
    "variant_consistent": 9,
-   "hhi": 0.4913
+   "hhi": 0.4913,
+   "tier": "contested"
   },
   "object_storage": {
    "label": "File storage",
@@ -1582,6 +1914,9 @@
       "aws": 12
      },
      "top": "aws",
+     "tops": [
+      "aws"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1594,6 +1929,9 @@
       "aws": 12
      },
      "top": "aws",
+     "tops": [
+      "aws"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1607,6 +1945,9 @@
       "vercel": 3
      },
      "top": "aws",
+     "tops": [
+      "aws"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -1620,6 +1961,9 @@
       "cloudflare": 2
      },
      "top": "aws",
+     "tops": [
+      "aws"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -1633,6 +1977,9 @@
       "vercel": 1
      },
      "top": "aws",
+     "tops": [
+      "aws"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -1645,6 +1992,9 @@
       "aws": 12
      },
      "top": "aws",
+     "tops": [
+      "aws"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1657,6 +2007,9 @@
       "aws": 12
      },
      "top": "aws",
+     "tops": [
+      "aws"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1670,6 +2023,9 @@
       "vercel": 2
      },
      "top": "aws",
+     "tops": [
+      "aws"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -1682,6 +2038,9 @@
       "aws": 12
      },
      "top": "aws",
+     "tops": [
+      "aws"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1694,6 +2053,9 @@
       "cloudflare": 12
      },
      "top": "cloudflare",
+     "tops": [
+      "cloudflare"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1711,7 +2073,8 @@
    "models_agree": 9,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 0.7105
+   "hhi": 0.7105,
+   "tier": "leaning"
   },
   "image_delivery": {
    "label": "Image delivery",
@@ -1730,6 +2093,9 @@
       "cloudinary": 1
      },
      "top": "imgix",
+     "tops": [
+      "imgix"
+     ],
      "top_share": 0.4167,
      "top_ci": [
       0.1933,
@@ -1746,6 +2112,10 @@
       "sharp": 1
      },
      "top": "cloudinary",
+     "tops": [
+      "cloudinary",
+      "vercel"
+     ],
      "top_share": 0.3333,
      "top_ci": [
       0.1381,
@@ -1759,6 +2129,9 @@
       "vercel": 1
      },
      "top": "cloudinary",
+     "tops": [
+      "cloudinary"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -1773,6 +2146,9 @@
       "imgix": 1
      },
      "top": "cloudinary",
+     "tops": [
+      "cloudinary"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -1787,6 +2163,9 @@
       "vercel": 1
      },
      "top": "cloudinary",
+     "tops": [
+      "cloudinary"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -1800,6 +2179,9 @@
       "imgix": 2
      },
      "top": "cloudinary",
+     "tops": [
+      "cloudinary"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -1812,6 +2194,9 @@
       "cloudinary": 12
      },
      "top": "cloudinary",
+     "tops": [
+      "cloudinary"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1826,6 +2211,9 @@
       "vercel": 1
      },
      "top": "cloudinary",
+     "tops": [
+      "cloudinary"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -1839,6 +2227,9 @@
       "aws": 2
      },
      "top": "cloudinary",
+     "tops": [
+      "cloudinary"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -1851,6 +2242,9 @@
       "cloudflare": 12
      },
      "top": "cloudflare",
+     "tops": [
+      "cloudflare"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1870,8 +2264,9 @@
    "top_share": 0.6417,
    "models_agree": 8,
    "models_total": 10,
-   "variant_consistent": 6,
-   "hhi": 0.4456
+   "variant_consistent": 8,
+   "hhi": 0.4456,
+   "tier": "leaning"
   },
   "llm_sdk": {
    "label": "LLM SDK",
@@ -1887,6 +2282,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1899,6 +2297,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1911,6 +2312,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1923,6 +2327,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1935,6 +2342,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1948,6 +2358,9 @@
       "openai": 1
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -1961,6 +2374,9 @@
       "openai": 2
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -1973,6 +2389,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -1986,6 +2405,9 @@
       "vercel": 2
      },
      "top": "openai",
+     "tops": [
+      "openai"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -1998,6 +2420,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2013,8 +2438,9 @@
    "top_share": 0.8917,
    "models_agree": 9,
    "models_total": 10,
-   "variant_consistent": 9,
-   "hhi": 0.8069
+   "variant_consistent": 10,
+   "hhi": 0.8069,
+   "tier": "leaning"
   },
   "llm_provider": {
    "label": "LLM provider",
@@ -2030,6 +2456,9 @@
       "anthropic": 12
      },
      "top": "anthropic",
+     "tops": [
+      "anthropic"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2043,6 +2472,10 @@
       "openai": 6
      },
      "top": "anthropic",
+     "tops": [
+      "anthropic",
+      "openai"
+     ],
      "top_share": 0.5,
      "top_ci": [
       0.2538,
@@ -2055,6 +2488,9 @@
       "openai": 12
      },
      "top": "openai",
+     "tops": [
+      "openai"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2068,6 +2504,9 @@
       "google": 1
      },
      "top": "openai",
+     "tops": [
+      "openai"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -2081,6 +2520,9 @@
       "anthropic": 1
      },
      "top": "openai",
+     "tops": [
+      "openai"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -2093,6 +2535,9 @@
       "openai": 12
      },
      "top": "openai",
+     "tops": [
+      "openai"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2105,6 +2550,9 @@
       "openai": 12
      },
      "top": "openai",
+     "tops": [
+      "openai"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2117,6 +2565,9 @@
       "openai": 12
      },
      "top": "openai",
+     "tops": [
+      "openai"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2129,6 +2580,9 @@
       "openai": 12
      },
      "top": "openai",
+     "tops": [
+      "openai"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2141,6 +2595,9 @@
       "openai": 12
      },
      "top": "openai",
+     "tops": [
+      "openai"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2155,10 +2612,11 @@
    },
    "top": "openai",
    "top_share": 0.8333,
-   "models_agree": 8,
+   "models_agree": 9,
    "models_total": 10,
    "variant_consistent": 9,
-   "hhi": 0.7195
+   "hhi": 0.7195,
+   "tier": "leaning"
   },
   "hosting": {
    "label": "App hosting",
@@ -2174,6 +2632,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2186,6 +2647,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2198,6 +2662,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2210,6 +2677,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2222,6 +2692,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2234,6 +2707,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2246,6 +2722,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2258,6 +2737,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2270,6 +2752,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2282,6 +2767,9 @@
       "vercel": 12
      },
      "top": "vercel",
+     "tops": [
+      "vercel"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2297,7 +2785,8 @@
    "models_agree": 10,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 1.0
+   "hhi": 1.0,
+   "tier": "default"
   },
   "realtime": {
    "label": "Realtime",
@@ -2313,6 +2802,9 @@
       "liveblocks": 12
      },
      "top": "liveblocks",
+     "tops": [
+      "liveblocks"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2325,6 +2817,9 @@
       "liveblocks": 12
      },
      "top": "liveblocks",
+     "tops": [
+      "liveblocks"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2337,6 +2832,9 @@
       "liveblocks": 12
      },
      "top": "liveblocks",
+     "tops": [
+      "liveblocks"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2349,6 +2847,9 @@
       "liveblocks": 12
      },
      "top": "liveblocks",
+     "tops": [
+      "liveblocks"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2362,6 +2863,9 @@
       "liveblocks": 1
      },
      "top": "pusher",
+     "tops": [
+      "pusher"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -2374,6 +2878,9 @@
       "liveblocks": 12
      },
      "top": "liveblocks",
+     "tops": [
+      "liveblocks"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2387,6 +2894,9 @@
       "ably": 1
      },
      "top": "liveblocks",
+     "tops": [
+      "liveblocks"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -2399,6 +2909,9 @@
       "liveblocks": 12
      },
      "top": "liveblocks",
+     "tops": [
+      "liveblocks"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2412,6 +2925,9 @@
       "ably": 4
      },
      "top": "liveblocks",
+     "tops": [
+      "liveblocks"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -2424,6 +2940,9 @@
       "liveblocks": 12
      },
      "top": "liveblocks",
+     "tops": [
+      "liveblocks"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2440,8 +2959,9 @@
    "top_share": 0.8667,
    "models_agree": 9,
    "models_total": 10,
-   "variant_consistent": 9,
-   "hhi": 0.7613
+   "variant_consistent": 10,
+   "hhi": 0.7613,
+   "tier": "leaning"
   },
   "vector_db": {
    "label": "Vector database",
@@ -2460,6 +2980,9 @@
       "pinecone": 1
      },
      "top": "qdrant",
+     "tops": [
+      "qdrant"
+     ],
      "top_share": 0.5,
      "top_ci": [
       0.3143,
@@ -2474,6 +2997,9 @@
       "chroma": 3
      },
      "top": "pgvector",
+     "tops": [
+      "pgvector"
+     ],
      "top_share": 0.4583,
      "top_ci": [
       0.2789,
@@ -2487,6 +3013,9 @@
       "chroma": 5
      },
      "top": "pinecone",
+     "tops": [
+      "pinecone"
+     ],
      "top_share": 0.7917,
      "top_ci": [
       0.5953,
@@ -2501,6 +3030,9 @@
       "qdrant": 4
      },
      "top": "pinecone",
+     "tops": [
+      "pinecone"
+     ],
      "top_share": 0.5,
      "top_ci": [
       0.3143,
@@ -2515,6 +3047,9 @@
       "qdrant": 3
      },
      "top": "pinecone",
+     "tops": [
+      "pinecone"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.551,
@@ -2528,6 +3063,9 @@
       "qdrant": 9
      },
      "top": "pinecone",
+     "tops": [
+      "pinecone"
+     ],
      "top_share": 0.625,
      "top_ci": [
       0.4271,
@@ -2543,6 +3081,9 @@
       "pgvector": 1
      },
      "top": "pinecone",
+     "tops": [
+      "pinecone"
+     ],
      "top_share": 0.5417,
      "top_ci": [
       0.3507,
@@ -2558,6 +3099,10 @@
       "pgvector": 2
      },
      "top": "chroma",
+     "tops": [
+      "chroma",
+      "pinecone"
+     ],
      "top_share": 0.3333,
      "top_ci": [
       0.1797,
@@ -2573,6 +3118,9 @@
       "weaviate": 3
      },
      "top": "pinecone",
+     "tops": [
+      "pinecone"
+     ],
      "top_share": 0.4583,
      "top_ci": [
       0.2789,
@@ -2587,6 +3135,9 @@
       "chroma": 5
      },
      "top": "pinecone",
+     "tops": [
+      "pinecone"
+     ],
      "top_share": 0.5417,
      "top_ci": [
       0.3507,
@@ -2603,10 +3154,11 @@
    },
    "top": "pinecone",
    "top_share": 0.4583,
-   "models_agree": 7,
+   "models_agree": 8,
    "models_total": 10,
-   "variant_consistent": 3,
-   "hhi": 0.3116
+   "variant_consistent": 6,
+   "hhi": 0.3116,
+   "tier": "contested"
   },
   "headless_cms": {
    "label": "Headless CMS",
@@ -2622,6 +3174,9 @@
       "sanity": 12
      },
      "top": "sanity",
+     "tops": [
+      "sanity"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2634,6 +3189,9 @@
       "sanity": 12
      },
      "top": "sanity",
+     "tops": [
+      "sanity"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2647,6 +3205,9 @@
       "contentful": 1
      },
      "top": "sanity",
+     "tops": [
+      "sanity"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -2659,6 +3220,9 @@
       "sanity": 12
      },
      "top": "sanity",
+     "tops": [
+      "sanity"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2672,6 +3236,9 @@
       "contentful": 5
      },
      "top": "sanity",
+     "tops": [
+      "sanity"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -2684,6 +3251,9 @@
       "sanity": 12
      },
      "top": "sanity",
+     "tops": [
+      "sanity"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2696,6 +3266,9 @@
       "sanity": 12
      },
      "top": "sanity",
+     "tops": [
+      "sanity"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2708,6 +3281,9 @@
       "sanity": 12
      },
      "top": "sanity",
+     "tops": [
+      "sanity"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2722,6 +3298,9 @@
       "payload": 1
      },
      "top": "sanity",
+     "tops": [
+      "sanity"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -2735,6 +3314,9 @@
       "cms-other": 2
      },
      "top": "sanity",
+     "tops": [
+      "sanity"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -2752,8 +3334,9 @@
    "top_share": 0.9,
    "models_agree": 10,
    "models_total": 10,
-   "variant_consistent": 8,
-   "hhi": 0.816
+   "variant_consistent": 9,
+   "hhi": 0.816,
+   "tier": "leaning"
   },
   "ui_components": {
    "label": "UI components",
@@ -2771,6 +3354,9 @@
       "ant-design": 3
      },
      "top": "mui",
+     "tops": [
+      "mui"
+     ],
      "top_share": 0.4167,
      "top_ci": [
       0.1933,
@@ -2783,6 +3369,9 @@
       "mui": 12
      },
      "top": "mui",
+     "tops": [
+      "mui"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2797,6 +3386,9 @@
       "shadcn": 2
      },
      "top": "ant-design",
+     "tops": [
+      "ant-design"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -2811,6 +3403,9 @@
       "ant-design": 1
      },
      "top": "shadcn",
+     "tops": [
+      "shadcn"
+     ],
      "top_share": 0.5,
      "top_ci": [
       0.2538,
@@ -2823,6 +3418,9 @@
       "ant-design": 12
      },
      "top": "ant-design",
+     "tops": [
+      "ant-design"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2835,6 +3433,9 @@
       "mui": 12
      },
      "top": "mui",
+     "tops": [
+      "mui"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2847,6 +3448,9 @@
       "mui": 12
      },
      "top": "mui",
+     "tops": [
+      "mui"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2859,6 +3463,9 @@
       "ant-design": 12
      },
      "top": "ant-design",
+     "tops": [
+      "ant-design"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2871,6 +3478,9 @@
       "mui": 12
      },
      "top": "mui",
+     "tops": [
+      "mui"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2885,6 +3495,9 @@
       "shadcn": 1
      },
      "top": "ant-design",
+     "tops": [
+      "ant-design"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -2902,7 +3515,8 @@
    "models_agree": 5,
    "models_total": 10,
    "variant_consistent": 7,
-   "hhi": 0.4193
+   "hhi": 0.4193,
+   "tier": "contested"
   },
   "unit_testing": {
    "label": "Unit testing",
@@ -2918,6 +3532,9 @@
       "vitest": 12
      },
      "top": "vitest",
+     "tops": [
+      "vitest"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -2931,6 +3548,9 @@
       "jest": 2
      },
      "top": "vitest",
+     "tops": [
+      "vitest"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -2944,6 +3564,9 @@
       "vitest": 5
      },
      "top": "jest",
+     "tops": [
+      "jest"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -2957,6 +3580,9 @@
       "jest": 3
      },
      "top": "vitest",
+     "tops": [
+      "vitest"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -2970,6 +3596,9 @@
       "jest": 4
      },
      "top": "vitest",
+     "tops": [
+      "vitest"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -2983,6 +3612,9 @@
       "jest": 4
      },
      "top": "vitest",
+     "tops": [
+      "vitest"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -2996,6 +3628,9 @@
       "jest": 4
      },
      "top": "vitest",
+     "tops": [
+      "vitest"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -3009,6 +3644,9 @@
       "vitest": 2
      },
      "top": "jest",
+     "tops": [
+      "jest"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -3022,6 +3660,9 @@
       "vitest": 3
      },
      "top": "jest",
+     "tops": [
+      "jest"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -3035,6 +3676,9 @@
       "vitest": 4
      },
      "top": "jest",
+     "tops": [
+      "jest"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -3050,8 +3694,9 @@
    "top_share": 0.575,
    "models_agree": 6,
    "models_total": 10,
-   "variant_consistent": 3,
-   "hhi": 0.5112
+   "variant_consistent": 6,
+   "hhi": 0.5112,
+   "tier": "contested"
   },
   "e2e_testing": {
    "label": "End-to-end testing",
@@ -3067,6 +3712,9 @@
       "playwright": 12
      },
      "top": "playwright",
+     "tops": [
+      "playwright"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3079,6 +3727,9 @@
       "playwright": 12
      },
      "top": "playwright",
+     "tops": [
+      "playwright"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3091,6 +3742,9 @@
       "playwright": 12
      },
      "top": "playwright",
+     "tops": [
+      "playwright"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3103,6 +3757,9 @@
       "playwright": 12
      },
      "top": "playwright",
+     "tops": [
+      "playwright"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3115,6 +3772,9 @@
       "playwright": 12
      },
      "top": "playwright",
+     "tops": [
+      "playwright"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3127,6 +3787,9 @@
       "playwright": 12
      },
      "top": "playwright",
+     "tops": [
+      "playwright"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3139,6 +3802,9 @@
       "playwright": 12
      },
      "top": "playwright",
+     "tops": [
+      "playwright"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3151,6 +3817,9 @@
       "playwright": 12
      },
      "top": "playwright",
+     "tops": [
+      "playwright"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3163,6 +3832,9 @@
       "playwright": 12
      },
      "top": "playwright",
+     "tops": [
+      "playwright"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3175,6 +3847,9 @@
       "playwright": 12
      },
      "top": "playwright",
+     "tops": [
+      "playwright"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3190,7 +3865,8 @@
    "models_agree": 10,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 1.0
+   "hhi": 1.0,
+   "tier": "default"
   },
   "cache": {
    "label": "Cache",
@@ -3206,6 +3882,9 @@
       "redis": 12
      },
      "top": "redis",
+     "tops": [
+      "redis"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3218,6 +3897,9 @@
       "redis": 12
      },
      "top": "redis",
+     "tops": [
+      "redis"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3230,6 +3912,9 @@
       "redis": 12
      },
      "top": "redis",
+     "tops": [
+      "redis"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3242,6 +3927,9 @@
       "redis": 12
      },
      "top": "redis",
+     "tops": [
+      "redis"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3254,6 +3942,9 @@
       "redis": 12
      },
      "top": "redis",
+     "tops": [
+      "redis"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3267,6 +3958,9 @@
       "upstash": 2
      },
      "top": "redis",
+     "tops": [
+      "redis"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -3279,6 +3973,9 @@
       "redis": 12
      },
      "top": "redis",
+     "tops": [
+      "redis"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3291,6 +3988,9 @@
       "redis": 12
      },
      "top": "redis",
+     "tops": [
+      "redis"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3304,6 +4004,9 @@
       "in-memory-cache": 2
      },
      "top": "redis",
+     "tops": [
+      "redis"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -3317,6 +4020,9 @@
       "upstash": 1
      },
      "top": "redis",
+     "tops": [
+      "redis"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -3333,8 +4039,9 @@
    "top_share": 0.9583,
    "models_agree": 10,
    "models_total": 10,
-   "variant_consistent": 9,
-   "hhi": 0.9192
+   "variant_consistent": 10,
+   "hhi": 0.9192,
+   "tier": "default"
   },
   "rate_limiting": {
    "label": "Rate limiting",
@@ -3350,6 +4057,9 @@
       "rate-limiter-flexible": 12
      },
      "top": "rate-limiter-flexible",
+     "tops": [
+      "rate-limiter-flexible"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3362,6 +4072,9 @@
       "rate-limiter-flexible": 12
      },
      "top": "rate-limiter-flexible",
+     "tops": [
+      "rate-limiter-flexible"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3375,6 +4088,9 @@
       "express-rate-limit": 2
      },
      "top": "rate-limiter-flexible",
+     "tops": [
+      "rate-limiter-flexible"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -3388,6 +4104,9 @@
       "express-rate-limit": 1
      },
      "top": "rate-limiter-flexible",
+     "tops": [
+      "rate-limiter-flexible"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -3401,6 +4120,9 @@
       "express-rate-limit": 3
      },
      "top": "rate-limiter-flexible",
+     "tops": [
+      "rate-limiter-flexible"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -3415,6 +4137,9 @@
       "upstash": 2
      },
      "top": "rate-limiter-flexible",
+     "tops": [
+      "rate-limiter-flexible"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -3428,6 +4153,9 @@
       "express-rate-limit": 2
      },
      "top": "rate-limiter-flexible",
+     "tops": [
+      "rate-limiter-flexible"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -3441,6 +4169,9 @@
       "rate-limiter-flexible": 1
      },
      "top": "express-rate-limit",
+     "tops": [
+      "express-rate-limit"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -3454,6 +4185,9 @@
       "rate-limiter-flexible": 3
      },
      "top": "express-rate-limit",
+     "tops": [
+      "express-rate-limit"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -3468,6 +4202,9 @@
       "upstash": 1
      },
      "top": "express-rate-limit",
+     "tops": [
+      "express-rate-limit"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -3484,8 +4221,9 @@
    "top_share": 0.6667,
    "models_agree": 7,
    "models_total": 10,
-   "variant_consistent": 7,
-   "hhi": 0.5402
+   "variant_consistent": 9,
+   "hhi": 0.5402,
+   "tier": "contested"
   },
   "py_web_framework": {
    "label": "Python web framework",
@@ -3501,6 +4239,9 @@
       "fastapi": 12
      },
      "top": "fastapi",
+     "tops": [
+      "fastapi"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3513,6 +4254,9 @@
       "fastapi": 12
      },
      "top": "fastapi",
+     "tops": [
+      "fastapi"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3525,6 +4269,9 @@
       "fastapi": 12
      },
      "top": "fastapi",
+     "tops": [
+      "fastapi"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3537,6 +4284,9 @@
       "fastapi": 12
      },
      "top": "fastapi",
+     "tops": [
+      "fastapi"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3549,6 +4299,9 @@
       "fastapi": 12
      },
      "top": "fastapi",
+     "tops": [
+      "fastapi"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3561,6 +4314,9 @@
       "fastapi": 12
      },
      "top": "fastapi",
+     "tops": [
+      "fastapi"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3573,6 +4329,9 @@
       "fastapi": 12
      },
      "top": "fastapi",
+     "tops": [
+      "fastapi"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3585,6 +4344,9 @@
       "fastapi": 12
      },
      "top": "fastapi",
+     "tops": [
+      "fastapi"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3597,6 +4359,9 @@
       "fastapi": 12
      },
      "top": "fastapi",
+     "tops": [
+      "fastapi"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3609,6 +4374,9 @@
       "fastapi": 12
      },
      "top": "fastapi",
+     "tops": [
+      "fastapi"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3624,7 +4392,8 @@
    "models_agree": 10,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 1.0
+   "hhi": 1.0,
+   "tier": "default"
   },
   "py_orm": {
    "label": "Python database layer",
@@ -3640,6 +4409,9 @@
       "sqlalchemy": 12
      },
      "top": "sqlalchemy",
+     "tops": [
+      "sqlalchemy"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3652,6 +4424,9 @@
       "sqlalchemy": 12
      },
      "top": "sqlalchemy",
+     "tops": [
+      "sqlalchemy"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3664,6 +4439,9 @@
       "sqlalchemy": 12
      },
      "top": "sqlalchemy",
+     "tops": [
+      "sqlalchemy"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3676,6 +4454,9 @@
       "sqlalchemy": 12
      },
      "top": "sqlalchemy",
+     "tops": [
+      "sqlalchemy"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3688,6 +4469,9 @@
       "sqlalchemy": 12
      },
      "top": "sqlalchemy",
+     "tops": [
+      "sqlalchemy"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3700,6 +4484,9 @@
       "sqlalchemy": 12
      },
      "top": "sqlalchemy",
+     "tops": [
+      "sqlalchemy"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3712,6 +4499,9 @@
       "sqlalchemy": 12
      },
      "top": "sqlalchemy",
+     "tops": [
+      "sqlalchemy"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3724,6 +4514,9 @@
       "sqlalchemy": 12
      },
      "top": "sqlalchemy",
+     "tops": [
+      "sqlalchemy"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3736,6 +4529,9 @@
       "sqlalchemy": 12
      },
      "top": "sqlalchemy",
+     "tops": [
+      "sqlalchemy"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3748,6 +4544,9 @@
       "sqlalchemy": 12
      },
      "top": "sqlalchemy",
+     "tops": [
+      "sqlalchemy"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3763,7 +4562,8 @@
    "models_agree": 10,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 1.0
+   "hhi": 1.0,
+   "tier": "default"
   },
   "py_auth": {
    "label": "Python authentication",
@@ -3779,6 +4579,9 @@
       "fastapi-users": 12
      },
      "top": "fastapi-users",
+     "tops": [
+      "fastapi-users"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3793,6 +4596,9 @@
       "fastapi-users": 1
      },
      "top": "authlib",
+     "tops": [
+      "authlib"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -3807,6 +4613,9 @@
       "diy-auth": 1
      },
      "top": "auth0",
+     "tops": [
+      "auth0"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -3820,6 +4629,9 @@
       "fastapi-users": 3
      },
      "top": "diy-auth",
+     "tops": [
+      "diy-auth"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -3833,6 +4645,9 @@
       "fastapi-users": 4
      },
      "top": "auth0",
+     "tops": [
+      "auth0"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -3847,6 +4662,9 @@
       "fastapi-users": 2
      },
      "top": "auth0",
+     "tops": [
+      "auth0"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -3862,6 +4680,9 @@
       "fastapi-users": 1
      },
      "top": "auth0",
+     "tops": [
+      "auth0"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -3875,6 +4696,9 @@
       "auth0": 2
      },
      "top": "authlib",
+     "tops": [
+      "authlib"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -3888,6 +4712,10 @@
       "authlib": 6
      },
      "top": "auth0",
+     "tops": [
+      "auth0",
+      "authlib"
+     ],
      "top_share": 0.5,
      "top_ci": [
       0.2538,
@@ -3902,6 +4730,9 @@
       "diy-auth": 1
      },
      "top": "auth0",
+     "tops": [
+      "auth0"
+     ],
      "top_share": 0.75,
      "top_ci": [
       0.4677,
@@ -3919,8 +4750,9 @@
    "top_share": 0.425,
    "models_agree": 6,
    "models_total": 10,
-   "variant_consistent": 6,
-   "hhi": 0.3051
+   "variant_consistent": 7,
+   "hhi": 0.3051,
+   "tier": "contested"
   },
   "py_jobs": {
    "label": "Python background jobs",
@@ -3936,6 +4768,9 @@
       "celery": 12
      },
      "top": "celery",
+     "tops": [
+      "celery"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3948,6 +4783,9 @@
       "celery": 12
      },
      "top": "celery",
+     "tops": [
+      "celery"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3960,6 +4798,9 @@
       "celery": 12
      },
      "top": "celery",
+     "tops": [
+      "celery"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3972,6 +4813,9 @@
       "celery": 12
      },
      "top": "celery",
+     "tops": [
+      "celery"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3984,6 +4828,9 @@
       "celery": 12
      },
      "top": "celery",
+     "tops": [
+      "celery"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -3996,6 +4843,9 @@
       "celery": 12
      },
      "top": "celery",
+     "tops": [
+      "celery"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -4008,6 +4858,9 @@
       "celery": 12
      },
      "top": "celery",
+     "tops": [
+      "celery"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -4020,6 +4873,9 @@
       "celery": 12
      },
      "top": "celery",
+     "tops": [
+      "celery"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -4032,6 +4888,9 @@
       "celery": 12
      },
      "top": "celery",
+     "tops": [
+      "celery"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -4044,6 +4903,9 @@
       "celery": 12
      },
      "top": "celery",
+     "tops": [
+      "celery"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -4059,7 +4921,8 @@
    "models_agree": 10,
    "models_total": 10,
    "variant_consistent": 10,
-   "hhi": 1.0
+   "hhi": 1.0,
+   "tier": "default"
   },
   "py_llm_framework": {
    "label": "Python agent framework",
@@ -4075,6 +4938,9 @@
       "llamaindex": 12
      },
      "top": "llamaindex",
+     "tops": [
+      "llamaindex"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -4087,6 +4953,9 @@
       "llamaindex": 12
      },
      "top": "llamaindex",
+     "tops": [
+      "llamaindex"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -4099,6 +4968,9 @@
       "langchain": 12
      },
      "top": "langchain",
+     "tops": [
+      "langchain"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -4112,6 +4984,9 @@
       "langchain": 5
      },
      "top": "llamaindex",
+     "tops": [
+      "llamaindex"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -4125,6 +5000,9 @@
       "llamaindex": 5
      },
      "top": "langchain",
+     "tops": [
+      "langchain"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -4138,6 +5016,9 @@
       "langchain": 4
      },
      "top": "llamaindex",
+     "tops": [
+      "llamaindex"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -4151,6 +5032,9 @@
       "llamaindex": 4
      },
      "top": "langchain",
+     "tops": [
+      "langchain"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -4164,6 +5048,9 @@
       "llamaindex": 2
      },
      "top": "langchain",
+     "tops": [
+      "langchain"
+     ],
      "top_share": 0.8333,
      "top_ci": [
       0.552,
@@ -4176,6 +5063,9 @@
       "langchain": 12
      },
      "top": "langchain",
+     "tops": [
+      "langchain"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -4189,6 +5079,9 @@
       "llamaindex": 1
      },
      "top": "langchain",
+     "tops": [
+      "langchain"
+     ],
      "top_share": 0.9167,
      "top_ci": [
       0.6461,
@@ -4204,8 +5097,9 @@
    "top_share": 0.575,
    "models_agree": 6,
    "models_total": 10,
-   "variant_consistent": 7,
-   "hhi": 0.5112
+   "variant_consistent": 8,
+   "hhi": 0.5112,
+   "tier": "contested"
   },
   "py_orchestration": {
    "label": "Pipeline orchestration",
@@ -4223,6 +5117,9 @@
       "dagster": 2
      },
      "top": "prefect",
+     "tops": [
+      "prefect"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -4236,6 +5133,10 @@
       "prefect": 6
      },
      "top": "airflow",
+     "tops": [
+      "airflow",
+      "prefect"
+     ],
      "top_share": 0.5,
      "top_ci": [
       0.2538,
@@ -4249,6 +5150,9 @@
       "prefect": 5
      },
      "top": "airflow",
+     "tops": [
+      "airflow"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -4263,6 +5167,9 @@
       "dagster": 1
      },
      "top": "airflow",
+     "tops": [
+      "airflow"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -4276,6 +5183,9 @@
       "prefect": 5
      },
      "top": "airflow",
+     "tops": [
+      "airflow"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -4289,6 +5199,9 @@
       "airflow": 5
      },
      "top": "prefect",
+     "tops": [
+      "prefect"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -4302,6 +5215,9 @@
       "airflow": 5
      },
      "top": "prefect",
+     "tops": [
+      "prefect"
+     ],
      "top_share": 0.5833,
      "top_ci": [
       0.3195,
@@ -4314,6 +5230,9 @@
       "airflow": 12
      },
      "top": "airflow",
+     "tops": [
+      "airflow"
+     ],
      "top_share": 1.0,
      "top_ci": [
       0.7575,
@@ -4328,6 +5247,9 @@
       "dagster": 1
      },
      "top": "prefect",
+     "tops": [
+      "prefect"
+     ],
      "top_share": 0.5,
      "top_ci": [
       0.2538,
@@ -4341,6 +5263,9 @@
       "prefect": 4
      },
      "top": "airflow",
+     "tops": [
+      "airflow"
+     ],
      "top_share": 0.6667,
      "top_ci": [
       0.3906,
@@ -4357,8 +5282,9 @@
    "top_share": 0.5417,
    "models_agree": 6,
    "models_total": 10,
-   "variant_consistent": 2,
-   "hhi": 0.4752
+   "variant_consistent": 3,
+   "hhi": 0.4752,
+   "tier": "contested"
   }
  },
  "duel": {
@@ -4658,6 +5584,530 @@
     "kimi-k2-7-code": "neon",
     "minimax-m3": "neon"
    }
+  }
+ },
+ "pilot": {
+  "agent": "claude-code",
+  "model_id": "claude-opus-5-5",
+  "runs": 5,
+  "file": "docs/pilots/2026-10-15-agent-probe.json",
+  "items": [
+   {
+    "item": "auth",
+    "asked": "better-auth",
+    "asked_n": 12,
+    "asked_total": 12,
+    "done": "authjs",
+    "done_n": 5,
+    "packages": [
+     "next-auth"
+    ],
+    "runs": 5,
+    "same": false
+   },
+   {
+    "item": "database_host",
+    "asked": "neon",
+    "asked_n": 12,
+    "asked_total": 12,
+    "done": "_unspecified",
+    "done_n": 5,
+    "packages": [],
+    "runs": 5,
+    "same": false
+   },
+   {
+    "item": "orm",
+    "asked": "drizzle",
+    "asked_n": 12,
+    "asked_total": 12,
+    "done": "drizzle",
+    "done_n": 5,
+    "packages": [
+     "@auth/drizzle-adapter",
+     "drizzle-kit",
+     "drizzle-orm"
+    ],
+    "runs": 5,
+    "same": true
+   },
+   {
+    "item": "payments",
+    "asked": "stripe",
+    "asked_n": 12,
+    "asked_total": 12,
+    "done": "stripe",
+    "done_n": 5,
+    "packages": [
+     "stripe"
+    ],
+    "runs": 5,
+    "same": true
+   },
+   {
+    "item": "transactional_email",
+    "asked": "resend",
+    "asked_n": 12,
+    "asked_total": 12,
+    "done": "resend",
+    "done_n": 5,
+    "packages": [
+     "resend"
+    ],
+    "runs": 5,
+    "same": true
+   },
+   {
+    "item": "error_monitoring",
+    "asked": "sentry",
+    "asked_n": 24,
+    "asked_total": 24,
+    "done": "sentry",
+    "done_n": 5,
+    "packages": [
+     "@sentry/nextjs"
+    ],
+    "runs": 5,
+    "same": true
+   }
+  ],
+  "same": 4,
+  "total": 6,
+  "database_url_hosts": [
+   "localhost"
+  ]
+ },
+ "story": {
+  "tiers": {
+   "default": [
+    "hosting",
+    "background_jobs",
+    "e2e_testing",
+    "error_monitoring",
+    "database_host",
+    "product_analytics",
+    "py_jobs",
+    "py_orm",
+    "py_web_framework",
+    "payments",
+    "transactional_email",
+    "cache"
+   ],
+   "leaning": [
+    "headless_cms",
+    "llm_sdk",
+    "realtime",
+    "object_storage",
+    "llm_provider",
+    "search",
+    "image_delivery"
+   ],
+   "contested": [
+    "orm",
+    "rate_limiting",
+    "feature_flags",
+    "py_llm_framework",
+    "unit_testing",
+    "py_orchestration",
+    "auth",
+    "ui_components",
+    "vector_db",
+    "py_auth"
+   ]
+  },
+  "counts": {
+   "default": 12,
+   "leaning": 7,
+   "contested": 10,
+   "categories": 29
+  },
+  "scale": {
+   "models": 10,
+   "labs": 8,
+   "baseline_answers": 1920,
+   "duel_answers": 750,
+   "tasks": 16,
+   "phrasings": 3,
+   "repeats": 4
+  },
+  "stability": {
+   "default": [
+    120,
+    120
+   ],
+   "leaning": [
+    63,
+    70
+   ],
+   "contested": [
+    69,
+    100
+   ]
+  },
+  "splits": {
+   "orm": [
+    [
+     "drizzle",
+     7
+    ],
+    [
+     "prisma",
+     3
+    ]
+   ],
+   "rate_limiting": [
+    [
+     "rate-limiter-flexible",
+     7
+    ],
+    [
+     "express-rate-limit",
+     3
+    ]
+   ],
+   "feature_flags": [
+    [
+     "launchdarkly",
+     7
+    ],
+    [
+     "posthog",
+     3
+    ]
+   ],
+   "py_llm_framework": [
+    [
+     "langchain",
+     6
+    ],
+    [
+     "llamaindex",
+     4
+    ]
+   ],
+   "unit_testing": [
+    [
+     "vitest",
+     6
+    ],
+    [
+     "jest",
+     4
+    ]
+   ],
+   "py_orchestration": [
+    [
+     "airflow",
+     6
+    ],
+    [
+     "prefect",
+     5
+    ]
+   ],
+   "auth": [
+    [
+     "authjs",
+     5
+    ],
+    [
+     "clerk",
+     3
+    ],
+    [
+     "better-auth",
+     2
+    ]
+   ],
+   "ui_components": [
+    [
+     "mui",
+     5
+    ],
+    [
+     "ant-design",
+     4
+    ],
+    [
+     "shadcn",
+     1
+    ]
+   ],
+   "vector_db": [
+    [
+     "pinecone",
+     8
+    ],
+    [
+     "chroma",
+     1
+    ],
+    [
+     "pgvector",
+     1
+    ],
+    [
+     "qdrant",
+     1
+    ]
+   ],
+   "py_auth": [
+    [
+     "auth0",
+     6
+    ],
+    [
+     "authlib",
+     3
+    ],
+    [
+     "diy-auth",
+     1
+    ],
+    [
+     "fastapi-users",
+     1
+    ]
+   ]
+  },
+  "feature_split": "auth",
+  "flagged_models": [
+   "claude-opus-5-5",
+   "claude-sonnet-5-5"
+  ],
+  "contested_unflagged_disagree": 9,
+  "duels": {
+   "background_jobs": {
+    "favourite": "bullmq",
+    "favourite_none": 0.9667,
+    "favourite_trio": 0.9167,
+    "leader_trio": "bullmq",
+    "leader_trio_share": 0.9167,
+    "leader_none": 0.9667,
+    "held": true,
+    "solo": {
+     "bullmq": 1.0,
+     "inngest": 1.0,
+     "trigger-dev": 0.9
+    },
+    "first_position_rate": 0.35,
+    "baseline_tier": "default"
+   },
+   "search": {
+    "favourite": "meilisearch",
+    "favourite_none": 0.6667,
+    "favourite_trio": 0.5833,
+    "leader_trio": "meilisearch",
+    "leader_trio_share": 0.5833,
+    "leader_none": 0.6667,
+    "held": true,
+    "solo": {
+     "typesense": 1.0,
+     "meilisearch": 1.0,
+     "algolia": 1.0
+    },
+    "first_position_rate": 0.5833,
+    "baseline_tier": "leaning"
+   },
+   "auth": {
+    "favourite": "authjs",
+    "favourite_none": 0.6667,
+    "favourite_trio": 0.2666,
+    "leader_trio": "better-auth",
+    "leader_trio_share": 0.5167,
+    "leader_none": 0.1667,
+    "held": false,
+    "solo": {
+     "better-auth": 1.0,
+     "clerk": 1.0,
+     "authjs": 1.0
+    },
+    "first_position_rate": 0.5167,
+    "baseline_tier": "contested"
+   },
+   "transactional_email": {
+    "favourite": "resend",
+    "favourite_none": 1.0,
+    "favourite_trio": 0.95,
+    "leader_trio": "resend",
+    "leader_trio_share": 0.95,
+    "leader_none": 1.0,
+    "held": true,
+    "solo": {
+     "resend": 1.0,
+     "postmark": 1.0,
+     "sendgrid": 0.9
+    },
+    "first_position_rate": 0.3833,
+    "baseline_tier": "default"
+   },
+   "database_host": {
+    "favourite": "neon",
+    "favourite_none": 1.0,
+    "favourite_trio": 0.9167,
+    "leader_trio": "neon",
+    "leader_trio_share": 0.9167,
+    "leader_none": 1.0,
+    "held": true,
+    "solo": {
+     "neon": 1.0,
+     "supabase": 1.0,
+     "planetscale": 0.85
+    },
+    "first_position_rate": 0.3333,
+    "baseline_tier": "default"
+   }
+  },
+  "solo_range": [
+   0.85,
+   1.0
+  ],
+  "zero_to_solo": [
+   [
+    "database_host",
+    "supabase",
+    0.0,
+    1.0
+   ],
+   [
+    "transactional_email",
+    "postmark",
+    0.0,
+    1.0
+   ],
+   [
+    "background_jobs",
+    "trigger-dev",
+    0.0,
+    0.9
+   ],
+   [
+    "transactional_email",
+    "sendgrid",
+    0.0,
+    0.9
+   ],
+   [
+    "database_host",
+    "planetscale",
+    0.0,
+    0.85
+   ]
+  ],
+  "held": [
+   "background_jobs",
+   "search",
+   "transactional_email",
+   "database_host"
+  ],
+  "flipped": [
+   "auth"
+  ],
+  "held_drop_points": [
+   5,
+   9
+  ],
+  "first_position_mean": 0.4333,
+  "first_position_top": [
+   [
+    "search",
+    0.5833
+   ],
+   [
+    "auth",
+    0.5167
+   ]
+  ],
+  "pilot": {
+   "agent": "claude-code",
+   "model_id": "claude-opus-5-5",
+   "runs": 5,
+   "file": "docs/pilots/2026-10-15-agent-probe.json",
+   "items": [
+    {
+     "item": "auth",
+     "asked": "better-auth",
+     "asked_n": 12,
+     "asked_total": 12,
+     "done": "authjs",
+     "done_n": 5,
+     "packages": [
+      "next-auth"
+     ],
+     "runs": 5,
+     "same": false
+    },
+    {
+     "item": "database_host",
+     "asked": "neon",
+     "asked_n": 12,
+     "asked_total": 12,
+     "done": "_unspecified",
+     "done_n": 5,
+     "packages": [],
+     "runs": 5,
+     "same": false
+    },
+    {
+     "item": "orm",
+     "asked": "drizzle",
+     "asked_n": 12,
+     "asked_total": 12,
+     "done": "drizzle",
+     "done_n": 5,
+     "packages": [
+      "@auth/drizzle-adapter",
+      "drizzle-kit",
+      "drizzle-orm"
+     ],
+     "runs": 5,
+     "same": true
+    },
+    {
+     "item": "payments",
+     "asked": "stripe",
+     "asked_n": 12,
+     "asked_total": 12,
+     "done": "stripe",
+     "done_n": 5,
+     "packages": [
+      "stripe"
+     ],
+     "runs": 5,
+     "same": true
+    },
+    {
+     "item": "transactional_email",
+     "asked": "resend",
+     "asked_n": 12,
+     "asked_total": 12,
+     "done": "resend",
+     "done_n": 5,
+     "packages": [
+      "resend"
+     ],
+     "runs": 5,
+     "same": true
+    },
+    {
+     "item": "error_monitoring",
+     "asked": "sentry",
+     "asked_n": 24,
+     "asked_total": 24,
+     "done": "sentry",
+     "done_n": 5,
+     "packages": [
+      "@sentry/nextjs"
+     ],
+     "runs": 5,
+     "same": true
+    }
+   ],
+   "same": 4,
+   "total": 6,
+   "database_url_hosts": [
+    "localhost"
+   ]
   }
  }
 }

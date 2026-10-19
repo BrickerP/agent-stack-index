@@ -50,6 +50,31 @@ def top(shares: dict) -> tuple:
     return named[0] if named else (None, 0.0)
 
 
+def tops_of(counter: Counter) -> list:
+    """Every named vendor tied for the most picks (12-answer cells tie more often than one expects)."""
+    named = {k: v for k, v in counter.items() if not k.startswith("_") and v > 0}
+    if not named:
+        return []
+    best = max(named.values())
+    return sorted(k for k, v in named.items() if v == best)
+
+
+# Tiers describe how settled a category is. A model "agrees" when the pooled top pick is among its
+# own (possibly tied) top picks; "consistent" when one pick is a top pick in all three phrasings.
+DEFAULT_SHARE = 0.95
+LEANING_AGREE = 0.8
+LEANING_SHARE = 0.5
+
+
+def tier(row: dict) -> str:
+    total = row["models_total"] or 1
+    if row["models_agree"] == total and row["top_share"] >= DEFAULT_SHARE:
+        return "default"
+    if row["models_agree"] >= LEANING_AGREE * total and row["top_share"] > LEANING_SHARE:
+        return "leaning"
+    return "contested"
+
+
 def summarize(per_model: dict, per_variant: dict) -> dict:
     models = {}
     for model_id, counter in sorted(per_model.items()):
@@ -59,17 +84,18 @@ def summarize(per_model: dict, per_variant: dict) -> dict:
             "n": n,
             "counts": dict(sorted(counter.items(), key=lambda kv: (-kv[1], kv[0]))),
             "top": t,
+            "tops": tops_of(counter),
             "top_share": s,
             "top_ci": wilson(counter.get(t, 0), n) if t else [0.0, 0.0],
         }
     pool = pooled(per_model)
     pool_top, pool_share = top(pool)
-    agree = sum(1 for m in models.values() if m["top"] == pool_top)
+    agree = sum(1 for m in models.values() if pool_top in m["tops"])
     consistent = 0
-    for model_id, variants in per_variant.items():
-        tops = {top(share_table(c))[0] for c in variants.values() if sum(c.values())}
-        consistent += len(tops) == 1
-    return {
+    for model_id, variants in sorted(per_variant.items()):
+        sets = [set(tops_of(c)) for _v, c in sorted(variants.items()) if sum(c.values())]
+        consistent += bool(sets) and bool(set.intersection(*sets))
+    row = {
         "n": sum(m["n"] for m in models.values()),
         "models": models,
         "pooled": pool,
@@ -80,6 +106,8 @@ def summarize(per_model: dict, per_variant: dict) -> dict:
         "variant_consistent": consistent,
         "hhi": round(sum(v * v for k, v in pool.items() if not k.startswith("_")), 4),
     }
+    row["tier"] = tier(row)
+    return row
 
 
 def baseline(ws: Workspace, records, matcher: Matcher | None = None) -> dict:

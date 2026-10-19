@@ -16,6 +16,7 @@ from .analyze import baseline, duel
 from .config import Workspace, load_experiment
 from .normalize import Matcher, unmatched
 from .plan import plan
+from .story import pilot_summary, story
 
 
 def release_dir(ws: Workspace, release_id: str) -> Path:
@@ -45,7 +46,8 @@ def build(ws: Workspace, release_id: str) -> dict:
         records, planned = _records(ws, exp)
         records_all += records
         exps[role] = {"id": exp.id, "title": exp.title, "planned": planned, "observed": len(records),
-                      "coverage": round(len(records) / planned, 4) if planned else 0.0}
+                      "coverage": round(len(records) / planned, 4) if planned else 0.0,
+                      "variants": list(exp.variants), "repeats": exp.repeats}
         data[role] = baseline(ws, records, matcher) if role == "baseline" else duel(ws, records, exp.duels, matcher)
     models = {}
     for rec in records_all:
@@ -65,13 +67,18 @@ def build(ws: Workspace, release_id: str) -> dict:
         "answers": len(records_all),
         "models": {
             mid: {"label": ws.models[mid].label, "lab": ws.models[mid].lab, "route": ws.models[mid].route,
-                  "reported": sorted(x for x in v["reported"] if x), "answers": v["answers"], "notes": ws.models[mid].notes}
+                  "reported": sorted(x for x in v["reported"] if x), "answers": v["answers"], "notes": ws.models[mid].notes,
+                  "injected_prompt": ws.models[mid].injected_prompt}
             for mid, v in sorted(models.items())
         },
         "unmatched_rate": round(sum(n for (_c, _r, how, _v), n in misses if how == "unmatched") / total_items, 4),
         "unmatched_top": [{"category": c, "raw": r, "how": how, "count": n} for (c, r, how, _v), n in misses[:30]],
     }
-    return {"manifest": manifest, **data}
+    result = {"manifest": manifest, **data}
+    if s.get("pilot") and data.get("baseline"):
+        result["pilot"] = pilot_summary(ws, data["baseline"], ws.root / s["pilot"])
+    result["story"] = story(result)
+    return result
 
 
 def to_csv(result: dict) -> str:
