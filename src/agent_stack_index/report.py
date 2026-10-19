@@ -1,109 +1,95 @@
-"""Human-readable release report (Markdown), generated from results.json data only."""
+"""Markdown release report, in the same order as the web report: three findings, then evidence."""
 from __future__ import annotations
 
 from .config import Workspace
+from .narrative import (TITLE, dek, findings, limits, name, names, pct, section_contested, section_default, section_duel,
+                        section_meaning, section_pilot)
+
+__all__ = ["markdown", "name", "pct"]
+
+TIER_TITLES = {
+    "default": "Settled — every model, at least 95% of answers",
+    "leaning": "Leaning — at least 8 of 10 models agree",
+    "contested": "Contested",
+}
 
 
-def name(ws: Workspace, vendor: str | None, category: str) -> str:
-    if not vendor:
-        return "—"
-    if vendor == "_other":
-        return "other (not in catalog)"
-    if vendor == "_none":
-        return "none / no answer"
-    v = ws.vendors.get(vendor)
-    return v.product(category) if v else vendor
+def mark(man: dict, model_id: str) -> str:
+    m = man["models"][model_id]
+    return m["label"] + ("†" if m.get("injected_prompt") else "")
 
 
-def pct(x) -> str:
-    return f"{round(100 * float(x or 0))}%"
-
-
-LAB_VENDOR = {"Anthropic": "anthropic", "OpenAI": "openai", "Google": "google"}
-
-
-def window(man: dict) -> str:
-    w = man.get("data_window") or []
-    return w[0] if len(w) == 2 and w[0] == w[1] else " to ".join(w)
-
-
-def headline(ws: Workspace, result: dict) -> list:
-    base = result.get("baseline") or {}
-    duel = result.get("duel") or {}
-    man = result["manifest"]
-    total = len(base)
-    strong = [c for c, r in base.items() if r["models_total"] and r["models_agree"] >= 0.8 * r["models_total"]]
-    unanimous = [c for c, r in base.items() if r["models_agree"] == r["models_total"] and r["top_share"] >= 0.95]
-    lines = [f"- **{len(strong)} of {total} categories** have a default that at least 80% of models share; "
-             f"in {len(unanimous)} of them every model picks the same tool and it takes at least 95% of all answers."]
-    ranked = sorted(base.items(), key=lambda kv: (-kv[1]["top_share"], kv[0]))[:6]
-    lines.append("- Unanimous defaults include " + ", ".join(
-        f"{name(ws, r['top'], c)} ({r['label']})" for c, r in ranked) + ".")
-    if duel:
-        solo = [(r["solo_win"][v], v, c) for c, r in duel.items() for v in r["vendors"]]
-        never = [(v, c) for c, r in duel.items() for v in r["vendors"] if r["arms"].get("none", {}).get(v, 0) <= 0.01 and r["solo_win"][v] >= 0.5]
-        low, high = min(s for s, _v, _c in solo), max(s for s, _v, _c in solo)
-        lines.append(f"- **Whatever the model reads decides the pick.** With only one candidate's notes in context, models pick that candidate "
-                     f"{pct(low)}–{pct(high)} of the time" + (", including tools they never pick unprompted (" + ", ".join(
-                         f"{name(ws, v, c)} 0% → {pct(duel[c]['solo_win'][v])}" for v, c in never[:3]) + ")" if never else "") + ".")
-        flips = sorted(((r["lift"][v], v, c) for c, r in duel.items() for v in r["vendors"]), reverse=True)
-        lift, v, c = flips[0]
-        if lift >= 0.1:
-            lines.append(f"- With all candidates' notes side by side, most defaults hold, but {duel[c]['label']} moves: "
-                         f"{name(ws, v, c)} goes from {pct(duel[c]['arms'].get('none', {}).get(v))} to {pct(duel[c]['arms'].get('trio', {}).get(v))}.")
-    provider = base.get("llm_provider")
-    if provider:
-        own = []
-        for mid, m in provider["models"].items():
-            lab = man["models"].get(mid, {}).get("lab")
-            if lab in LAB_VENDOR and m["n"]:
-                own.append(f"{man['models'][mid]['label']} names {lab} {pct(m['counts'].get(LAB_VENDOR[lab], 0) / m['n'])}")
-        if own:
-            lines.append(f"- Asked for an LLM provider, the pooled pick is {name(ws, provider['top'], 'llm_provider')}; by lab: " + "; ".join(own) + ".")
-    lines.append(f"- {man['answers']:,} answers from {len(man['models'])} models, collected {window(man)}.")
-    return lines
+def runner_up(ws: Workspace, row: dict, cat: str) -> str:
+    named = [(k, v) for k, v in row["pooled"].items() if not k.startswith("_")]
+    return f"{name(ws, named[1][0], cat)} {pct(named[1][1])}" if len(named) > 1 else "—"
 
 
 def markdown(ws: Workspace, result: dict) -> str:
-    man = result["manifest"]
-    base = result.get("baseline") or {}
-    duel = result.get("duel") or {}
-    out = [f"# {man['title']}", "",
-           "Which libraries and hosted services AI coding models pick when they start a project from scratch, "
-           "and how much the pick moves when vendor documentation is in context.", "",
-           "## Headline", "", *headline(ws, result), ""]
-    out += ["## The default stack", "", "| Category | Top pick | Pooled share | Models agreeing | Runner-up |", "|---|---|---|---|---|"]
-    for cat, r in base.items():
-        named = [(k, v) for k, v in r["pooled"].items() if not k.startswith("_")]
-        runner = f"{name(ws, named[1][0], cat)} ({pct(named[1][1])})" if len(named) > 1 else "—"
-        out.append(f"| {r['label']} | {name(ws, r['top'], cat)} | {pct(r['top_share'])} | {r['models_agree']}/{r['models_total']} | {runner} |")
+    man, st = result["manifest"], result["story"]
+    base, duel = result.get("baseline") or {}, result.get("duel") or {}
     models = list(man["models"])
-    if base and models:
-        out += ["", "## Top pick by model", "", "| Category | " + " | ".join(man["models"][m]["label"] for m in models) + " |",
-                "|---|" + "---|" * len(models)]
-        for cat, r in base.items():
-            cells = []
-            for m in models:
-                mm = r["models"].get(m)
-                cells.append(f"{name(ws, mm['top'], cat)} {pct(mm['top_share'])}" if mm and mm["top"] else "—")
-            out.append(f"| {r['label']} | " + " | ".join(cells) + " |")
+    out = [f"# {TITLE}", "", f"*{man['title']}*", "", dek(result), ""]
+    out += [f"{i}. {text}" for i, text in enumerate(findings(ws, result), 1)] + [""]
+
+    out += ["## 1. Most categories already have a default", "", section_default(ws, result), ""]
+    for tier, cats in st["tiers"].items():
+        if not cats:
+            continue
+        out += [f"**{TIER_TITLES[tier]}** ({len(cats)})", "", "| Category | Pick | Share | Models agreeing | Runner-up |", "|---|---|---|---|---|"]
+        out += [f"| {base[c]['label']} | {name(ws, base[c]['top'], c)} | {pct(base[c]['top_share'])} | "
+                f"{base[c]['models_agree']}/{base[c]['models_total']} | {runner_up(ws, base[c], c)} |" for c in cats]
+        out.append("")
+
+    contested = st["tiers"]["contested"]
+    if contested:
+        out += ["## 2. Without a default, the pick moves with the model and the wording", ""]
+        out += [p + "\n" for p in section_contested(ws, result)]
+        out += ["| Category | Top pick of how many models | Same pick when reworded |", "|---|---|---|"]
+        for c in contested:
+            split = " · ".join(f"{name(ws, v, c)} ×{n}" for v, n in st["splits"][c])
+            out.append(f"| {base[c]['label']} | {split} | {base[c]['variant_consistent']}/{base[c]['models_total']} |")
+        out += ["", "A model tied between two tools counts for both. Per-model picks are in the appendix.", ""]
+
     if duel:
-        out += ["", "## Context duels", "",
-                "Same single-item task, three arms: no notes, all candidates' notes (order rotated), each candidate's notes alone.", "",
-                "| Category | Candidate | No notes | All notes | Its notes alone |", "|---|---|---|---|---|"]
-        for cat, r in duel.items():
-            for v in r["vendors"]:
-                out.append(f"| {r['label']} | {name(ws, v, cat)} | {pct(r['arms'].get('none', {}).get(v))} | "
-                           f"{pct(r['arms'].get('trio', {}).get(v))} | {pct(r['solo_win'][v])} |")
-        rates = [r["first_position_rate"] for r in duel.values() if r["first_position_rate"] is not None]
-        if rates:
-            out += ["", f"Listed-first candidate won {pct(sum(rates) / len(rates))} of all-notes picks (one third would be no position effect)."]
-    out += ["", "## Coverage", "", "| Experiment | Planned | Observed | Coverage |", "|---|---|---|---|"]
-    for e in man["experiments"].values():
-        out.append(f"| {e['id']} | {e['planned']} | {e['observed']} | {pct(e['coverage'])} |")
+        out += ["## 3. What the model reads decides the pick, unless the default is strong", ""]
+        out += [p + "\n" for p in section_duel(ws, result)]
+        out += ["| Category | Candidate | No notes | All three candidates' notes | Its notes alone |", "|---|---|---|---|---|"]
+        for c, row in duel.items():
+            for v in row["vendors"]:
+                out.append(f"| {row['label']} | {name(ws, v, c)} | {pct(row['arms'].get('none', {}).get(v))} | "
+                           f"{pct(row['arms'].get('trio', {}).get(v))} | {pct(row['solo_win'][v])} |")
+        out.append("")
+
+    out += ["## What this means", ""] + [f"- {p}" for p in section_meaning(ws, result)] + [""]
+
+    if st.get("pilot"):
+        p = st["pilot"]
+        out += ["## Early check: asked vs done", ""] + [x + "\n" for x in section_pilot(ws, result)]
+        out += [f"| Need | Asked ({mark(man, p['model_id'])}, API) | Written by Claude Code ({p['runs']} runs) |", "|---|---|---|"]
+        for i in p["items"]:
+            out.append(f"| {base[i['item']]['label']} | {name(ws, i['asked'], i['item'])} {i['asked_n']}/{i['asked_total']} | "
+                       f"{name(ws, i['done'], i['item'])} {i['done_n']}/{i['runs']} |")
+        out += ["", f"Raw results: [`{p['file']}`](../../{p['file']}).", ""]
+
+    out += ["## Limits", ""] + [f"- {x}" for x in limits(ws, result)] + [""]
+
+    out += ["## Data and method", "",
+            "Raw answers, the vendor catalog and the code are open; every number here is regenerated from them in CI. "
+            "Method: [docs/METHODOLOGY.md](../../docs/METHODOLOGY.md).", "",
+            "| Experiment | Planned | Observed | Coverage |", "|---|---|---|---|"]
+    out += [f"| {e['id']} | {e['planned']} | {e['observed']} | {pct(e['coverage'])} |" for e in man["experiments"].values()]
     out += ["", f"Answers not matched to the catalog: {pct(man['unmatched_rate'])} of items. Catalog `{man['catalog_sha']}`, harness {man['harness']}.",
-            "", "## Models", "", "| Model | Lab | Answers | Reported as | Notes |", "|---|---|---|---|---|"]
-    for mid, m in man["models"].items():
-        out.append(f"| {m['label']} | {m['lab']} | {m['answers']} | {', '.join(m['reported']) or '—'} | {m['notes'] or ''} |")
-    out += ["", "Method and limitations: see [docs/METHODOLOGY.md](../../docs/METHODOLOGY.md).", ""]
+            "", "| Model | Lab | Answers | Reported as |", "|---|---|---|---|"]
+    out += [f"| {mark(man, mid)} | {m['lab']} | {m['answers']} | {', '.join(m['reported']) or '—'} |" for mid, m in man["models"].items()]
+
+    out += ["", "## Appendix: top pick by model, all categories", "",
+            "Ties are shown as A / B. † route adds its own system prompt.", "",
+            "| Category | " + " | ".join(mark(man, m) for m in models) + " |", "|---|" + "---|" * len(models)]
+    for c, row in base.items():
+        cells = []
+        for m in models:
+            mm = row["models"].get(m)
+            cells.append(f"{names(ws, mm['tops'], c)} {pct(mm['top_share'])}" if mm and mm["tops"] else "—")
+        out.append(f"| {row['label']} | " + " | ".join(cells) + " |")
+    out.append("")
     return "\n".join(out)

@@ -25,13 +25,14 @@ Raw answers are stored verbatim. A public catalog (`catalog/`) maps answers to v
 - Each model's share of picks per category, with a Wilson 95% interval on its top pick.
 - Pooled shares are the equal-weight mean of the models' share vectors, so a model that answers more often does not count more.
 - "Models agreeing" counts models whose own top pick equals the pooled top pick.
-- Variant consistency counts models whose top pick is the same in all three phrasings.
+- Variant consistency counts models whose top picks (ties included) have at least one tool in common across all three phrasings.
+- Tiers: a category is *default* when every model's top pick is the pooled top pick and it takes at least 95% of answers; *leaning* when at least 80% of models agree and the pick takes more than half of the answers; *contested* otherwise. The thresholds are constants in `analyze.py`.
 - Duels report pooled shares per arm, the lift from being in context next to rivals (trio minus none), the solo win rate, and the rate at which the first-listed candidate wins in the trio arm.
 
 ## Limitations
 
 - **Stated, not revealed, preference.** These are answers to direct questions through an API, not dependencies installed during a full agent session with tools, a repository and a long system prompt. Agent harnesses add their own instructions and documentation retrieval. A first agent-probe pilot ([2026-10](pilots/2026-10-agent-probe.md)) found exact agreement on 4 of 6 needs and two systematic differences (auth library, deferred hosting choice); until agent probes cover more agents and tasks, read the index as "what the model reaches for by default".
-- **Gateway.** Models are reached through an OpenAI-compatible gateway and identified by the model name the gateway reports. Some routes add their own system prompt (noted per model in each release); we cannot see its content.
+- **Gateway.** Models are reached through an OpenAI-compatible gateway and identified by the model name the gateway reports. Some routes add their own system prompt (noted per model in each release and marked † in the tables); we cannot see its content, so those models' picks may reflect it.
 - **Sampling.** Default sampling parameters; a few repeats per phrasing. Wilson intervals are reported per model; small cells are wide. Attempts that return no parseable answer (for example a reasoning model spending its whole token budget on reasoning) are stored and retried; releases use the last successful answer per trial.
 - **Coverage.** Tasks lean towards TypeScript and Next.js, plus a Python track. Categories and phrasings are a design choice, not a census of real projects.
 - **Notes are ours.** Duel results depend on the notes. They are short and neutral by design; real vendor documentation is longer and more persuasive, so solo results are, if anything, conservative for a vendor with good docs.

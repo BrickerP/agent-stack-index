@@ -91,6 +91,16 @@ def cmd_site(ws, args) -> int:
     return 0
 
 
+def cmd_share(ws, args) -> int:
+    from .share import build, chrome
+
+    for path in build(ws, args.release):
+        print(path.relative_to(ws.root))
+    if not chrome():
+        print("Chrome not found: wrote HTML only. Set CHROME to a Chrome/Chromium binary to render the PNGs.")
+    return 0
+
+
 def cmd_audit(ws, args) -> int:
     from .audit import plan_spec, snapshot
 
@@ -155,6 +165,8 @@ def main(argv=None) -> int:
     ss = sub.add_parser("site")
     ss.add_argument("--release")
     ss.add_argument("--out", default="_site")
+    sh = sub.add_parser("share", help="render the Open Graph card and thread images for a release")
+    sh.add_argument("--release")
     sa = sub.add_parser("audit")
     sa.add_argument("--vendor", required=True)
     sa.add_argument("--release")
