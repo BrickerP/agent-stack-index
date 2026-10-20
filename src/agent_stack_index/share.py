@@ -13,7 +13,7 @@ import subprocess
 from pathlib import Path
 
 from .config import Workspace
-from .narrative import TITLE, label, lower, name, pct
+from .narrative import TITLE, analysis, few, label, lower, name, pct, wording
 from .release import latest_release, release_dir
 
 CSS = """*{box-sizing:border-box;margin:0}body{width:1200px;height:%(h)spx;background:#f6f0e3;color:#3b4250;font-family:Charter,'Bitstream Charter',Cambria,Georgia,serif;
@@ -59,7 +59,7 @@ def card_default(ws: Workspace, result: dict) -> str:
                     for c in st["tiers"]["default"][:12])
     c = st["counts"]
     line = (f'<p class="line">In <b>{c["default"]} of {c["categories"]}</b> categories, every model picks the same tool '
-            f'and it takes at least 95% of the answers.</p>')
+            f'and it takes at least {pct(analysis(result).default_share)} of the answers.</p>')
     return doc(630, f'{eyebrow(result)}<h1>{e(TITLE)}</h1><div class="grow"><div class="grid">{cells}</div>{line}</div>{foot(result)}')
 
 
@@ -71,12 +71,13 @@ def card_context(ws: Workspace, result: dict) -> str:
     stats = (f'<p class="label">Share of picks · no notes → only its own notes in context</p>'
              f'<div class="stats">{stats}</div>')
     line = ""
-    if st["flipped"]:
-        f = st["flipped"][0]
+    flipped = [f for f in st["flipped"] if st["duels"][f]["shifted"]]
+    if flipped:
+        f = flipped[0]
         x = st["duels"][f]
-        line = (f'<p class="line">With all three candidates\' notes side by side, the favourite held in <b>{len(st["held"])} of {len(st["duels"])}</b> '
-                f'categories. In {e(lower(label(result, f)))}: {e(name(ws, x["favourite"], f))} {pct(x["favourite_none"])} → {pct(x["favourite_trio"])}, '
-                f'<b>{e(name(ws, x["leader_trio"], f))} {pct(x["leader_none"])} → {pct(x["leader_trio_share"])}</b>.</p>')
+        line = (f'<p class="line">With all three candidates\' notes side by side, the favourite showed <b>no detectable change in {len(st["held"])} of '
+                f'{len(st["duels"])}</b> categories. In {e(lower(label(result, f)))}: {e(name(ws, x["favourite"], f))} {pct(x["favourite_none"])} → '
+                f'{pct(x["favourite_trio"])}, <b>{e(name(ws, x["leader_trio"], f))} {pct(x["leader_none"])} → {pct(x["leader_trio_share"])}</b>.</p>')
     return doc(675, f'{eyebrow(result)}<h1>What the model reads decides the pick</h1><div class="grow">{stats}{line}</div>{foot(result)}')
 
 
@@ -89,11 +90,10 @@ def card_contested(ws: Workspace, result: dict) -> str:
         rows = "".join(f'<div class="r"><span>{e(name(ws, v, f))}</span><span class="bar" style="width:{100 * n / total:.0f}%"></span>'
                        f'<span class="n">{n} of {total} models</span></div>' for v, n in st["splits"][f])
         rows = f'<p class="label">Top pick for {e(lower(base[f]["label"]))}, by model</p><div class="split">{rows}</div>'
-    cs, ct = st["stability"]["contested"]
-    ds, dt = st["stability"]["default"]
-    settled = "none" if dt - ds == 0 else f"{dt - ds} of {dt}"
-    line = (f'<p class="line">In the {st["counts"]["contested"]} contested categories, <b>{ct - cs} of {ct}</b> model–category pairs change their '
-            f'top pick when the request is reworded. In the {st["counts"]["default"]} settled categories, {settled} do.</p>')
+    wc, wd = wording(st, "contested"), wording(st, "default")
+    line = (f'<p class="line">In the {st["counts"]["contested"]} contested categories, <b>{wc["changed"]} of {wc["pairs"]}</b> model–category pairs '
+            f'change their top pick when the request is reworded; sampling noise alone would change about {round(wc["null_mean"])}. '
+            f'In the {st["counts"]["default"]} settled categories, {few(wd["changed"], wd["pairs"])} do.</p>')
     return doc(675, f'{eyebrow(result)}<h1>No default, no stable answer</h1><div class="grow">{rows}{line}</div>{foot(result)}')
 
 

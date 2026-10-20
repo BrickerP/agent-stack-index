@@ -38,7 +38,10 @@ class PipelineTests(unittest.TestCase):
             'id = "t-duel"\nprobe = "duel"\nmodels = ["gpt-6-astra"]\nvariants = ["notes"]\n[arms]\nnone = 1\ntrio = 3\nsolo = 1\n'
             '[[duel]]\ntask = "ts-jobs"\ncategory = "background_jobs"\nvendors = ["bullmq", "inngest", "trigger-dev"]\n')
         (self.tmp / "releases" / "t").mkdir(parents=True)
-        (self.tmp / "releases" / "t" / "release.toml").write_text('id = "t"\ntitle = "Test"\nbaseline = "t-base"\nduel = "t-duel"\n')
+        (self.tmp / "protocols").mkdir()
+        shutil.copyfile(REPO / "protocols" / "2026-10.md", self.tmp / "protocols" / "t.md")
+        (self.tmp / "releases" / "t" / "release.toml").write_text(
+            'id = "t"\ntitle = "Test"\nbaseline = "t-base"\nduel = "t-duel"\nprotocol = "protocols/t.md"\n[analysis]\nshuffles = 50\n')
         self.ws = load(self.tmp)
 
     def tearDown(self):
@@ -68,6 +71,9 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result["baseline"]["auth"]["models_agree"], 2)
         self.assertEqual(result["duel"]["background_jobs"]["solo_win"]["inngest"], 1.0)
         self.assertGreater(result["manifest"]["unmatched_rate"], 0)
+        self.assertEqual(result["manifest"]["protocol"]["status"], "pilot")
+        self.assertIn("contested", result["inference"]["wording"])
+        self.assertEqual(len(result["inference"]["duel"]["contrasts"]), 3)
         html = (site.build(self.ws, self.tmp / "_site", "t")).read_text()
         self.assertIn("Better Auth", html)
         self.assertIn("BullMQ", snapshot(self.ws, "inngest", "t"))

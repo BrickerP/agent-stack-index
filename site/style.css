@@ -81,3 +81,6 @@ footer{margin-top:64px;border-top:1px solid var(--rule);padding-top:18px;font-si
   table.duel .mini{display:none}
   .findings li{padding-left:44px}
 }
+.status{margin:14px 0 4px;padding:8px 12px;border-left:3px solid var(--accent,#c2412d);background:rgba(255,253,246,.7);font-size:.95em}
+.question{margin:6px 0 0;font-size:.95em;color:#3b4250}
+.tag{display:inline-block;margin-left:6px;padding:0 6px;border:1px solid #d9d0bd;border-radius:2px;font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.04em;text-transform:uppercase;color:#6c7380;vertical-align:1px;white-space:nowrap}

@@ -7,7 +7,7 @@ from __future__ import annotations
 import math
 from collections import Counter, defaultdict
 
-from .config import Workspace
+from .config import Analysis, Workspace
 from .normalize import Matcher, picks
 
 OTHER = "_other"  # answered, but not a catalog vendor
@@ -60,22 +60,26 @@ def tops_of(counter: Counter) -> list:
 
 
 # Tiers describe how settled a category is. A model "agrees" when the pooled top pick is among its
-# own (possibly tied) top picks; "consistent" when one pick is a top pick in all three phrasings.
-DEFAULT_SHARE = 0.95
-LEANING_AGREE = 0.8
-LEANING_SHARE = 0.5
+# own (possibly tied) top picks; it "keeps its pick" when one pick is a top pick in every phrasing.
+# The thresholds are the release's `[analysis]` table (config.Analysis).
 
 
-def tier(row: dict) -> str:
+def keeps_pick(per_variant: dict) -> bool:
+    """True when some tool is a top pick (ties included) in every phrasing the model was asked."""
+    sets = [set(tops_of(c)) for _v, c in sorted(per_variant.items()) if sum(c.values())]
+    return bool(sets) and bool(set.intersection(*sets))
+
+
+def tier(row: dict, an: Analysis) -> str:
     total = row["models_total"] or 1
-    if row["models_agree"] == total and row["top_share"] >= DEFAULT_SHARE:
+    if row["models_agree"] == total and row["top_share"] >= an.default_share:
         return "default"
-    if row["models_agree"] >= LEANING_AGREE * total and row["top_share"] > LEANING_SHARE:
+    if row["models_agree"] >= an.leaning_agree * total and row["top_share"] > an.leaning_share:
         return "leaning"
     return "contested"
 
 
-def summarize(per_model: dict, per_variant: dict) -> dict:
+def summarize(per_model: dict, per_variant: dict, an: Analysis) -> dict:
     models = {}
     for model_id, counter in sorted(per_model.items()):
         n = sum(counter.values())
@@ -91,10 +95,7 @@ def summarize(per_model: dict, per_variant: dict) -> dict:
     pool = pooled(per_model)
     pool_top, pool_share = top(pool)
     agree = sum(1 for m in models.values() if pool_top in m["tops"])
-    consistent = 0
-    for model_id, variants in sorted(per_variant.items()):
-        sets = [set(tops_of(c)) for _v, c in sorted(variants.items()) if sum(c.values())]
-        consistent += bool(sets) and bool(set.intersection(*sets))
+    consistent = sum(keeps_pick(variants) for _m, variants in sorted(per_variant.items()))
     row = {
         "n": sum(m["n"] for m in models.values()),
         "models": models,
@@ -106,11 +107,12 @@ def summarize(per_model: dict, per_variant: dict) -> dict:
         "variant_consistent": consistent,
         "hhi": round(sum(v * v for k, v in pool.items() if not k.startswith("_")), 4),
     }
-    row["tier"] = tier(row)
+    row["tier"] = tier(row, an)
     return row
 
 
-def baseline(ws: Workspace, records, matcher: Matcher | None = None) -> dict:
+def baseline(ws: Workspace, records, matcher: Matcher | None = None, an: Analysis | None = None) -> dict:
+    an = an or Analysis()
     per = defaultdict(lambda: defaultdict(Counter))
     per_var = defaultdict(lambda: defaultdict(lambda: defaultdict(Counter)))
     tasks = defaultdict(set)
@@ -122,7 +124,7 @@ def baseline(ws: Workspace, records, matcher: Matcher | None = None) -> dict:
     out = {}
     for cat in sorted(per, key=lambda c: list(ws.categories).index(c) if c in ws.categories else 999):
         out[cat] = {"label": ws.categories[cat].label, "group": ws.categories[cat].group, "tasks": sorted(tasks[cat])}
-        out[cat].update(summarize(per[cat], per_var[cat]))
+        out[cat].update(summarize(per[cat], per_var[cat], an))
     return out
 
 

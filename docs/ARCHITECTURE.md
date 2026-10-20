@@ -19,6 +19,7 @@ experiments/*.toml   ─┘
 3. **Releases are derived.** `asi release <id>` regenerates `results.json`, `picks.csv` and `REPORT.md` from raw data and the current catalog. CI runs `--check` and fails on drift, so a catalog edit shows up as a reviewable diff in every affected release. The share images are rendered by `asi share` (needs Chrome) from the same results and are committed; CI does not re-render them, so run it after `release`.
 4. **Secrets live in the environment.** `config/models.toml` names environment variables for base URLs and keys; nothing secret or internal is committed.
 5. **No runtime dependencies.** Standard-library Python 3.11+, so CI and new machines need nothing but Python.
+6. **Experiments are planned in writing.** Every release names a protocol (`protocols/<id>.md`) and carries its analysis thresholds in `release.toml`. A confirmatory protocol is locked (`asi lock`) before data exists; `asi run` refuses an unlocked one and `asi validate` fails when the locked text, specs or thresholds change, or when data is older than the lock. See [CHARTER.md](CHARTER.md).
 
 ## Code map (`src/agent_stack_index/`)
 
@@ -31,7 +32,9 @@ experiments/*.toml   ─┘
 | `store.py` | Append-only JSONL, partitioned by experiment and model |
 | `parse.py` | Extract the JSON answer from free text |
 | `normalize.py` | Map raw answers to catalog vendors, scoped by category |
-| `analyze.py` | Shares, Wilson intervals, pooling, agreement, duel effects |
+| `analyze.py` | Shares, Wilson intervals, pooling, agreement, tiers, duel effects |
+| `infer.py` | Null models and tests behind the claims: wording shuffle test, Fisher + Holm duel contrasts, position test, minimum detectable effect |
+| `protocol.py` | Protocol structure checks, the lock, the run gate |
 | `release.py`, `report.py`, `site.py` | Derived artifacts: JSON, CSV, Markdown, static HTML |
 | `story.py`, `narrative.py` | The claims a release makes, computed from its own numbers, and the sentences rendered from them; shared by the Markdown report, the site and the share images |
 | `share.py` | Open Graph card and thread images: HTML rendered from the story, PNG via headless Chrome |
@@ -41,7 +44,8 @@ experiments/*.toml   ─┘
 
 ```bash
 export PYTHONPATH=src ASI_GATEWAY_BASE_URL=... ASI_GATEWAY_API_KEY=...
-python -m agent_stack_index validate
+python -m agent_stack_index validate                       # inputs and protocols
+python -m agent_stack_index lock 2026-11                   # freeze a confirmatory protocol before running
 python -m agent_stack_index plan 2026-10-baseline          # trial counts, nothing executed
 python -m agent_stack_index run 2026-10-baseline           # resumable; --shard 0/4 to split machines
 python -m agent_stack_index unmatched                      # curate catalog aliases
@@ -53,7 +57,7 @@ python -m agent_stack_index share                          # Open Graph card and
 - **New model:** add a `[models.<id>]` table, run the month's experiments again; only the new model's trials execute. Retire with `enabled = false`.
 - **New vendor or alias:** edit `catalog/vendors/*.toml`, run `asi release <id>` for affected releases, commit the diff.
 - **New task, phrasing or duel:** edit the inputs; new trials appear in `asi plan`.
-- **Monthly release:** `asi new-release 2026-11 --from 2026-10` copies the specs under new ids; run, release, share, push. Pages redeploys from the latest release.
+- **Monthly release:** `asi new-release 2026-11 --from 2026-10` copies the specs and the `[analysis]` table under new ids and scaffolds `protocols/2026-11.md`; write the protocol, `asi validate`, `asi lock 2026-11`, then run, release, share, push. Pages redeploys from the latest release.
 - **Scale:** raise `repeats` and per-model `max_concurrency`; split work with `--shard i/n` across machines and merge `data/` (files are append-only and per model, so merges do not conflict within a shard).
 
 ## Commercial layer

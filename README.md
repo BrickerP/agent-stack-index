@@ -6,12 +6,12 @@ Live report: **https://brickerp.github.io/agent-stack-index/** · Latest release
 
 ## October 2026, in short
 
-10 models from 8 labs, 29 categories, 2,670 answers ([data](releases/2026-10/results.json)).
+10 models from 8 labs, 29 categories, 2,670 answers ([data](releases/2026-10/results.json)). This release is a **pilot**: its design was not pre-registered, so every finding is exploratory ([protocol](protocols/2026-10.md)).
 
 - **Most categories already have a default.** In 12 of 29, every model picks the same tool and it takes at least 95% of the answers: Neon (Postgres hosting), Stripe, Sentry, BullMQ, PostHog analytics, Vercel hosting, Playwright, FastAPI, SQLAlchemy, Celery, Resend, Redis. In 7 more, at least 8 of 10 models agree.
-- **Without a default, the pick moves with the model and the wording.** In the 10 contested categories, 31 of 100 model–category pairs change their top pick when the request is reworded; in the 12 settled categories, none do.
-- **What the model reads decides the pick, unless the default is strong.** With only one candidate's notes in context, models pick that candidate 85–100% of the time, including tools they never pick unprompted (Trigger.dev 0% → 90%, Postmark 0% → 100%, SendGrid 0% → 90%).
-- **Side by side, a strong default holds**: the no-notes favourite stayed on top in four of five duels, losing 5–9 points. Authentication, which has no default, flipped: Better Auth goes from 17% to 52% when Better Auth, Clerk and Auth.js notes are all in context.
+- **Without a default, the pick also moves with the wording.** In the 10 contested categories, 31 of 100 model–category pairs change their top pick when the request is reworded, against about 17 expected from sampling noise alone; in the 12 settled categories, none do.
+- **What the model reads can decide the pick.** With only one candidate's notes in context, models pick that candidate 85–100% of the time, including tools they never pick unprompted (Trigger.dev 0% → 90%, Postmark 0% → 100%, SendGrid 0% → 90%); that is close to a forced choice.
+- **Side by side, we detected no shift in four of five duels** (with 30 and 60 answers per arm, shifts under about 19–30 points cannot be ruled out). Authentication, which has no default, flipped: Better Auth goes from 17% to 52% when Better Auth, Clerk and Auth.js notes are all in context. The first-listed candidate won 43% of side-by-side picks (a third expected).
 - **Splits worth watching:** authentication (Auth.js 52%, Better Auth 24%, Clerk 24%), UI components (MUI, Ant Design, shadcn/ui), vector databases, Python auth, pipeline orchestration.
 - **Own-lab preference:** asked for an LLM provider, Claude Opus 5.5 names Anthropic every time; every other model's top pick is OpenAI, including Gemini (Google 8%).
 
@@ -28,6 +28,7 @@ inputs (reviewed text)  →  plan (content-addressed trials)  →  run (resumabl
 - **Two probes.** *Ask*: a build task plus a list of needs, answered as JSON, in three phrasings with repeats. *Duel*: one need, with no notes, all candidates' notes in rotated order, or one candidate's notes alone.
 - **Collection is separate from interpretation.** Answers are stored verbatim; a public [catalog](catalog/) maps them to vendors later, so catalog fixes never require new model calls.
 - **Releases are reproducible.** CI regenerates every release from raw data and fails on drift.
+- **Experiments are planned in writing.** Each release has a [protocol](protocols/) with its goal, hypotheses, design and analysis plan; a confirmatory one is locked before data exists, and the report labels every finding confirmed, not detected or exploratory. See the [charter](docs/CHARTER.md).
 - Details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · plans: [docs/ROADMAP.md](docs/ROADMAP.md)
 
 ## Run it
@@ -36,7 +37,8 @@ Python 3.11+, no dependencies. Any OpenAI-compatible endpoint works.
 
 ```bash
 export PYTHONPATH=src ASI_GATEWAY_BASE_URL=https://your-gateway/v1 ASI_GATEWAY_API_KEY=...
-python -m agent_stack_index validate                 # inputs are consistent
+python -m agent_stack_index validate                 # inputs and protocols are consistent
+python -m agent_stack_index lock 2026-11             # freeze a confirmatory protocol before any data
 python -m agent_stack_index plan 2026-10-baseline    # what would run
 python -m agent_stack_index run 2026-10-baseline     # resumable; only missing trials execute
 python -m agent_stack_index release 2026-10          # regenerate results.json, picks.csv, REPORT.md
@@ -53,7 +55,7 @@ python -m unittest discover -s tests                 # offline tests with a fake
 | A vendor or alias | `catalog/vendors/*.toml` | `release <id>`; the diff shows every number that moved |
 | A task or phrasing | `tasks/tasks.toml`, `prompts/prompts.toml` | new trials appear in `plan` |
 | A duel | `experiments/*-duel.toml` + notes in `contexts/public/` | `run`, `release` |
-| A monthly release | `asi new-release 2026-11 --from 2026-10` | `run`, `release`, `share`, push |
+| A monthly release | `asi new-release 2026-11 --from 2026-10` | write `protocols/2026-11.md`, `validate`, `lock`, then `run`, `release`, `share`, push |
 
 ## Repository layout
 
@@ -64,8 +66,9 @@ tasks/ prompts/           build tasks and prompt phrasings
 contexts/public/          neutral, equal-length vendor notes used in duels
 experiments/              declarative experiment specs
 data/observations/        raw answers, one JSONL file per experiment and model
-releases/<id>/            derived results.json, picks.csv, REPORT.md, share/ (card images)
-src/agent_stack_index/    the engine (plan, run, normalize, analyze, story, release, site, share, audit)
+protocols/                one protocol per release (goal, hypotheses, design, analysis plan) and its lock
+releases/<id>/            release.toml (+ [analysis] thresholds), derived results.json, picks.csv, REPORT.md, share/
+src/agent_stack_index/    the engine (plan, run, normalize, analyze, infer, protocol, story, release, site, share, audit)
 ```
 
 ## Independence

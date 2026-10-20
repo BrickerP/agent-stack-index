@@ -2,8 +2,8 @@
 from __future__ import annotations
 
 from .config import Workspace
-from .narrative import (TITLE, dek, findings, limits, name, names, pct, section_contested, section_default, section_duel,
-                        section_meaning, section_pilot)
+from .narrative import (TITLE, dek, finding_tags, findings, harness_note, limits, name, names, pct, question, section_contested,
+                        section_default, section_duel, section_meaning, section_pilot, status_line)
 
 __all__ = ["markdown", "name", "pct"]
 
@@ -29,7 +29,9 @@ def markdown(ws: Workspace, result: dict) -> str:
     base, duel = result.get("baseline") or {}, result.get("duel") or {}
     models = list(man["models"])
     out = [f"# {TITLE}", "", f"*{man['title']}*", "", dek(result), ""]
-    out += [f"{i}. {text}" for i, text in enumerate(findings(ws, result), 1)] + [""]
+    status, q = status_line(result), question(result)
+    out += ([status, ""] if status else []) + ([f"**Question.** {q}", ""] if q else [])
+    out += [f"{i}. {text} *({tag})*" for i, (text, tag) in enumerate(zip(findings(ws, result), finding_tags(result)), 1)] + [""]
 
     out += ["## 1. Most categories already have a default", "", section_default(ws, result), ""]
     for tier, cats in st["tiers"].items():
@@ -51,7 +53,7 @@ def markdown(ws: Workspace, result: dict) -> str:
         out += ["", "A model tied between two tools counts for both. Per-model picks are in the appendix.", ""]
 
     if duel:
-        out += ["## 3. What the model reads decides the pick, unless the default is strong", ""]
+        out += ["## 3. What the model reads can decide the pick", ""]
         out += [p + "\n" for p in section_duel(ws, result)]
         out += ["| Category | Candidate | No notes | All three candidates' notes | Its notes alone |", "|---|---|---|---|---|"]
         for c, row in duel.items():
@@ -73,9 +75,12 @@ def markdown(ws: Workspace, result: dict) -> str:
 
     out += ["## Limits", ""] + [f"- {x}" for x in limits(ws, result)] + [""]
 
+    proto = man.get("protocol") or {}
+    note = f" Protocol: [{proto['path']}](../../{proto['path']}) ({proto['status']})." if proto else ""
+    harness = f" Harness this round: {harness_note(result)}" if harness_note(result) else ""
     out += ["## Data and method", "",
             "Raw answers, the vendor catalog and the code are open; every number here is regenerated from them in CI. "
-            "Method: [docs/METHODOLOGY.md](../../docs/METHODOLOGY.md).", "",
+            f"Method: [docs/METHODOLOGY.md](../../docs/METHODOLOGY.md).{note}{harness}", "",
             "| Experiment | Planned | Observed | Coverage |", "|---|---|---|---|"]
     out += [f"| {e['id']} | {e['planned']} | {e['observed']} | {pct(e['coverage'])} |" for e in man["experiments"].values()]
     out += ["", f"Answers not matched to the catalog: {pct(man['unmatched_rate'])} of items. Catalog `{man['catalog_sha']}`, harness {man['harness']}.",

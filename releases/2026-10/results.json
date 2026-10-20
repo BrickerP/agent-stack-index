@@ -8,6 +8,28 @@
    "2026-10-15",
    "2026-10-15"
   ],
+  "protocol": {
+   "path": "protocols/2026-10.md",
+   "status": "pilot",
+   "rung": "describe",
+   "goal": "Which tools do AI coding models pick when they start a project from scratch, and what moves the pick: the wording, the order of candidates, or documentation in context?",
+   "benefit": {
+    "builders": "in the settled categories an agent's default is predictable across models; elsewhere, name the tool you want, and do not rely on the order of a list you give it.",
+    "tool makers": "a tool can be picked by being read, and being listed first helps; being the default is a training outcome that is slow to change.",
+    "harness": "the story-driven report, share cards and an inference module (null models, corrected tests)."
+   },
+   "sha": "210201fc3f25",
+   "locked_at": null
+  },
+  "analysis": {
+   "default_share": 0.95,
+   "leaning_agree": 0.8,
+   "leaning_share": 0.5,
+   "alpha": 0.05,
+   "min_effect_points": 10,
+   "shuffles": 1000,
+   "seed": 20261019
+  },
   "experiments": {
    "baseline": {
     "id": "2026-10-baseline",
@@ -5586,6 +5608,416 @@
    }
   }
  },
+ "inference": {
+  "wording": {
+   "contested": {
+    "pairs": 100,
+    "changed": 31,
+    "null_mean": 17.0,
+    "null_sd": 2.8,
+    "excess": 14.0,
+    "p": 0.001
+   },
+   "default": {
+    "pairs": 120,
+    "changed": 0,
+    "null_mean": 0.0,
+    "null_sd": 0.0,
+    "excess": 0.0,
+    "p": 1.0
+   },
+   "leaning": {
+    "pairs": 70,
+    "changed": 7,
+    "null_mean": 5.5,
+    "null_sd": 1.2,
+    "excess": 1.5,
+    "p": 0.1998
+   }
+  },
+  "duel": {
+   "contrasts": [
+    {
+     "category": "background_jobs",
+     "vendor": "bullmq",
+     "none": [
+      29,
+      30
+     ],
+     "trio": [
+      55,
+      60
+     ],
+     "delta_points": -5,
+     "ci_none": [
+      0.8333,
+      0.9941
+     ],
+     "ci_trio": [
+      0.8193,
+      0.9639
+     ],
+     "p": 0.6593,
+     "p_adj": 1.0,
+     "shifted": false
+    },
+    {
+     "category": "background_jobs",
+     "vendor": "inngest",
+     "none": [
+      1,
+      30
+     ],
+     "trio": [
+      4,
+      60
+     ],
+     "delta_points": 3,
+     "ci_none": [
+      0.0059,
+      0.1667
+     ],
+     "ci_trio": [
+      0.0262,
+      0.1593
+     ],
+     "p": 0.6613,
+     "p_adj": 1.0,
+     "shifted": false
+    },
+    {
+     "category": "background_jobs",
+     "vendor": "trigger-dev",
+     "none": [
+      0,
+      30
+     ],
+     "trio": [
+      1,
+      60
+     ],
+     "delta_points": 2,
+     "ci_none": [
+      0.0,
+      0.1135
+     ],
+     "ci_trio": [
+      0.0029,
+      0.0886
+     ],
+     "p": 1.0,
+     "p_adj": 1.0,
+     "shifted": false
+    },
+    {
+     "category": "search",
+     "vendor": "typesense",
+     "none": [
+      1,
+      30
+     ],
+     "trio": [
+      11,
+      60
+     ],
+     "delta_points": 15,
+     "ci_none": [
+      0.0059,
+      0.1667
+     ],
+     "ci_trio": [
+      0.1056,
+      0.2992
+     ],
+     "p": 0.0551,
+     "p_adj": 0.7158,
+     "shifted": false
+    },
+    {
+     "category": "search",
+     "vendor": "meilisearch",
+     "none": [
+      20,
+      30
+     ],
+     "trio": [
+      35,
+      60
+     ],
+     "delta_points": -8,
+     "ci_none": [
+      0.4878,
+      0.8077
+     ],
+     "ci_trio": [
+      0.4573,
+      0.6994
+     ],
+     "p": 0.4978,
+     "p_adj": 1.0,
+     "shifted": false
+    },
+    {
+     "category": "search",
+     "vendor": "algolia",
+     "none": [
+      5,
+      30
+     ],
+     "trio": [
+      14,
+      60
+     ],
+     "delta_points": 7,
+     "ci_none": [
+      0.0734,
+      0.3356
+     ],
+     "ci_trio": [
+      0.1444,
+      0.3544
+     ],
+     "p": 0.588,
+     "p_adj": 1.0,
+     "shifted": false
+    },
+    {
+     "category": "auth",
+     "vendor": "better-auth",
+     "none": [
+      5,
+      30
+     ],
+     "trio": [
+      31,
+      60
+     ],
+     "delta_points": 35,
+     "ci_none": [
+      0.0734,
+      0.3356
+     ],
+     "ci_trio": [
+      0.3931,
+      0.6383
+     ],
+     "p": 0.0014,
+     "p_adj": 0.0202,
+     "shifted": true
+    },
+    {
+     "category": "auth",
+     "vendor": "clerk",
+     "none": [
+      5,
+      30
+     ],
+     "trio": [
+      13,
+      60
+     ],
+     "delta_points": 5,
+     "ci_none": [
+      0.0734,
+      0.3356
+     ],
+     "ci_trio": [
+      0.1312,
+      0.3362
+     ],
+     "p": 0.7807,
+     "p_adj": 1.0,
+     "shifted": false
+    },
+    {
+     "category": "auth",
+     "vendor": "authjs",
+     "none": [
+      20,
+      30
+     ],
+     "trio": [
+      16,
+      60
+     ],
+     "delta_points": -40,
+     "ci_none": [
+      0.4878,
+      0.8077
+     ],
+     "ci_trio": [
+      0.1713,
+      0.3901
+     ],
+     "p": 0.0005,
+     "p_adj": 0.0075,
+     "shifted": true
+    },
+    {
+     "category": "transactional_email",
+     "vendor": "resend",
+     "none": [
+      30,
+      30
+     ],
+     "trio": [
+      57,
+      60
+     ],
+     "delta_points": -5,
+     "ci_none": [
+      0.8865,
+      1.0
+     ],
+     "ci_trio": [
+      0.863,
+      0.9829
+     ],
+     "p": 0.548,
+     "p_adj": 1.0,
+     "shifted": false
+    },
+    {
+     "category": "transactional_email",
+     "vendor": "postmark",
+     "none": [
+      0,
+      30
+     ],
+     "trio": [
+      3,
+      60
+     ],
+     "delta_points": 5,
+     "ci_none": [
+      0.0,
+      0.1135
+     ],
+     "ci_trio": [
+      0.0171,
+      0.137
+     ],
+     "p": 0.548,
+     "p_adj": 1.0,
+     "shifted": false
+    },
+    {
+     "category": "transactional_email",
+     "vendor": "sendgrid",
+     "none": [
+      0,
+      30
+     ],
+     "trio": [
+      0,
+      60
+     ],
+     "delta_points": 0,
+     "ci_none": [
+      0.0,
+      0.1135
+     ],
+     "ci_trio": [
+      0.0,
+      0.0602
+     ],
+     "p": 1.0,
+     "p_adj": 1.0,
+     "shifted": false
+    },
+    {
+     "category": "database_host",
+     "vendor": "neon",
+     "none": [
+      30,
+      30
+     ],
+     "trio": [
+      55,
+      60
+     ],
+     "delta_points": -8,
+     "ci_none": [
+      0.8865,
+      1.0
+     ],
+     "ci_trio": [
+      0.8193,
+      0.9639
+     ],
+     "p": 0.1649,
+     "p_adj": 1.0,
+     "shifted": false
+    },
+    {
+     "category": "database_host",
+     "vendor": "supabase",
+     "none": [
+      0,
+      30
+     ],
+     "trio": [
+      5,
+      60
+     ],
+     "delta_points": 8,
+     "ci_none": [
+      0.0,
+      0.1135
+     ],
+     "ci_trio": [
+      0.0361,
+      0.1807
+     ],
+     "p": 0.1649,
+     "p_adj": 1.0,
+     "shifted": false
+    },
+    {
+     "category": "database_host",
+     "vendor": "planetscale",
+     "none": [
+      0,
+      30
+     ],
+     "trio": [
+      0,
+      60
+     ],
+     "delta_points": 0,
+     "ci_none": [
+      0.0,
+      0.1135
+     ],
+     "ci_trio": [
+      0.0,
+      0.0602
+     ],
+     "p": 1.0,
+     "p_adj": 1.0,
+     "shifted": false
+    }
+   ],
+   "mde_points": {
+    "background_jobs": 19,
+    "search": 30,
+    "auth": 30,
+    "transactional_email": 19,
+    "database_host": 19
+   }
+  },
+  "position": {
+   "first": 130,
+   "n": 300,
+   "rate": 0.4333,
+   "expected": 0.3333,
+   "ci": [
+    0.3785,
+    0.4899
+   ],
+   "p": 0.0002
+  }
+ },
  "pilot": {
   "agent": "claude-code",
   "model_id": "claude-opus-5-5",
@@ -5730,19 +6162,42 @@
    "phrasings": 3,
    "repeats": 4
   },
-  "stability": {
-   "default": [
-    120,
-    120
+  "wording": {
+   "contested": {
+    "pairs": 100,
+    "changed": 31,
+    "null_mean": 17.0,
+    "null_sd": 2.8,
+    "excess": 14.0,
+    "p": 0.001
+   },
+   "default": {
+    "pairs": 120,
+    "changed": 0,
+    "null_mean": 0.0,
+    "null_sd": 0.0,
+    "excess": 0.0,
+    "p": 1.0
+   },
+   "leaning": {
+    "pairs": 70,
+    "changed": 7,
+    "null_mean": 5.5,
+    "null_sd": 1.2,
+    "excess": 1.5,
+    "p": 0.1998
+   }
+  },
+  "position": {
+   "first": 130,
+   "n": 300,
+   "rate": 0.4333,
+   "expected": 0.3333,
+   "ci": [
+    0.3785,
+    0.4899
    ],
-   "leaning": [
-    63,
-    70
-   ],
-   "contested": [
-    69,
-    100
-   ]
+   "p": 0.0002
   },
   "splits": {
    "orm": [
@@ -5891,7 +6346,14 @@
      "trigger-dev": 0.9
     },
     "first_position_rate": 0.35,
-    "baseline_tier": "default"
+    "baseline_tier": "default",
+    "shifted": [],
+    "favourite_delta": -5,
+    "answers": [
+     30,
+     60
+    ],
+    "mde_points": 19
    },
    "search": {
     "favourite": "meilisearch",
@@ -5907,7 +6369,14 @@
      "algolia": 1.0
     },
     "first_position_rate": 0.5833,
-    "baseline_tier": "leaning"
+    "baseline_tier": "leaning",
+    "shifted": [],
+    "favourite_delta": -8,
+    "answers": [
+     30,
+     60
+    ],
+    "mde_points": 30
    },
    "auth": {
     "favourite": "authjs",
@@ -5923,7 +6392,17 @@
      "authjs": 1.0
     },
     "first_position_rate": 0.5167,
-    "baseline_tier": "contested"
+    "baseline_tier": "contested",
+    "shifted": [
+     "better-auth",
+     "authjs"
+    ],
+    "favourite_delta": -40,
+    "answers": [
+     30,
+     60
+    ],
+    "mde_points": 30
    },
    "transactional_email": {
     "favourite": "resend",
@@ -5939,7 +6418,14 @@
      "sendgrid": 0.9
     },
     "first_position_rate": 0.3833,
-    "baseline_tier": "default"
+    "baseline_tier": "default",
+    "shifted": [],
+    "favourite_delta": -5,
+    "answers": [
+     30,
+     60
+    ],
+    "mde_points": 19
    },
    "database_host": {
     "favourite": "neon",
@@ -5955,7 +6441,14 @@
      "planetscale": 0.85
     },
     "first_position_rate": 0.3333,
-    "baseline_tier": "default"
+    "baseline_tier": "default",
+    "shifted": [],
+    "favourite_delta": -8,
+    "answers": [
+     30,
+     60
+    ],
+    "mde_points": 19
    }
   },
   "solo_range": [
@@ -6002,10 +6495,6 @@
   ],
   "flipped": [
    "auth"
-  ],
-  "held_drop_points": [
-   5,
-   9
   ],
   "first_position_mean": 0.4333,
   "first_position_top": [

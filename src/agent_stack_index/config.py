@@ -80,6 +80,18 @@ class Duel:
 
 
 @dataclass(frozen=True)
+class Analysis:
+    """Analysis parameters of one release. For a confirmatory protocol they are locked before any data exists."""
+    default_share: float = 0.95  # a category is settled when every model's top pick is the pooled one and takes this share
+    leaning_agree: float = 0.8  # leaning: at least this fraction of models agree ...
+    leaning_share: float = 0.5  # ... and the pick takes more than this share of answers
+    alpha: float = 0.05  # family-wise level for the duel contrasts (Holm) and the wording shuffle test
+    min_effect_points: int = 10  # a shift smaller than this is not reported as an effect, even when significant
+    shuffles: int = 1000  # label shuffles for the wording null
+    seed: int = 1
+
+
+@dataclass(frozen=True)
 class Experiment:
     id: str
     probe: str
@@ -206,4 +218,8 @@ def validate(ws: Workspace) -> list:
         for name in exp.variants:
             if name not in ws.prompts.get(exp.probe, {}):
                 problems.append(f"{exp.id}: prompt variant {exp.probe}.{name} missing")
+    from .protocol import problems as protocol_problems
+
+    for path in sorted((ws.root / "releases").glob("*/release.toml")):
+        problems += protocol_problems(ws, path.parent.name)
     return problems

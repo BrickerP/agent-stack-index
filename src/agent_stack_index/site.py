@@ -8,8 +8,8 @@ import shutil
 from pathlib import Path
 
 from .config import Workspace
-from .narrative import (TITLE, dek, findings, limits, name, names, pct, section_contested, section_default, section_duel,
-                        section_meaning, section_pilot)
+from .narrative import (TITLE, dek, finding_tags, findings, harness_note, limits, name, names, pct, question, section_contested,
+                        section_default, section_duel, section_meaning, section_pilot, status_line)
 from .release import latest_release, release_dir
 
 REPO = "https://github.com/BrickerP/agent-stack-index"
@@ -166,6 +166,12 @@ def head_tags(ws: Workspace, result: dict, has_share: bool) -> str:
     return "".join(tags)
 
 
+def status_block(result: dict) -> str:
+    """Pilot / pre-registered banner and the question the release asks."""
+    status, q = status_line(result), question(result)
+    return (f'<p class="status">{rich(status)}</p>' if status else "") + (f'<p class="question"><b>Question</b> {e(q)}</p>' if q else "")
+
+
 def page(ws: Workspace, result: dict, release_id: str, has_share: bool = False) -> str:
     man = result["manifest"]
     month = man["title"].split("—")[-1].strip()
@@ -176,14 +182,14 @@ def page(ws: Workspace, result: dict, release_id: str, has_share: bool = False) 
 <p class="eyebrow">Agent Stack Index · {e(month)}</p>
 <h1>{e(TITLE)}</h1>
 <p class="lede">{rich(dek(result))}</p>
-<ol class="findings">{''.join(f'<li><a href="#{anchors[i]}">{rich(t)}</a></li>' for i, t in enumerate(f))}</ol>
+{status_block(result)}<ol class="findings">{''.join(f'<li><a href="#{anchors[i]}">{rich(t)}</a> <span class="tag">{e(tag)}</span></li>' for i, (t, tag) in enumerate(zip(f, finding_tags(result))))}</ol>
 <section id="s1"><h2>1 · Most categories already have a default</h2><p>{rich(section_default(ws, result))}</p>
 <p class="note">Pooled share of answers, each model weighted equally · right column: models whose top pick it is.</p>{tier_rows(ws, result)}</section>"""]
     if result["story"]["tiers"]["contested"]:
         parts.append(f'<section id="s2"><h2>2 · Without a default, the pick moves with the model and the wording</h2>'
                      f'{"".join(f"<p>{rich(p)}</p>" for p in section_contested(ws, result))}{contested_table(ws, result)}</section>')
     if result.get("duel"):
-        parts.append(f'<section id="s3"><h2>3 · What the model reads decides the pick, unless the default is strong</h2>'
+        parts.append(f'<section id="s3"><h2>3 · What the model reads can decide the pick</h2>'
                      f'{"".join(f"<p>{rich(p)}</p>" for p in section_duel(ws, result))}'
                      f'<p class="note">Share of picks per arm, models weighted equally. “All three”: neutral notes on all three candidates, order rotated. '
                      f'“Alone”: only that candidate\'s notes.</p>{duel_cards(ws, result)}</section>')
@@ -194,11 +200,19 @@ def page(ws: Workspace, result: dict, release_id: str, has_share: bool = False) 
                      f'{pilot_table(ws, result)}<p class="note">Raw results: <a href="{REPO}/blob/main/{e(p["file"])}">{e(p["file"])}</a></p></section>')
     parts.append(f'<section id="limits"><h2>Limits</h2><ul>{"".join(f"<li>{rich(x)}</li>" for x in limits(ws, result))}</ul></section>')
     parts.append(f"""<section id="data"><h2>Data and method</h2>
-<p>Raw answers, the vendor catalog and the code are open, and every number on this page is regenerated from them in CI: <a href="{REPO}/blob/main/docs/METHODOLOGY.md">methodology</a> · <a href="results.json">results.json</a> · <a href="picks.csv">picks.csv</a> · <a href="{REPO}/tree/main/data/observations">raw answers</a> · <a href="REPORT.md">report as Markdown</a> · <a href="{REPO}">code</a>. Answers not matched to the catalog: {pct(man['unmatched_rate'])}. Data CC BY 4.0: cite as “Agent Stack Index, release {e(release_id)}”.</p>
+<p>Raw answers, the vendor catalog and the code are open, and every number on this page is regenerated from them in CI: <a href="{REPO}/blob/main/docs/METHODOLOGY.md">methodology</a> · <a href="results.json">results.json</a> · <a href="picks.csv">picks.csv</a> · <a href="{REPO}/tree/main/data/observations">raw answers</a> · <a href="REPORT.md">report as Markdown</a> · <a href="{REPO}">code</a>. Answers not matched to the catalog: {pct(man['unmatched_rate'])}. Data CC BY 4.0: cite as “Agent Stack Index, release {e(release_id)}”.{protocol_note(result)}</p>
 {appendix(ws, result)}</section>
 <footer><p>By <a href="https://brickerp.github.io/">Yupeng Lu</a>. The index is vendor-neutral: no vendor pays for placement or sees results early. The author separately builds agent-ready docs, MCP servers and integration tests for developer-tool teams — <a href="https://brickerp.github.io/#contact">contact</a>.</p></footer>
 </main></body></html>""")
     return "".join(parts)
+
+
+def protocol_note(result: dict) -> str:
+    proto = result["manifest"].get("protocol")
+    if not proto:
+        return ""
+    harness = f" Harness this round: {e(harness_note(result))}" if harness_note(result) else ""
+    return f' Protocol: <a href="{REPO}/blob/main/{e(proto["path"])}">{e(proto["path"])}</a> ({e(proto["status"])}).{harness}'
 
 
 def llms_txt(result: dict) -> str:
