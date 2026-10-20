@@ -25,19 +25,18 @@ def tiers(baseline: dict) -> dict:
     return out
 
 
-def stability(baseline: dict, groups: dict) -> dict:
-    return {t: [sum(baseline[c]["variant_consistent"] for c in cats), sum(baseline[c]["models_total"] for c in cats)]
-            for t, cats in groups.items()}
-
-
 def splits(row: dict) -> list:
     """How many models have each vendor among their top picks, most first."""
     c = Counter(v for m in row["models"].values() for v in m["tops"])
     return sorted(c.items(), key=lambda kv: (-kv[1], kv[0]))
 
 
-def duels(baseline: dict, duel: dict, groups: dict) -> dict:
+def duels(baseline: dict, duel: dict, groups: dict, inf: dict) -> dict:
     tier_of = {c: t for t, cats in groups.items() for c in cats}
+    contrasts = {}
+    for r in (inf.get("duel") or {}).get("contrasts", []):
+        contrasts.setdefault(r["category"], []).append(r)
+    mde = (inf.get("duel") or {}).get("mde_points", {})
     out = {}
     for cat, row in duel.items():
         none, trio = row["arms"].get("none", {}), row["arms"].get("trio", {})
@@ -54,6 +53,10 @@ def duels(baseline: dict, duel: dict, groups: dict) -> dict:
             "solo": row["solo_win"],
             "first_position_rate": row["first_position_rate"],
             "baseline_tier": tier_of.get(cat),
+            "shifted": [r["vendor"] for r in contrasts.get(cat, []) if r["shifted"]],
+            "favourite_delta": next((r["delta_points"] for r in contrasts.get(cat, []) if r["vendor"] == fav), None),
+            "answers": [contrasts[cat][0]["none"][1], contrasts[cat][0]["trio"][1]] if contrasts.get(cat) else [],
+            "mde_points": mde.get(cat),
         }
     return out
 
@@ -100,14 +103,14 @@ def story(result: dict) -> dict:
     flagged = sorted(m for m, v in man["models"].items() if v.get("injected_prompt"))
     unflagged_disagree = [c for c in groups["contested"]
                           if any(base[c]["top"] not in m["tops"] for mid, m in base[c]["models"].items() if mid not in flagged)]
-    d = duels(base, duel, groups)
+    inf = result.get("inference") or {}
+    d = duels(base, duel, groups, inf)
     solo = [s for row in duel.values() for s in row["solo_win"].values()]
     zero = sorted(([c, v, row["arms"].get("none", {}).get(v, 0.0), row["solo_win"][v]]
                    for c, row in duel.items() for v in row["vendors"]
                    if row["arms"].get("none", {}).get(v, 0.0) <= 0.01 and row["solo_win"][v] >= 0.85),
                   key=lambda x: (-(x[3] - x[2]), x[0], x[1]))
     held = [c for c, x in d.items() if x["held"]]
-    drops = [round(100 * x["favourite_none"]) - round(100 * x["favourite_trio"]) for c, x in d.items() if x["held"]]
     order = sorted(((x["first_position_rate"], c) for c, x in d.items() if x["first_position_rate"] is not None), reverse=True)
     base_exp = man["experiments"].get("baseline") or {}
     feature = next((c for c in groups["contested"] if c in duel), groups["contested"][-1] if groups["contested"] else None)
@@ -123,7 +126,8 @@ def story(result: dict) -> dict:
             "phrasings": len(base_exp.get("variants", [])),
             "repeats": base_exp.get("repeats", 0),
         },
-        "stability": stability(base, groups),
+        "wording": inf.get("wording", {}),
+        "position": inf.get("position"),
         "splits": {c: splits(base[c]) for c in groups["contested"]},
         "feature_split": feature,
         "flagged_models": flagged,
@@ -133,7 +137,6 @@ def story(result: dict) -> dict:
         "zero_to_solo": zero,
         "held": held,
         "flipped": [c for c in d if c not in held],
-        "held_drop_points": [min(drops), max(drops)] if drops else [],
         "first_position_mean": round(sum(r for r, _c in order) / len(order), 4) if order else None,
         "first_position_top": [[c, r] for r, c in order[:2]],
         "pilot": result.get("pilot"),

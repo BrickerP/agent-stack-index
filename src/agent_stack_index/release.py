@@ -9,11 +9,12 @@ import csv
 import io
 import json
 import tomllib
+from dataclasses import asdict
 from pathlib import Path
 
-from . import __version__, store
+from . import __version__, infer, protocol, store
 from .analyze import baseline, duel
-from .config import Workspace, load_experiment
+from .config import Analysis, Workspace, load_experiment
 from .normalize import Matcher, unmatched
 from .plan import plan
 from .story import pilot_summary, story
@@ -37,18 +38,24 @@ def _records(ws: Workspace, exp):
 
 def build(ws: Workspace, release_id: str) -> dict:
     s = spec(ws, release_id)
+    an = Analysis(**s.get("analysis", {}))
     matcher = Matcher(ws)
-    exps, data, records_all = {}, {}, []
+    exps, data, records_all, by_role, duels = {}, {}, [], {}, ()
     for role in ("baseline", "duel"):
         if not s.get(role):
             continue
         exp = load_experiment(ws.root / "experiments" / f"{s[role]}.toml")
         records, planned = _records(ws, exp)
         records_all += records
+        by_role[role] = records
         exps[role] = {"id": exp.id, "title": exp.title, "planned": planned, "observed": len(records),
                       "coverage": round(len(records) / planned, 4) if planned else 0.0,
                       "variants": list(exp.variants), "repeats": exp.repeats}
-        data[role] = baseline(ws, records, matcher) if role == "baseline" else duel(ws, records, exp.duels, matcher)
+        if role == "baseline":
+            data[role] = baseline(ws, records, matcher, an)
+        else:
+            data[role] = duel(ws, records, exp.duels, matcher)
+            duels = exp.duels
     models = {}
     for rec in records_all:
         m = models.setdefault(rec["model_id"], {"reported": set(), "answers": 0})
@@ -63,6 +70,8 @@ def build(ws: Workspace, release_id: str) -> dict:
         "harness": __version__,
         "catalog_sha": ws.catalog_sha(),
         "data_window": [stamps[0][:10], stamps[-1][:10]] if stamps else [],
+        "protocol": protocol.summary(ws, release_id),
+        "analysis": asdict(an),
         "experiments": exps,
         "answers": len(records_all),
         "models": {
@@ -75,6 +84,7 @@ def build(ws: Workspace, release_id: str) -> dict:
         "unmatched_top": [{"category": c, "raw": r, "how": how, "count": n} for (c, r, how, _v), n in misses[:30]],
     }
     result = {"manifest": manifest, **data}
+    result["inference"] = infer.run(ws, by_role, duels, matcher, an, {c: r["tier"] for c, r in data.get("baseline", {}).items()})
     if s.get("pilot") and data.get("baseline"):
         result["pilot"] = pilot_summary(ws, data["baseline"], ws.root / s["pilot"])
     result["story"] = story(result)

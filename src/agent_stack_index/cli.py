@@ -5,6 +5,7 @@ import argparse
 import re
 import sys
 from collections import Counter
+from datetime import date
 from pathlib import Path
 
 from . import __version__, store
@@ -52,6 +53,13 @@ def cmd_run(ws, args) -> int:
     from .runner import run
 
     exp = _exp(ws, args.experiment)
+    if not args.fake:
+        from .protocol import run_gate
+
+        why = run_gate(ws, exp.id)
+        if why:
+            print(f"not running {exp.id}: {why}")
+            return 2
     if args.fake:
         client = FakeClient(lambda model, prompt: "{" + ", ".join(f'"{k}": "fake-{k}"' for k in re.findall(r"^- ([a-z_]+):", prompt, re.M)) + "}")
     else:
@@ -59,6 +67,14 @@ def cmd_run(ws, args) -> int:
     stats = run(ws, exp, client, max_calls=args.max_calls, shard_spec=args.shard, workers=args.workers, retry_failed=not args.no_retry)
     print(stats)
     return 0 if stats["error"] == 0 else 2
+
+
+def cmd_lock(ws, args) -> int:
+    from .protocol import lock
+
+    path = lock(ws, args.release)
+    print(f"locked {path.relative_to(ws.root)}; collect data now, and record any later change under '## Deviations'")
+    return 0
 
 
 def cmd_unmatched(ws, args) -> int:
@@ -134,8 +150,16 @@ def cmd_new_release(ws, args) -> int:
             text = old.read_text(encoding="utf-8").replace(f'id = "{prev[role]}"', f'id = "{new_id}"')
             (ws.root / "experiments" / f"{new_id}.toml").write_text(text, encoding="utf-8")
             lines.append(f'{role} = "{new_id}"')
+    lines.append(f'protocol = "protocols/{args.release}.md"')
+    lines += ["", "[analysis]"] + [f"{k} = {v}" for k, v in prev.get("analysis", {}).items()]
     (out_dir / "release.toml").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"scaffolded releases/{args.release}; run the experiments, then `asi release {args.release}`")
+    proto = ws.root / "protocols" / f"{args.release}.md"
+    if not proto.exists():
+        text = (ws.root / "protocols" / "TEMPLATE.md").read_text(encoding="utf-8")
+        text = text.replace("<release id>", args.release).replace("<date>", date.today().isoformat())
+        proto.write_text(text.replace("<title>", f"Agent Stack Index, {args.release}"), encoding="utf-8")
+    print(f"scaffolded releases/{args.release} and protocols/{args.release}.md: fill in the protocol, `asi validate`, "
+          f"`asi lock {args.release}`, then run the experiments and `asi release {args.release}`")
     return 0
 
 
@@ -156,6 +180,8 @@ def main(argv=None) -> int:
     sr.add_argument("--workers", type=int, default=64, help="cap on in-flight calls per provider")
     sr.add_argument("--no-retry", action="store_true", help="skip trials that already failed once")
     sr.add_argument("--fake", action="store_true", help="use a deterministic fake model (pipeline test)")
+    sk = sub.add_parser("lock", help="freeze a confirmatory protocol before any data is collected")
+    sk.add_argument("release")
     su = sub.add_parser("unmatched")
     su.add_argument("--experiment", action="append")
     su.add_argument("--limit", type=int, default=80)

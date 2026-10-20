@@ -4,13 +4,17 @@
 
 We asked 10 models from 8 labs to start the same 16 projects from scratch and name one tool for each of 29 needs, in three phrasings, four times each (1,920 answers). Then we put neutral notes on competing tools in front of them 750 more times.
 
-1. **Most categories already have a default.** In 12 of 29 categories every model picks the same tool, and it takes at least 95% of the answers; in 7 more, at least 8 of 10 models agree.
-2. **Without a default, the pick moves with the model and the wording.** In the 10 contested categories, 31 of 100 model–category pairs change their top pick when the request is reworded; in the default categories, none do.
-3. **What the model reads decides the pick, unless the default is strong.** With only one candidate's notes in context, models pick it 85–100% of the time. With all candidates' notes side by side, the favourite held in four of the five categories we tested; in authentication, which has no default, the lead flipped.
+**Pilot.** The design was not pre-registered, so every finding below is exploratory. Each one is checked against a noise model; see Limits for how far it holds.
+
+**Question.** Which tools do AI coding models pick when they start a project from scratch, and what moves the pick: the wording, the order of candidates, or documentation in context?
+
+1. **Most categories already have a default.** In 12 of 29 categories every model picks the same tool and it takes at least 95% of the answers; in 7 more, at least 8 of 10 models agree. *(exploratory)*
+2. **Without a default, the pick also moves with the wording.** In the 10 contested categories, 31 of 100 model–category pairs change their top pick when the request is reworded, against about 17 expected from sampling noise alone; in the default categories, none do. *(exploratory)*
+3. **What the model reads can decide the pick.** With only one candidate's notes in context, models pick it 85–100% of the time. With all candidates' notes side by side, the favourite showed no detectable change in four of the five categories we tested (shifts under about 19–30 points cannot be ruled out); in authentication, which has no default, the lead flipped. *(exploratory)*
 
 ## 1. Most categories already have a default
 
-Twelve categories are settled: every model's top pick is the same tool, and it takes at least 95% of the answers. Seven more lean one way: at least 8 of 10 models agree and the tool wins most answers. Ten are contested.
+Twelve categories are settled: every model picks the same tool and it takes at least 95% of the answers. Seven more lean one way: at least 8 of 10 models agree and the tool wins most answers. Ten are contested.
 
 **Settled — every model, at least 95% of answers** (12)
 
@@ -60,7 +64,9 @@ Twelve categories are settled: every model's top pick is the same tool, and it t
 
 Where no tool is settled, models split. In authentication, Auth.js (NextAuth) is the top pick of 5 models, Clerk of 3 and Better Auth of 2.
 
-The same model's answer also depends on the wording: in contested categories, 31 of 100 model–category pairs change their top pick across the three phrasings, against 7 of 70 in leaning and none in default categories.
+The same model's answer also depends on the wording: in contested categories, 31 of 100 model–category pairs change their top pick across the three phrasings. Shuffling the phrasing labels over the same answers gives 17 ± 3 (sampling noise alone), so the wording accounts for roughly 14 of the 100 (p = 0.001).
+
+In leaning categories 7 of 70 change, against about 6 expected (no detectable wording effect); in default categories, none.
 
 The split is not just the Claude Opus 5.5 and Claude Sonnet 5.5 routes, which add a hidden system prompt (see Limits): in 9 of 10 contested categories, at least one other model also disagrees with the pooled pick.
 
@@ -79,15 +85,15 @@ The split is not just the Claude Opus 5.5 and Claude Sonnet 5.5 routes, which ad
 
 A model tied between two tools counts for both. Per-model picks are in the appendix.
 
-## 3. What the model reads decides the pick, unless the default is strong
+## 3. What the model reads can decide the pick
 
-In five duels we gave the same single-need task three ways: no notes; neutral notes on three candidates, in rotated order; and one candidate's notes alone. Alone, every candidate won 85–100% of picks, including tools that got 0% with no notes (Supabase 0% → 100%, Postmark 0% → 100%, Trigger.dev 0% → 90%).
+In five duels we gave the same single-need task three ways: no notes; neutral notes on three candidates, in rotated order; and one candidate's notes alone. Alone, every candidate won 85–100% of picks, including tools that got 0% with no notes (Supabase 0% → 100%, Postmark 0% → 100%, Trigger.dev 0% → 90%). That is close to a forced choice: it shows the notes are read, not that they persuade.
 
-Side by side, the no-notes favourite stayed on top in four of five duels, losing 5–9 points (BullMQ 97% → 92%, Meilisearch 67% → 58%, Resend 100% → 95%, Neon 100% → 92%).
+Side by side, the no-notes favourite stayed on top in four of five duels, with no detectable shift (BullMQ 97% → 92%, Meilisearch 67% → 58%, Resend 100% → 95%, Neon 100% → 92%). With 30 and 60 answers per arm, shifts under about 19–30 points cannot be told apart from noise, so this means no detectable change, not no change.
 
-In authentication, where models had no default, the lead flipped: Auth.js (NextAuth) 67% → 27%, Better Auth 17% → 52%.
+In authentication, where models had no default, the lead flipped: Auth.js (NextAuth) 67% → 27%, Better Auth 17% → 52% (significant after correcting for 15 comparisons).
 
-Order mattered a little: the first-listed candidate won 43% of side-by-side picks (a third would mean no effect), most in search (58%) and authentication (52%), the two duels without a settled default.
+Order mattered: the first-listed candidate won 43% of side-by-side picks (95% interval 38–49%; chance is 33%; p < 0.001).
 
 | Category | Candidate | No notes | All three candidates' notes | Its notes alone |
 |---|---|---|---|---|
@@ -109,8 +115,8 @@ Order mattered a little: the first-listed candidate won 43% of side-by-side pick
 
 ## What this means
 
-- **If you build with agents:** an agent's stack is mostly the model's default plus whatever documentation reaches its context. If you care which tool you get, name it; in contested categories, rewording the request can change the answer.
-- **If you make developer tools:** if you are not the default, the lever is being read. Alone in context, every candidate's notes won 85–100% of picks, but next to a strong default they moved it by at most 8 points. The open ground is the contested categories, where models already disagree: for example Python authentication, vector database, authentication, UI components and pipeline orchestration.
+- **If you build with agents:** an agent's stack is mostly the model's default plus whatever documentation reaches its context. If you care which tool you get, name it; in contested categories, rewording the request can change the answer, and the order of a list you give it matters.
+- **If you make developer tools:** if you are not the default, the lever is being read, and being listed first helps. Alone in context, every candidate's notes won 85–100% of picks; next to a settled default we detected no shift, and where there was no default the notes flipped the lead. The open ground is the contested categories, where models already disagree: for example Python authentication, vector database, authentication, UI components and pipeline orchestration.
 
 ## Early check: asked vs done
 
@@ -133,14 +139,18 @@ Raw results: [`docs/pilots/2026-10-15-agent-probe.json`](../../docs/pilots/2026-
 
 ## Limits
 
+- **Pilot.** The design was not pre-registered, and some choices (the tier thresholds, the statistics added after a first look) were made after seeing data, so every finding is exploratory. Confirmatory releases lock their protocol before any data is collected (docs/CHARTER.md).
 - **Stated preference.** Each answer is one API call naming a tool. Apart from the file-only pilot above, which wrote dependencies but installed nothing, we did not observe real projects.
 - **One gateway.** All models were reached through one OpenAI-compatible gateway. The Claude Opus 5.5 and Claude Sonnet 5.5 routes add their own system prompt (about 6.6k tokens), so their picks may reflect it; they are marked † in the tables.
-- **Our notes.** Duel notes are short, neutral summaries we wrote from public documentation; real documentation is longer and more persuasive.
+- **Default sampling.** Every model ran at its route's default sampling settings, which differ between models and were not recorded.
+- **One task per category.** 27 of 29 categories were asked through a single task prompt (in three phrasings), so a default is a default for that task.
+- **Models are not independent.** The 10 models come from 8 labs (two from Anthropic and two from OpenAI), so "every model agrees" is weaker than that many independent confirmations.
+- **Our notes, few answers.** Duel notes are short, neutral summaries we wrote from public documentation; real documentation is longer and more persuasive. Each duel arm holds 30 to 60 answers, which is why most shifts are "not detected" rather than "absent".
 - **One snapshot.** Collected 2026-10-15 with default sampling; tasks lean to TypeScript and Next.js plus a Python track; each model contributes about 12 answers per category, so single-model cells are small.
 
 ## Data and method
 
-Raw answers, the vendor catalog and the code are open; every number here is regenerated from them in CI. Method: [docs/METHODOLOGY.md](../../docs/METHODOLOGY.md).
+Raw answers, the vendor catalog and the code are open; every number here is regenerated from them in CI. Method: [docs/METHODOLOGY.md](../../docs/METHODOLOGY.md). Protocol: [protocols/2026-10.md](../../protocols/2026-10.md) (pilot). Harness this round: the story-driven report, share cards and an inference module (null models, corrected tests).
 
 | Experiment | Planned | Observed | Coverage |
 |---|---|---|---|

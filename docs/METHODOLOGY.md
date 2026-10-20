@@ -26,8 +26,21 @@ Raw answers are stored verbatim. A public catalog (`catalog/`) maps answers to v
 - Pooled shares are the equal-weight mean of the models' share vectors, so a model that answers more often does not count more.
 - "Models agreeing" counts models whose own top pick equals the pooled top pick.
 - Variant consistency counts models whose top picks (ties included) have at least one tool in common across all three phrasings.
-- Tiers: a category is *default* when every model's top pick is the pooled top pick and it takes at least 95% of answers; *leaning* when at least 80% of models agree and the pick takes more than half of the answers; *contested* otherwise. The thresholds are constants in `analyze.py`.
+- Tiers: a category is *default* when every model's top pick is the pooled top pick and it takes at least 95% of answers; *leaning* when at least 80% of models agree and the pick takes more than half of the answers; *contested* otherwise. The thresholds are the release's `[analysis]` table, fixed before data for a confirmatory release.
 - Duels report pooled shares per arm, the lift from being in context next to rivals (trio minus none), the solo win rate, and the rate at which the first-listed candidate wins in the trio arm.
+
+## Inference
+
+Every claim in the report is worded by a test computed in `infer.py` from the raw answers (seeded, reproducible in CI):
+
+- **Wording.** A model-category pair "changes" when no tool is a top pick in every phrasing. Because 12 answers split three ways are noisy, the count is compared with the same answers after shuffling the phrasing labels within each task (the `shuffles` in `[analysis]`). Only the excess over the shuffled count is attributed to the wording; the p-value is the share of shuffles at or above the observed count, never below 1 in `shuffles` + 1.
+- **Context.** For each candidate, the no-notes arm is compared with the all-candidates arm by Fisher's exact test; the whole family is corrected with Holm's method. A shift counts as an effect when the corrected p is below `alpha` and the change is at least `min_effect_points`. Anything else is reported as "no detectable change", together with the minimum detectable effect of the arm sizes (80% power, alpha 0.05).
+- **Order.** The first-listed candidate's win rate in the rotated trio arm is tested against chance (one in the number of candidates) with an exact binomial test.
+- **Independence.** Tests pool answers across models, which are not independent (labs, shared training data); p-values are optimistic and are read as screens, not proof.
+
+## Protocols and evidence
+
+Each release has a protocol (`protocols/<id>.md`): goal, hypotheses, design, controls, sample size, analysis plan, validity checks, engineering benefit, report. A *confirmatory* protocol is locked before data exists and its findings are labelled confirmed or not detected against the plan; a *pilot* has no pre-registered plan and every finding is exploratory. See [CHARTER.md](CHARTER.md).
 
 ## Limitations
 
